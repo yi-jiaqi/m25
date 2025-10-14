@@ -32,7 +32,7 @@ struct ButtonsBar: View {
                 Button(action: {
                         // Placeholder action for m.circle
                 }) {
-                    Image(systemName: "apps.ipad")
+                    Image(systemName: "circle.grid.3x3.circle")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 30, height: 30)
