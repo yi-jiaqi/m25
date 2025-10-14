@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ShopView: View {
     var body: some View {
-        ScrollView {
+    
             VStack(spacing: 40) {
                 
                     // MARK: - News Section
@@ -21,17 +21,18 @@ struct ShopView: View {
                     Text("SHOP")
                         .font(.system(size: 22, weight: .semibold))
                         .multilineTextAlignment(.center)
+                        .foregroundColor(Color(hex: "FFFFFF"))
                     
                     Text("GIFT minutiae")
                         .font(.system(size: 20, weight: .light))
                         .multilineTextAlignment(.center)
+                        .foregroundColor(Color(hex: "FFFFFF"))
                 }
                 .padding(.bottom, 40)
             }
             .frame(maxWidth: .infinity)
             .padding(.horizontal)
-        }
-        .background(Color.black.edgesIgnoringSafeArea(.all))
+
     }
 }
 

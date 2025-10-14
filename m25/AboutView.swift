@@ -8,33 +8,33 @@
 import Foundation
 import SwiftUI
 
-struct AboutView: View {
+struct ReadingView: View {
+    @State private var selection: Int
+    @Environment(\.dismiss) private var dismiss
+    
+    init(initialPage: Int) {
+        _selection = State(initialValue: initialPage)
+    }
+    
     var body: some View {
-        VStack(spacing: 60) {  // spacing between the two groups
+        ZStack(alignment: .top) {
+            Color(hex: "1D1D1D").ignoresSafeArea()
             
-                // MARK: - Top Section
-            VStack(spacing: 30) { // spacing between each item
-                Text("MANIFESTO")
-                Text("RULES")
-                Text("THE ARTISTS")
-                Text("FAQ")
-                Text("YOUR MEMBERSHIP")
+            VStack(spacing: 0) {
+                ButtonsBar(type: .reading, onClose: { dismiss() }) // make sure ButtonsBar has onClose
+                Spacer().frame(height: 30)
+                
+                TabView(selection: $selection) {
+                    ReadingPage1().tag(0)
+                    ReadingPage2().tag(1)
+                    ReadingPage3().tag(2)
+                    ReadingPage4().tag(3)
+                    Color.clear.tag(4)
+                }
+                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
+                .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
             }
-            .font(.custom("Rubik-Medium", size: 24))
-            .foregroundColor(.white)
-            
-                // MARK: - Bottom Section
-            VStack(spacing: 30) {
-                Text("DO NOT DISTURB")
-                Text("DEMO")
-            }
-            .font(.custom("Rubik-Medium", size: 24))
-            .foregroundColor(.white)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .multilineTextAlignment(.center)
-        .background(Color(hex: "1D1D1D"))
-        .padding(.horizontal, 30)
     }
 }
 

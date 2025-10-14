@@ -72,7 +72,7 @@ struct News: View {
                         .foregroundColor(Color(hex: "1D1D1D"))
                     
                     Text(content)
-                        .font(Font.custom("Rubik", size: 20).weight(.medium))
+                        .font(Font.custom("Rubik", size: 20).weight(.light))
                         .foregroundColor(Color(hex: "1D1D1D"))
                     
                     
@@ -103,7 +103,7 @@ struct News: View {
                     
                     Text(title.uppercased())
                         .font(Font.custom("Rubik", size: 20).weight(.medium))
-                        .foregroundColor(Color(hex: "FFFFFF"))
+                        .foregroundColor(Color(hex: "1D1D1D"))
                         .frame(maxWidth: .infinity, alignment: .center)
                 }
             }

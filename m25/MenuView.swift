@@ -137,7 +137,7 @@ struct SnapScrollView: View {
                                 // MARK: - CREDITS
                             VStack {
                             Headline(type: .menu, heading: title)
-                            Spacer()
+                                CreditsView()
                         }
                         .frame(
                             width: width,

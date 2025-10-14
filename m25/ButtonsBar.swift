@@ -15,6 +15,7 @@ struct ButtonsBar: View {
     }
     
     var type: ButtonsBarType
+    var onClose: (() -> Void)? = nil   // 👈 Added closure
     var body: some View {
         HStack {
             switch type {
@@ -60,7 +61,7 @@ struct ButtonsBar: View {
            
             case .reading:
                 Button(action: {
-                        // Placeholder action for x.circle
+                    onClose?() 
                 }) {
                     Image(systemName: "x.circle")
                         .resizable()

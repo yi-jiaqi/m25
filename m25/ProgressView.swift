@@ -15,8 +15,8 @@ struct ProgressView: View {
     private var completionDate: Date {
         Calendar.current.date(byAdding: DateComponents(year: 4, day: -20), to: today)!
     }
-    private let capturedMoments = Int.random(in: 10...100)
-    private let remainingMoments = Int.random(in: 1200...1300)
+    private let capturedMoments = 89
+    private let remainingMoments = 1212
     
         // MARK: - Date Formatting
     private var dateFormatter: DateFormatter {
