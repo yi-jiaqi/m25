@@ -72,19 +72,18 @@ struct News: View {
                         .foregroundColor(Color(hex: "1D1D1D"))
                     
                     Text(content)
-                        .font(Font.custom("Rubik", size: 18).weight(.light))
+                        .font(Font.custom("Rubik", size: 20).weight(.medium))
                         .foregroundColor(Color(hex: "1D1D1D"))
                     
                     
-                    HStack(alignment: .center) {
-                        if let image = image {
-                            image
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 280, height: 280)
-                                .clipped()
-                                .cornerRadius(12)
-                        }
+                    if let image = image {
+                        image
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 280, height: 280)
+                            .clipped()
+                            .cornerRadius(12)
+                            .frame(maxWidth: .infinity, alignment: .center)
                     }
                 }
             
@@ -98,12 +97,14 @@ struct News: View {
                                 .frame(width: 280, height: 280)
                                 .clipped()
                                 .cornerRadius(12)
+                                .frame(maxWidth: .infinity, alignment: .center)
                         }
                     }
                     
                     Text(title.uppercased())
                         .font(Font.custom("Rubik", size: 20).weight(.medium))
-                        .foregroundColor(Color(hex: "1D1D1D"))
+                        .foregroundColor(Color(hex: "FFFFFF"))
+                        .frame(maxWidth: .infinity, alignment: .center)
                 }
             }
         }

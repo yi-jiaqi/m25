@@ -42,6 +42,7 @@ struct Headline: View {
                         .font(.custom("Rubik-Medium", size: 24))
                         .foregroundColor(.white)
                         .padding()
+                        .textCase(.uppercase)
                     Rectangle()
                         .frame(height: 1)
                         .frame(maxWidth: .infinity, alignment: .center)

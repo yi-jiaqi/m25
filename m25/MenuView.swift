@@ -10,6 +10,7 @@ struct MenuView: View {
      2. Dots indicator of segments;
      3. Export the icon of M and Done Button from Storyboards/Main.storyboard
      4. Confirmation of Rubik-light & Rubik-regular & Rubik-medium is correctly loaded
+     5. Correct snapping;
      */
     var body: some View {
         VStack(spacing: 0) {
@@ -20,7 +21,7 @@ struct MenuView: View {
                 
                 Rectangle()
                     .foregroundColor(.clear)
-                    .frame(width: 135, height: 135)
+                    .frame(width: 115, height: 115)
                     .background(
                         Image("logo")
                             .resizable()
@@ -126,7 +127,7 @@ struct SnapScrollView: View {
                                 // MARK: - SHOP
                             VStack {
                                 Headline(type: .menu, heading: title)
-                                Spacer()
+                                ShopView()
                             }
                             .frame(
                                 width: width,

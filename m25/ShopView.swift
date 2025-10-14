@@ -14,19 +14,7 @@ struct ShopView: View {
             VStack(spacing: 40) {
                 
                     // MARK: - News Section
-                VStack(spacing: 12) {
-                    Image("constellation_posters") // Replace with your asset name
-                        .resizable()
-                        .scaledToFit()
-                        .cornerRadius(10)
-                        .shadow(radius: 6)
-                    
-                    Text("[NEW] Constellation Posters - Four Years")
-                        .font(.headline)
-                        .multilineTextAlignment(.center)
-                        .padding(.horizontal)
-                }
-                .padding(.top, 20)
+                News(type: .veryBigImage, title: "[NEW] Constellation Posters - Four Years", content: "_", image: Image("minutiae_poster_notification"))
                 
                     // MARK: - About-style Text Section
                 VStack(spacing: 20) {
@@ -42,7 +30,6 @@ struct ShopView: View {
             }
             .frame(maxWidth: .infinity)
             .padding(.horizontal)
-            .background(Color(.systemBackground))
         }
         .background(Color.black.edgesIgnoringSafeArea(.all))
     }
