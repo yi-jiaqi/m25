@@ -127,7 +127,7 @@ struct SnapScrollView: View {
                                 // MARK: - SHOP
                             VStack {
                                 Headline(type: .menu, heading: title)
-                                ShopView()
+                                LittleShopView()
                             }
                             .frame(
                                 width: width,

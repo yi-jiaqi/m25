@@ -8,73 +8,76 @@
 import SwiftUI
 
 struct SettingsView: View {
-    
     @Environment(\.dismiss) private var dismiss
     @State private var locationEnabled = true
     @State private var flashEnabled = true
     @State private var missedCountEnabled = true
     
-    
     var body: some View {
-        ZStack {
-            Color.black.ignoresSafeArea()
-            
-            VStack {
-                ButtonsBar(type: .setting,onClose: { dismiss() })
-                
-                Headline(type: .setting, heading: "Setting")
-                
+        
+        ScrollView {
+            ButtonsBar(type: .setting, onClose: { dismiss() })
+            VStack(alignment: .leading, spacing: 20) {
+                Headline(type: .setting, heading: "SETTING")
+                    .padding(.top, 20)
                 ToggleRow(label: "Location", isOn: $locationEnabled)
                 ToggleRow(label: "Automatic Flash", isOn: $flashEnabled)
                 ToggleRow(label: "Missed Moments Count", isOn: $missedCountEnabled)
                 
-                
-                VStack(alignment: .leading, spacing: 16) {
-                    Headline(type: .setting, heading: "ACCOUNT")
-                        .padding(.bottom, 6)
-                    Divider().background(Color.white)
-                    
-                    Text("Your Email: ytp649296@gmail.com")
-                        .font(.custom("Rubik-Light", size: 20))
-                        .foregroundColor(.white)
-                    
-                    Text("Delete My Account")
-                        .font(.custom("Rubik-Light", size: 20))
-                        .foregroundColor(.white)
-                    
-                    Text("Redeem")
-                        .font(.custom("Rubik-Light", size: 20))
-                        .foregroundColor(.white)
-                }
-                
-                    // MARK: - Links Section
-                VStack(alignment: .leading, spacing: 16) {
-                    Headline(type: .setting, heading: "LINKS")
-                        .padding(.bottom, 6)
-                    Divider().background(Color.white)
-                    
-                    Text("Minutiae Website")
-                        .font(.custom("Rubik-Light", size: 20))
-                        .foregroundColor(.white)
-                    
-                    Text("Shops & Gifts")
-                        .font(.custom("Rubik-Light", size: 20))
-                        .foregroundColor(.white)
-                }
-                
-                    // MARK: - Footer
-                Text("DO NOT DISTURB")
-                    .font(.custom("Rubik-Medium", size: 20))
-                    .foregroundColor(.white)
-                    .frame(maxWidth: .infinity, alignment: .center)
-                    .padding(.top, 30)
             }
+            .padding(.horizontal, 30)
+            .frame(maxWidth: .infinity, alignment: .topLeading)
+            
+            VStack(alignment: .leading, spacing: 20) {
+                Headline(type: .setting, heading: "ACCOUNT")
+                    .padding(.top, 20)
+                
+                Text("Your Email:")
+                    .font(.custom("Rubik-Light", size: 20))
+                    .foregroundColor(.white)
+                    .padding(.horizontal, 30)
+                
+                Text("Delete Account:")
+                    .font(.custom("Rubik-Light", size: 20))
+                    .foregroundColor(.white)
+                    .padding(.horizontal, 30)
+                
+                Text("Redeem")
+                    .font(.custom("Rubik-Light", size: 20))
+                    .foregroundColor(.white)
+                    .padding(.horizontal, 30)
+                
+            }
+            .padding(.horizontal, 30)
+            .frame(maxWidth: .infinity, alignment: .topLeading)
+            
+            VStack(alignment: .leading, spacing: 20) {
+                Headline(type: .setting, heading: "LINKS")
+                    .padding(.top, 20)
+                
+                Text("minutiae Website")
+                    .font(.custom("Rubik-Light", size: 20))
+                    .foregroundColor(.white)
+                    .padding(.horizontal, 30)
+                
+                Text("Shop")
+                    .font(.custom("Rubik-Light", size: 20))
+                    .foregroundColor(.white)
+                    .padding(.horizontal, 30)
+                
+                Text("Gift")
+                    .font(.custom("Rubik-Light", size: 20))
+                    .foregroundColor(.white)
+                    .padding(.horizontal, 30)
+                
+            }
+            .padding(.horizontal, 30)
+            .frame(maxWidth: .infinity, alignment: .topLeading)
         }
+        .background(Color.black.ignoresSafeArea())
+        
     }
-}
-
-#Preview {
-    SettingsView()
+    
 }
 
 
@@ -92,5 +95,11 @@ struct ToggleRow: View {
             Toggle("", isOn: $isOn)
                 .labelsHidden()
         }
+        .padding(.horizontal, 30)
     }
+}
+
+
+#Preview {
+    SettingsView()
 }

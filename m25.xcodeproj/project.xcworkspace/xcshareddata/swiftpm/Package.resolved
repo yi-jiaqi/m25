@@ -1,0 +1,15 @@
+{
+  "originHash" : "ef325091ba0404fc193140c62ec97b35a953a7c0e5d907ea2f901bb9f856a11b",
+  "pins" : [
+    {
+      "identity" : "hgcircularslider",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/HamzaGhazouani/HGCircularSlider",
+      "state" : {
+        "revision" : "2b98462d32bf7211851aa73537dbaba5dd80229e",
+        "version" : "2.2.1"
+      }
+    }
+  ],
+  "version" : 3
+}

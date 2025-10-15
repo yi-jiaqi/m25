@@ -59,7 +59,7 @@ struct Headline: View {
                     .font(.custom("Rubik", size: 32).weight(.medium))
                     .foregroundColor(Color(red: 0.11, green: 0.11, blue: 0.11))
                     .frame(width: 454, height: 55)
-                    .offset(y: 37.5)
+
                 
         case .shop:
                     // 🏪 SHOP version
@@ -72,22 +72,22 @@ struct Headline: View {
                         .frame(height: 1)
                         .foregroundColor(.white.opacity(0.7))
                 }
-                .frame(width: 454)
-                .offset(y: 136.5)
+
+
             
         case .setting:
                 // SETTING version
             VStack(alignment: .leading, spacing: 10) {
                 Text(heading)
-                    .font(.custom("Rubik", size: 32).weight(.medium))
+                    .font(.custom("Rubik", size: 28).weight(.medium))
                     .foregroundColor(.white)
                 
                 Rectangle()
                     .frame(height: 1)
-                    .foregroundColor(.black.opacity(0.7))
+                    .foregroundColor(.white.opacity(0.7))
             }
-            .frame(width: 454)
-            .offset(y: 136.5)
+            .padding(.horizontal, 15)
+
     
         }
         
