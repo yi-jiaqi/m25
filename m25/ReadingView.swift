@@ -17,11 +17,11 @@ struct ReadingView: View {
     }
     var body: some View {
         ZStack(alignment: .top) {
-            Color(hex: "1D1D1D").ignoresSafeArea()
+            Color(hex: "FFFFFF").ignoresSafeArea()
             
             VStack(spacing: 0) {
                     // Fixed Top Bar
-                ButtonsBar(type: .reading)
+                ButtonsBar(type: .reading,onClose: { dismiss() })
                 
                 Spacer().frame(height: 30)
                 
@@ -49,7 +49,7 @@ struct ReadingPage1: View {
                 Headline(type: .reading,heading: "MANIFESTO")
                 Text("You are not your timeline.")
                     .font(.custom("Rubik-Medium", size: 24))
-                    .foregroundColor(.white)
+                    .foregroundColor(.black)
                     .multilineTextAlignment(.center)
                 Text("""
 Social media was supposed to keep us in touch with our friends but instead turned all of us into unpaid content creators, living under constant surveillance.
@@ -58,10 +58,13 @@ minutiae is a response to our current moment, an anonymous, anti-social app made
 minutiae is not a normal app.
 """)
                 .font(.custom("Rubik-Light", size: 24))
-                .foregroundColor(.white.opacity(0.9))
+                .foregroundColor(.black)
                 .multilineTextAlignment(.leading)
+                
+                Spacer()
             }
-            .padding(.horizontal, 40)
+            .padding(.horizontal, 80)
+            .frame(maxWidth: 512)
             .padding(.top, 120)
             .frame(maxWidth: .infinity, alignment: .leading)
         }
@@ -84,10 +87,11 @@ struct ReadingPage2: View {
 3. Once you capture your moment, you will have access to the full day’s timeline of everyone else who captured theirs.
 """)
                 .font(.custom("Rubik-Light", size: 24))
-                .foregroundColor(.white.opacity(0.9))
+                .foregroundColor(.black)
                 .multilineTextAlignment(.leading)
             }
             .padding(.horizontal, 40)
+            .frame(maxWidth: 512)
             .padding(.top, 120)
             .frame(maxWidth: .infinity, alignment: .leading)
         }
@@ -109,10 +113,11 @@ minutiae is an interdisciplinary art project, participatory performance, and a b
 Created by artists working across multiple media, including photography and film.
 """)
                 .font(.custom("Rubik-Light", size: 24))
-                .foregroundColor(.white.opacity(0.9))
+                .foregroundColor(.black)
                 .multilineTextAlignment(.leading)
             }
             .padding(.horizontal, 40)
+            .frame(maxWidth: 512)
             .padding(.top, 120)
             .frame(maxWidth: .infinity, alignment: .leading)
         }
@@ -134,10 +139,11 @@ Notifications come at the same time for everyone around the world.
 Make sure you have enabled Time Sensitive Notifications for minutiae.
 """)
                 .font(.custom("Rubik-Light", size: 24))
-                .foregroundColor(.white.opacity(0.9))
+                .foregroundColor(.black)
                 .multilineTextAlignment(.leading)
             }
             .padding(.horizontal, 40)
+            .frame(maxWidth: 512)
             .padding(.top, 120)
             .frame(maxWidth: .infinity, alignment: .leading)
         }

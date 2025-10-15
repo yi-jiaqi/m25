@@ -67,6 +67,7 @@ struct ButtonsBar: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 30, height: 30)
+                        .foregroundColor(.black)
                 }
                 Spacer()
             }
