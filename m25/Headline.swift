@@ -22,6 +22,7 @@ struct Headline: View {
         case menu
         case reading
         case shop
+        case setting
     }
     
     var type: HeadlineType
@@ -73,6 +74,20 @@ struct Headline: View {
                 }
                 .frame(width: 454)
                 .offset(y: 136.5)
+            
+        case .setting:
+                // 🏪 SHOP version
+            VStack(alignment: .leading, spacing: 10) {
+                Text("Headline - Settings / Shop")
+                    .font(.custom("Rubik", size: 32).weight(.medium))
+                    .foregroundColor(.white)
+                
+                Rectangle()
+                    .frame(height: 1)
+                    .foregroundColor(.black.opacity(0.7))
+            }
+            .frame(width: 454)
+            .offset(y: 136.5)
     
         }
         

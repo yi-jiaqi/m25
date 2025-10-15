@@ -65,7 +65,6 @@ minutiae is not a normal app.
             }
             .padding(.horizontal, 80)
             .frame(maxWidth: 512)
-            .padding(.top, 120)
             .frame(maxWidth: .infinity, alignment: .leading)
         }
     }
@@ -92,7 +91,6 @@ struct ReadingPage2: View {
             }
             .padding(.horizontal, 40)
             .frame(maxWidth: 512)
-            .padding(.top, 120)
             .frame(maxWidth: .infinity, alignment: .leading)
         }
     }
@@ -118,7 +116,6 @@ Created by artists working across multiple media, including photography and film
             }
             .padding(.horizontal, 40)
             .frame(maxWidth: 512)
-            .padding(.top, 120)
             .frame(maxWidth: .infinity, alignment: .leading)
         }
     }
@@ -144,7 +141,6 @@ Make sure you have enabled Time Sensitive Notifications for minutiae.
             }
             .padding(.horizontal, 40)
             .frame(maxWidth: 512)
-            .padding(.top, 120)
             .frame(maxWidth: .infinity, alignment: .leading)
         }
     }

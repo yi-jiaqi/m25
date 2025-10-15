@@ -12,6 +12,7 @@ struct ButtonsBar: View {
         case menu
         case grid
         case reading
+        case setting
     }
     
     var type: ButtonsBarType
@@ -68,6 +69,17 @@ struct ButtonsBar: View {
                         .scaledToFit()
                         .frame(width: 30, height: 30)
                         .foregroundColor(.black)
+                }
+                Spacer()
+            case .setting:
+                Button(action: {
+                    onClose?()
+                }) {
+                    Image(systemName: "x.circle")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 30, height: 30)
+                        .foregroundColor(.white)
                 }
                 Spacer()
             }
