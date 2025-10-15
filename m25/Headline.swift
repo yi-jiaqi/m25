@@ -55,7 +55,7 @@ struct Headline: View {
                 
         case .reading:
                     // 📖 READING version
-                Text("HEADLINE - Reading")
+                Text(heading)
                     .font(.custom("Rubik", size: 32).weight(.medium))
                     .foregroundColor(Color(red: 0.11, green: 0.11, blue: 0.11))
                     .frame(width: 454, height: 55)
@@ -64,7 +64,7 @@ struct Headline: View {
         case .shop:
                     // 🏪 SHOP version
                 VStack(alignment: .leading, spacing: 10) {
-                    Text("Headline - Settings / Shop")
+                    Text(heading)
                         .font(.custom("Rubik", size: 32).weight(.medium))
                         .foregroundColor(.white)
                     
@@ -76,9 +76,9 @@ struct Headline: View {
                 .offset(y: 136.5)
             
         case .setting:
-                // 🏪 SHOP version
+                // SETTING version
             VStack(alignment: .leading, spacing: 10) {
-                Text("Headline - Settings / Shop")
+                Text(heading)
                     .font(.custom("Rubik", size: 32).weight(.medium))
                     .foregroundColor(.white)
                 

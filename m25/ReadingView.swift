@@ -52,10 +52,21 @@ struct ReadingPage1: View {
                     .foregroundColor(.black)
                     .multilineTextAlignment(.center)
                 Text("""
-Social media was supposed to keep us in touch with our friends but instead turned all of us into unpaid content creators, living under constant surveillance.
-Facebook doesn’t want your memory, it wants your time.
-minutiae is a response to our current moment, an anonymous, anti-social app made for one purpose alone — to record and celebrate the ordinary.
-minutiae is not a normal app.
+Social media was supposed to keep us in touch with our friends but has instead turned us all into unwitting monkeys filling out the world's longest consumer survey. 
+
+Facebook doesn't want your money. It wants your time.
+
+minutiae is a response to our current moment: an anonymous anti-social media app that forces its users to document the in-between moments of life. 
+
+A collaboration between artist and participant that retrieves forgotten moments and celebrates the ordinary.
+
+minutiae is not a normal app
+§minutiae does not provide instant gratification
+§minutiae is not interested in your data
+§minutiae will not increase your efficiency
+§minutiae is not a popularity contest
+§minutiae is (let's be honest) not for everyone
+minutiae is your automated self-portrait
 """)
                 .font(.custom("Rubik-Light", size: 24))
                 .foregroundColor(.black)
@@ -81,15 +92,19 @@ struct ReadingPage2: View {
                     .foregroundColor(.white)
                     .multilineTextAlignment(.center)
                 Text("""
-1. Once a day, at a random moment, all minutiae participants around the world receive simultaneous alerts.
-2. You have exactly one minute to take your photo. When your minute is up, you can view your partner’s photo for that moment.
-3. Once you capture your moment, you will have access to the full day’s timeline of everyone else who captured theirs.
+1. Once a day, at a random moment, all minutiae participants around the world receive a simultaneous alert.
+ ﻿﻿﻿2. You have exactly one minute (an extra four minutes when you subscribe or pre-order the 360 Edition One Year Book) to respond to the notification and open your minutiae app.
+ 3. Once you open the app, you have five seconds to take a photo of whatever is in front of you, there and then.
+ ﻿﻿﻿4. If you miss a moment - which can happen - you will get a black square in place of your image.
+ ﻿﻿﻿5. Once you capture your moment, you will have 60 seconds to explore previous moments - both your own and those of a random stranger you are matched with each day.
+ 6. At the end of each 360-moment cycle (1 year), you will have the option to order a book with all your moments.
+ 7. You'll also be able to download all your images as an archive at the end of the full 1440-moment cycle.
 """)
                 .font(.custom("Rubik-Light", size: 24))
                 .foregroundColor(.black)
                 .multilineTextAlignment(.leading)
             }
-            .padding(.horizontal, 40)
+            .padding(.horizontal, 80)
             .frame(maxWidth: 512)
             .frame(maxWidth: .infinity, alignment: .leading)
         }
@@ -102,10 +117,7 @@ struct ReadingPage3: View {
             VStack(spacing: 24) {
 
                 Headline(type: .reading,heading: "the artists")
-                Text("Martin Adolfsson & Daniel J Wilson")
-                    .font(.custom("Rubik-Medium", size: 24))
-                    .foregroundColor(.white)
-                    .multilineTextAlignment(.center)
+ 
                 Text("""
 minutiae is an interdisciplinary art project, participatory performance, and a book.
 Created by artists working across multiple media, including photography and film.
@@ -113,8 +125,31 @@ Created by artists working across multiple media, including photography and film
                 .font(.custom("Rubik-Light", size: 24))
                 .foregroundColor(.black)
                 .multilineTextAlignment(.leading)
+                
+                Text("Martin Adolfsson")
+                    .font(.custom("Rubik-Medium", size: 24))
+                    .foregroundColor(.white)
+                    .multilineTextAlignment(.center)
+                Text("""
+Martin Adolfsson is a Swedish-born photographer and artist based in New York City.
+Adolfsson is the founder of InsaneLittleProjects, a digital studio focusing on projects at the intersection of Photography, Technology, and Behavior.
+""")
+                .font(.custom("Rubik-Light", size: 24))
+                .foregroundColor(.black)
+                .multilineTextAlignment(.leading)
+                Text("MDaniel J Wilson")
+                    .font(.custom("Rubik-Medium", size: 24))
+                    .foregroundColor(.white)
+                    .multilineTextAlignment(.center)
+                Text("""
+Daniel J Wilson is an artist and filmmaker working across multiple media. 
+He is currently a Ph.D. candidate studying cognitive neuroscience at the University of Toronto.
+""")
+                .font(.custom("Rubik-Light", size: 24))
+                .foregroundColor(.black)
+                .multilineTextAlignment(.leading)
             }
-            .padding(.horizontal, 40)
+            .padding(.horizontal, 80)
             .frame(maxWidth: 512)
             .frame(maxWidth: .infinity, alignment: .leading)
         }
@@ -139,7 +174,7 @@ Make sure you have enabled Time Sensitive Notifications for minutiae.
                 .foregroundColor(.black)
                 .multilineTextAlignment(.leading)
             }
-            .padding(.horizontal, 40)
+            .padding(.horizontal, 80)
             .frame(maxWidth: 512)
             .frame(maxWidth: .infinity, alignment: .leading)
         }
