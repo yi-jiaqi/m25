@@ -31,7 +31,7 @@ struct ReadingView: View {
                     ReadingPage2().tag(1)
                     ReadingPage3().tag(2)
                     ReadingPage4().tag(3)
-                    Color.clear.tag(4)
+                    ReadingPage5().tag(4)
                 }
                 .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
                 .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
@@ -181,10 +181,158 @@ Make sure you have enabled Time Sensitive Notifications for minutiae.
     }
 }
 
-    //#Preview {
-    //    ReadingPageView(
-    //        title: "MANIFESTO",
-    //        content: "Social media was supposed to keep us in touch...",
-    //        highlight: "You are not your timeline."
-    //    )
-    //}
+struct ReadingPage5: View {
+    @State private var isMonthlySelected = false
+    @State private var isYearlySelected = false
+    @State private var isBenefactorSelected = false
+    
+    var body: some View {
+        ScrollView {
+            VStack(spacing: 32) {
+                    // 0. Headline
+                Headline(type: .reading, heading: "Your Membership")
+                
+                    // 1. Intro text
+                Text("""
+minutiae is an independent art project funded by people like yourself (not outside investors).
+
+Help us build the largest (and greatest) participatory art work in the world...and get some sweet benefits.
+
+Martin, creator of minutiae
+""")
+                .font(.custom("Rubik-Light", size: 24))
+                .foregroundColor(.black)
+                .multilineTextAlignment(.leading)
+                
+                    // MARK: - Supporter Section
+                VStack(spacing: 16) {
+                    Headline(type: .reading, heading: "Supporter")
+                    
+                    Text("""
+Extra 4 minutes to capture
+View your progress in shorter milestones
+Privacy Mode
+High-res version of your archive
+Monthly summary of your journey & Discounted books and posters
+""")
+                    .font(.custom("Rubik-Light", size: 24))
+                    .foregroundColor(.black)
+                    .multilineTextAlignment(.leading)
+                    
+                    SelectableButton(
+                        type: .multipleText,
+                        texts: ["$3.99/Month", "Cancel anytime", "", ""],
+                        linkURL: nil,
+                        isSelected: $isMonthlySelected
+                    )
+                    
+                    SelectableButton(
+                        type: .multipleText,
+                        texts: ["$1.67/Month", "Billed yearly", "", ""],
+                        linkURL: nil,
+                        isSelected: $isYearlySelected
+                    )
+                    
+                    Text("""
+By subscribing, you agree to our Privacy Policy • Subscriptions auto-renew unless canceled at least 24 hours before the end of the current period.
+""")
+                    .font(.custom("Rubik-Light", size: 16))
+                    .foregroundColor(.black)
+                    .multilineTextAlignment(.center)
+                }
+                
+                    // MARK: - Participant Section
+                VStack(spacing: 16) {
+                    Headline(type: .reading, heading: "Participant")
+                    
+                    Text("""
+One minute to capture
+Low-res version of your archive
+Full price Books and Posters
+No soup for us...
+""")
+                    .font(.custom("Rubik-Light", size: 24))
+                    .foregroundColor(.black)
+                    .multilineTextAlignment(.leading)
+                    
+                    SelectableButton(
+                        type: .singleText,
+                        texts: ["Your Current Membership"],
+                        linkURL: nil,
+                        isSelected: .constant(true)
+                    )
+                }
+                
+                    // MARK: - Add One Year Book Section
+                VStack(spacing: 16) {
+                    Headline(type: .reading, heading: "ADD: One Year Book")
+                    
+                    Image("minutiae_add_one_year_book")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(maxWidth: 300)
+                        .cornerRadius(10)
+                        .padding(.top, 8)
+                    
+                    Text("""
+Includes all the benefits above.
+Hard cover matte linen book.
+80# GSM Ultra Smooth Paper.
+Taxes + shipping included*
+Ships worldwide.
+""")
+                    .font(.custom("Rubik-Light", size: 24))
+                    .foregroundColor(.black)
+                    .multilineTextAlignment(.leading)
+                    
+                    SelectableButton(
+                        type: .multipleText,
+                        texts: ["$8.25/Month", "Billed yearly", "", ""],
+                        linkURL: nil,
+                        isSelected: $isBenefactorSelected
+                    )
+                    
+                    Text("""
+* Excludes UAE, HK, SG, AUS, NZ
+Ships after a completed one year cycle.
+""")
+                    .font(.custom("Rubik-Light", size: 16))
+                    .foregroundColor(.black)
+                    .multilineTextAlignment(.center)
+                }
+                
+                    // MARK: - Benefactor Section
+                VStack(spacing: 16) {
+                    Headline(type: .reading, heading: "Benefactor")
+                    
+                    Image("minutiae_benefactor")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(maxWidth: 280)
+                        .cornerRadius(10)
+                        .padding(.top, 8)
+                    
+                    Text("""
+As a benefactor, you provide additional support to the project. Your membership includes a numbered edition of the Limited Edition Book and much more.
+
+The 2880-page Limited Edition book brings together timeless craftsmanship and modern technology. Each book is hand-bound by one of New York's best bookbinders.
+
+The Limited Edition is part of the collection of the Rare Books and Manuscript Library at Columbia University in New York City.
+
+Includes all the benefits in the supporter section.
+Includes one Edition of the Limited Edition Book.
+Appear as a benefactor in the Credits section.
+""")
+                    .font(.custom("Rubik-Light", size: 24))
+                    .foregroundColor(.black)
+                    .multilineTextAlignment(.leading)
+                }
+                
+                Spacer(minLength: 40)
+            }
+            .padding(.horizontal, 40)
+            .frame(maxWidth: 512)
+            .frame(maxWidth: .infinity, alignment: .leading)
+        }
+    }
+}

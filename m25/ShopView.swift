@@ -9,7 +9,42 @@ import SwiftUI
 
 struct ShopView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(alignment: .leading, spacing: 30){
+            ButtonsBar(type: .setting)
+            ScrollView{
+                VStack(alignment: .leading, spacing: 6) {
+                    Headline(type: .shop, heading: "What's New").padding(.horizontal, 16)
+                    let columns = [
+                        GridItem(.flexible(), spacing: 6),
+                        GridItem(.flexible(), spacing: 6)
+                    ]
+                    
+                    LazyVGrid(columns: columns, spacing: 6) {
+                        NavigationLink(destination: ProductView(product: sampleProduct)) {
+                            News(type: .thumbImage,
+                                 title: "Minutiae Poster",
+                                 content: "From $199",
+                                 image: Image("minutiae_poster_notification"))
+                        }
+                        NavigationLink(destination: ProductView(product: sampleProduct)) {
+                            News(type: .thumbImage,
+                                 title: "Minutiae Poster",
+                                 content: "From $199",
+                                 image: Image("minutiae_poster_notification"))
+                        }
+                        NavigationLink(destination: ProductView(product: sampleProduct)) {
+                            News(type: .thumbImage,
+                                 title: "Minutiae Poster",
+                                 content: "From $199",
+                                 image: Image("minutiae_poster_notification"))
+                        }
+
+                    }
+                }.padding(.horizontal, 16)
+            }
+            
+        }
+        .background(Color(hex: "6C6C6C").ignoresSafeArea())
     }
 }
 
