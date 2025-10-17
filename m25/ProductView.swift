@@ -117,7 +117,7 @@ struct ProductView: View {
 }
 
 let sampleProduct = ProductModel(
-    title: "Poster",
+    title: "Product Title",
     images: ["minutiae_poster_notification",
              "minutiae_poster_notification",
              "minutiae_poster_notification"],

@@ -16,7 +16,9 @@ struct ButtonsBar: View {
     }
     
     var type: ButtonsBarType
-    var onClose: (() -> Void)? = nil   // 👈 Added closure
+    var onClose: (() -> Void)? = nil
+    var onInfo: (() -> Void)? = nil
+    var onMenu: (() -> Void)? = nil
     @State private var showSettings = false
     
     var body: some View {
@@ -34,7 +36,7 @@ struct ButtonsBar: View {
                 }
                 Spacer()
                 Button(action: {
-                        // Placeholder action for m.circle
+                    onMenu?()   // ✅ menu → grid transition
                 }) {
                     Image(systemName: "circle.grid.3x3.circle")
                         .resizable()
@@ -45,21 +47,23 @@ struct ButtonsBar: View {
                 
             case .grid:
                 Button(action: {
-                        // Placeholder action for i.circle
+                    onInfo?()   // ✅ info modal open
                 }) {
                     Image(systemName: "i.circle")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 30, height: 30)
+                        .foregroundColor(.black)
                 }
                 Spacer()
                 Button(action: {
-                        // Placeholder action for apps.ipad
+                    onMenu?()   // ✅ open menu from grid
                 }) {
                     Image(systemName: "m.circle")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 30, height: 30)
+                        .foregroundColor(.black)
                 }
                 
             case .reading:
