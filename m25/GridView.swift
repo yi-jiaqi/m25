@@ -33,7 +33,7 @@ struct GridView: View {
             
                 // ✅ Overlay modal on top of everything
             if showInfoModal, let tabIndex = activeTabIndex {
-                GridViewModal(tabIndex: tabIndex)
+                GridViewModal(tabIndex: tabIndex, isVisible: $showInfoModal)
                     .transition(.opacity)
                     .zIndex(10)
             }
@@ -212,7 +212,7 @@ struct GridViewModal: View {
             VStack(spacing: 20) {
                     // 1. Title
                 Text(tabIndex == 0 ? "COLLECTION VIEW" : "RECORD \(tabIndex)")
-                    .font(.custom("Rubik-Medium", size: 24))
+                    .font(.custom("Rubik-Medium", size: 20))
                     .foregroundColor(.white)
                     .textCase(.uppercase)
                 
@@ -231,10 +231,12 @@ struct GridViewModal: View {
                     GeometryReader { geo in
                         ZStack(alignment: .leading) {
                             RoundedRectangle(cornerRadius: geo.size.height / 2)
-                                .fill(Color(hex: "6C6C6C"))
-                            RoundedRectangle(cornerRadius: geo.size.height / 2)
                                 .fill(Color(hex: "C6C6C6"))
-                                .frame(width: geo.size.width * progress)
+                                .frame(width: geo.size.width+8)
+                            RoundedRectangle(cornerRadius: geo.size.height / 4)
+                                .fill(Color(hex: "6C6C6C"))
+                                .frame(width: geo.size.width * progress,height:8)
+                                .offset(x:4)
                         }
                     }
                     .frame(height: 16)
@@ -251,13 +253,13 @@ struct GridViewModal: View {
                 }
                 
                     // 3. Demo text section
-                VStack(spacing: 8) {
+                VStack(spacing: 12) {
                     Text("DEMO")
-                        .font(.custom("Rubik-Medium", size: 20))
+                        .font(.custom("Rubik-Medium", size: 16))
                         .foregroundColor(.white)
                         .textCase(.uppercase)
                     Text("WHEN I FINISH…")
-                        .font(.custom("Rubik-Medium", size: 20))
+                        .font(.custom("Rubik-Medium", size: 16))
                         .foregroundColor(.white)
                         .textCase(.uppercase)
                 }
@@ -271,7 +273,4 @@ struct GridViewModal: View {
     }
 }
 
-#Preview {
-    GridViewModal(tabIndex: 0)
-        .preferredColorScheme(.dark)
-}
+
