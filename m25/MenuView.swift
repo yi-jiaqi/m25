@@ -4,6 +4,10 @@ struct MenuView: View {
     let sections = ["News", "Progress", "About", "Shop", "Credits"]
     let safeTopInset = UIApplication.shared.safeAreaInsets.top
     let safeBottomInset = UIApplication.shared.safeAreaInsets.bottom
+    
+    @Environment(\.dismiss) private var dismiss
+    @State private var showGrid = false
+    
     /*
      TODO:
      1. Snapping in vertical card swiping;
@@ -12,42 +16,60 @@ struct MenuView: View {
      4. Confirmation of Rubik-light & Rubik-regular & Rubik-medium is correctly loaded
      5. Correct snapping;
      */
+    
     var body: some View {
-        VStack(spacing: 0) {
+        ZStack {
+            Color(hex: "1D1D1D").ignoresSafeArea()
             
-                // MARK: - Fixed Header
             VStack(spacing: 0) {
-                ButtonsBar(type: .menu)
                 
-                Rectangle()
-                    .foregroundColor(.clear)
-                    .frame(width: 115, height: 115)
-                    .background(
-                        Image("logo")
-                            .resizable()
-                            .scaledToFit()
-                            .opacity(0.5)
+                    // MARK: - Fixed Header
+                VStack(spacing: 0) {
+                    ButtonsBar(
+                        type: .menu,
+                        onMenu: {
+                                // Close menu and reopen GridView
+                            dismiss()
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                                withAnimation(nil) {
+                                    showGrid = true
+                                }
+                            }
+                        }
                     )
-            }
-            .background(Color(hex: "1D1D1D"))
-            .zIndex(1)
-            
-                // MARK: - Vertical Cards
-            GeometryReader { proxy in
-                let cardHeight = proxy.size.height - safeTopInset - safeBottomInset
-                ScrollViewReader { scrollProxy in
-                        // Use @State for currentIndex and drag offset
-                    SnapScrollView(
-                        sections: sections,
-                        cardHeight: cardHeight,
-                        width: proxy.size.width,
-                        scrollProxy: scrollProxy
-                    )
+                    
+                    Rectangle()
+                        .foregroundColor(.clear)
+                        .frame(width: 115, height: 115)
+                        .background(
+                            Image("logo")
+                                .resizable()
+                                .scaledToFit()
+                                .opacity(0.5)
+                        )
+                }
+                .background(Color(hex: "1D1D1D"))
+                .zIndex(1)
+                
+                    // MARK: - Vertical Cards
+                GeometryReader { proxy in
+                    let cardHeight = proxy.size.height - safeTopInset - safeBottomInset
+                    ScrollViewReader { scrollProxy in
+                        SnapScrollView(
+                            sections: sections,
+                            cardHeight: cardHeight,
+                            width: proxy.size.width,
+                            scrollProxy: scrollProxy
+                        )
+                    }
                 }
             }
         }
         .edgesIgnoringSafeArea(.all)
-        .background(Color(hex: "1D1D1D"))
+        .fullScreenCover(isPresented: $showGrid) {
+            GridView()
+                .transaction { t in t.animation = nil }
+        }
     }
 }
 

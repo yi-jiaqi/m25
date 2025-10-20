@@ -1,37 +1,45 @@
-//
-//  GridView.swift
-//  m25
-//
-//  Created by Jiaqi Yi on 2025.10.17.
-//
+    //
+    //  GridView.swift
+    //  m25
+    //
+    //  Created by Jiaqi Yi on 2025.10.17.
+    //
 
 import SwiftUI
 
 struct GridView: View {
     @State private var selectedTab = 0
     @State private var showInfoModal = false
+    @State private var activeTabIndex: Int? = nil
     @State private var isDateVisible = [false, false, false, false, false]
     @State private var zoomScale: CGFloat = 1.0
-    
     var body: some View {
-        TabView(selection: $selectedTab) {
-            ForEach(0..<5, id: \.self) { index in
-                GridPageView(
-                    index: index,
-                    showInfoModal: $showInfoModal,
-                    isDateVisible: $isDateVisible[index],
-                    zoomScale: $zoomScale
-                )
-                .tag(index)
+        ZStack {
+            TabView(selection: $selectedTab) {
+                ForEach((0..<5).reversed(), id: \.self) { index in
+                    GridPageView(
+                        index: index,
+                        showInfoModal: $showInfoModal,
+                        activeTabIndex: $activeTabIndex,
+                        isDateVisible: $isDateVisible[index],
+                        zoomScale: $zoomScale
+                    )
+                    .tag(index)
+                }
+            }
+            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
+            .indexViewStyle(.page(backgroundDisplayMode: .always))
+            .ignoresSafeArea()
+            
+                // ✅ Overlay modal on top of everything
+            if showInfoModal, let tabIndex = activeTabIndex {
+                GridViewModal(tabIndex: tabIndex)
+                    .transition(.opacity)
+                    .zIndex(10)
             }
         }
-        .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic)) // ✅ show page indicator
-        .indexViewStyle(.page(backgroundDisplayMode: .always))
-        .ignoresSafeArea()
-        .sheet(isPresented: $showInfoModal) {
-            GridViewModal() // to be implemented later
-                .presentationDetents([.fraction(0.4)])
-        }
+        .animation(.easeInOut, value: showInfoModal)
+
     }
 }
 
@@ -42,8 +50,10 @@ struct GridView: View {
 struct GridPageView: View {
     let index: Int
     @Binding var showInfoModal: Bool
+    @Binding var activeTabIndex: Int?
     @Binding var isDateVisible: Bool
     @Binding var zoomScale: CGFloat
+    @State private var showMenu = false
     
     var body: some View {
         ZStack(alignment: .top) {
@@ -66,15 +76,28 @@ struct GridPageView: View {
             
                 // Buttons bar overlay
             VStack {
-                ButtonsBar(type: .grid)
-                    .padding(.top, 20)
-                    .onTapGesture {} // prevents tap passing through
+                ButtonsBar(type: .grid,
+                           onInfo: {
+                    activeTabIndex = index // ✅ store which page triggered it
+                    showInfoModal = true
+                },
+                           onMenu: {     withAnimation(nil) {
+                    showMenu = true
+                } })
+                .padding(.top, 20)
+                .onTapGesture {} // prevents tap passing through
                 Spacer()
             }
         }
         .frame(width: UIScreen.main.bounds.width,
                height: UIScreen.main.bounds.height)
         .ignoresSafeArea(.all)
+        .fullScreenCover(isPresented: $showMenu) {
+            MenuView()
+                .transaction { t in
+                    t.animation = nil
+                }
+        }
     }
     
     private var gridImageName: String {
@@ -142,16 +165,113 @@ struct ZoomableScrollView<Content: View>: UIViewRepresentable {
 }
 
 
+
 struct GridViewModal: View {
-    var body: some View {
-        VStack(spacing: 20) {
-            Text("Grid Info")
-                .font(.custom("Rubik-Medium", size: 24))
-            Text("This will show contextual information about the current grid.")
-                .font(.custom("Rubik-Light", size: 18))
+    var tabIndex: Int // 0 for Collection View, 1 for Record 1, etc.
+    @Binding var isVisible: Bool
+    @Environment(\.dismiss) private var dismiss
+    
+        // MARK: - Randomized values
+    private var capturedCount: Int { Int.random(in: 0...360) }
+    private var remainingCount: Int { Int.random(in: 0...360) }
+    private var progress: Double { Double.random(in: 0.2...0.9) }
+    
+        // MARK: - Dates
+    private var startDate: Date {
+        switch tabIndex {
+        case 0: return Date()
+        case 1: return Date()
+        default: return Calendar.current.date(byAdding: .day, value: (tabIndex - 1) * 360, to: Date()) ?? Date()
         }
-        .padding()
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(.ultraThinMaterial)
     }
+    
+    private var endDate: Date {
+        let daysLater = (tabIndex == 0) ? 1440 : 360
+        return Calendar.current.date(byAdding: .day, value: daysLater, to: startDate) ?? Date()
+    }
+    
+        // MARK: - Date Formatter
+    private var dateFormatter: DateFormatter {
+        let f = DateFormatter()
+        f.dateFormat = "yyyy.MM.dd"
+        return f
+    }
+    
+    var body: some View {
+        ZStack {
+                // Background overlay (tapping outside dismisses)
+            Color.black.opacity(0.3)
+                .ignoresSafeArea()
+                .onTapGesture {
+                    withAnimation {
+                        isVisible = false
+                    }
+                }
+            
+                // Modal content
+            VStack(spacing: 20) {
+                    // 1. Title
+                Text(tabIndex == 0 ? "COLLECTION VIEW" : "RECORD \(tabIndex)")
+                    .font(.custom("Rubik-Medium", size: 24))
+                    .foregroundColor(.white)
+                    .textCase(.uppercase)
+                
+                    // 2. Date Range + Progress
+                VStack(spacing: 0) {
+                    HStack {
+                        Text(dateFormatter.string(from: startDate))
+                        Spacer()
+                        Text(dateFormatter.string(from: endDate))
+                    }
+                    .font(.custom("Rubik-Light", size: 16))
+                    .foregroundColor(.white)
+                    .padding(.horizontal, 4)
+                    
+                        // Progress bar
+                    GeometryReader { geo in
+                        ZStack(alignment: .leading) {
+                            RoundedRectangle(cornerRadius: geo.size.height / 2)
+                                .fill(Color(hex: "6C6C6C"))
+                            RoundedRectangle(cornerRadius: geo.size.height / 2)
+                                .fill(Color(hex: "C6C6C6"))
+                                .frame(width: geo.size.width * progress)
+                        }
+                    }
+                    .frame(height: 16)
+                    .padding(.vertical, 8)
+                    
+                    HStack {
+                        Text("Captured: \(capturedCount)")
+                        Spacer()
+                        Text("Remaining: \(remainingCount)")
+                    }
+                    .font(.custom("Rubik-Light", size: 16))
+                    .foregroundColor(.white)
+                    .padding(.horizontal, 4)
+                }
+                
+                    // 3. Demo text section
+                VStack(spacing: 8) {
+                    Text("DEMO")
+                        .font(.custom("Rubik-Medium", size: 20))
+                        .foregroundColor(.white)
+                        .textCase(.uppercase)
+                    Text("WHEN I FINISH…")
+                        .font(.custom("Rubik-Medium", size: 20))
+                        .foregroundColor(.white)
+                        .textCase(.uppercase)
+                }
+            }
+            .padding(.horizontal, 30)
+            .padding(.vertical, 25)
+            .background(Color(hex: "6C6C6C"))
+            .cornerRadius(10)
+            .padding(.horizontal, 30)
+        }
+    }
+}
+
+#Preview {
+    GridViewModal(tabIndex: 0)
+        .preferredColorScheme(.dark)
 }
