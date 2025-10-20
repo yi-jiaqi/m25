@@ -2,8 +2,6 @@ import SwiftUI
 
 struct MenuView: View {
     let sections = ["News", "Progress", "About", "Shop", "Credits"]
-    let safeTopInset = UIApplication.shared.safeAreaInsets.top
-    let safeBottomInset = UIApplication.shared.safeAreaInsets.bottom
     
     @Environment(\.dismiss) private var dismiss
     @State private var showGrid = false
@@ -16,6 +14,10 @@ struct MenuView: View {
      4. Confirmation of Rubik-light & Rubik-regular & Rubik-medium is correctly loaded
      5. Correct snapping;
      */
+    
+    // MARK: - Horizontal Tab View (Replaces Vertical Cards)
+    @State private var currentTab = 0
+    let tabCount = 5 // News, Progress, About, Shop, Credits
     
     var body: some View {
         ZStack {
@@ -51,17 +53,33 @@ struct MenuView: View {
                 .background(Color(hex: "1D1D1D"))
                 .zIndex(1)
                 
-                    // MARK: - Vertical Cards
-                GeometryReader { proxy in
-                    let cardHeight = proxy.size.height - safeTopInset - safeBottomInset
-                    ScrollViewReader { scrollProxy in
-                        SnapScrollView(
-                            sections: sections,
-                            cardHeight: cardHeight,
-                            width: proxy.size.width,
-                            scrollProxy: scrollProxy
-                        )
+                    // MARK: - Tab Content
+                ZStack(alignment: .bottom) {
+                    TabView(selection: $currentTab) {
+                            // Each content page
+                        NewsView()
+                            .tag(0)
+                        ProgressView()
+                            .tag(1)
+                        AboutView()
+                            .tag(2)
+                        LittleShopView()
+                            .tag(3)
+                        CreditsView()
+                            .tag(4)
                     }
+                    .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                    .ignoresSafeArea()
+                    
+                        // Static Indicator (does not move)
+                    HStack(spacing: 8) {
+                        ForEach(0..<tabCount, id: \.self) { index in
+                            Circle()
+                                .fill(index == currentTab ? Color.white : Color.gray)
+                                .frame(width: 8, height: 8)
+                        }
+                    }
+                    .padding(.bottom, 30)
                 }
             }
         }
@@ -70,139 +88,15 @@ struct MenuView: View {
             GridView()
                 .transaction { t in t.animation = nil }
         }
+        .onChange(of: currentTab) { newValue in
+            if newValue == tabCount {
+                currentTab = 0
+            } else if newValue < 0 {
+                currentTab = tabCount - 1
+            }
+        }
     }
 }
-
-extension UIApplication {
-    var safeAreaInsets: UIEdgeInsets {
-        connectedScenes
-            .compactMap { $0 as? UIWindowScene }
-            .flatMap { $0.windows }
-            .first { $0.isKeyWindow }?.safeAreaInsets ?? .zero
-    }
-}
-
 #Preview {
     MenuView()
-}
-
-
-    // MARK: - SnapScrollView Implementation
-struct SnapScrollView: View {
-    let sections: [String]
-    let cardHeight: CGFloat
-    let width: CGFloat
-    let scrollProxy: ScrollViewProxy
-    @State private var currentIndex: Int = 0
-    @GestureState private var dragOffset: CGFloat = 0
-    
-    var body: some View {
-        ScrollView(.vertical, showsIndicators: false) {
-            VStack(spacing: 80) {
-                ForEach(Array(sections.enumerated()), id: \.element) { idx, title in
-                    Group {
-                        switch title {
-                        case "News":
-                            // MARK: - NEWS
-                            /*
-                             TODO:
-                             1. News(type: .bigImage should have a responsive height adjustment;
-                             2. Heading's Z index will be finalized with logo, after all adjustments;
-                             */
-                            VStack {
-                                Headline(type: .menu, heading: title)
-                                News(type: .noImage, title: "Demo", content: "Quick demo on how the project works.")
-                                News(type: .littleImage, title: "Do not Disturb", content: "Set a time for when you don’t want to receive your minutiae notifications.",image: Image("minutiae_clock_square"))
-                                News(type: .bigImage, title: "NEW POSTERS AVAILABLE!", content: "We’ve just launched a new design of annual posters, inspired by the stars and constellations. ",image: Image("minutiae_poster_notification"))
-                            }
-                            .frame(
-                                width: width,
-                                height: cardHeight
-                            )
-                        case "Progress":
-                                // MARK: - PROGRESS
-                            /*
-                             TODO:
-                             1. Add API for fetching data; Applying to Grid;
-                             2.
-                             */
-                            VStack {
-                                Headline(type: .menu, heading: title)
-                                Spacer()
-                                ProgressView()
-                            }
-                            .frame(
-                                width: width,
-                                height: cardHeight
-                            )
-                        case "About":
-                                // MARK: - ABOUT
-                            VStack {
-                                Headline(type: .menu, heading: title)
-                                AboutView()
-                            }
-                            .frame(
-                                width: width,
-                                height: cardHeight
-                            )
-                        case "Shop":
-                                // MARK: - SHOP
-                            VStack {
-                                Headline(type: .menu, heading: title)
-                                LittleShopView()
-                            }
-                            .frame(
-                                width: width,
-                                height: cardHeight
-                            )
-                        case "Credits":
-                                // MARK: - CREDITS
-                            VStack {
-                            Headline(type: .menu, heading: title)
-                                CreditsView()
-                        }
-                        .frame(
-                            width: width,
-                            height: cardHeight
-                        )
-                        default:
-                            VStack {
-                                Headline(type: .menu, heading: title)
-                                Spacer()
-                            }
-                        }
-                    }
-                    .frame(width: width, height: cardHeight)
-                    .background(Color(hex: "1D1D1D"))
-                    .id(idx)
-                }
-            }
-            .padding(.vertical, 20)
-        }
-        .content.offset(y: -CGFloat(currentIndex) * (cardHeight + 80) + dragOffset)
-        .gesture(
-            DragGesture()
-                .updating($dragOffset) { value, state, _ in
-                    state = value.translation.height
-                }
-                .onEnded { value in
-                    let threshold: CGFloat = cardHeight / 3
-                    var newIndex = currentIndex
-                    if value.translation.height < -threshold, currentIndex < sections.count - 1 {
-                        newIndex += 1
-                    } else if value.translation.height > threshold, currentIndex > 0 {
-                        newIndex -= 1
-                    }
-                    withAnimation(.spring()) {
-                        currentIndex = newIndex
-                        scrollProxy.scrollTo(newIndex, anchor: .top)
-                    }
-                }
-        )
-        .onChange(of: currentIndex) { idx in
-            withAnimation(.spring()) {
-                scrollProxy.scrollTo(idx, anchor: .top)
-            }
-        }
-    }
 }

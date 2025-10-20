@@ -1,0 +1,27 @@
+//
+//  NewsView.swift
+//  m25
+//
+//  Created by Jiaqi Yi on 2025.10.20.
+//
+
+import SwiftUI
+
+struct NewsView: View {
+    var body: some View {
+        VStack(spacing: 20) { // Major group gap = 20
+            
+            Headline(type: .menu, heading: "News")
+            ScrollView {
+                News(type: .noImage, title: "Demo", content: "Quick demo on how the project works.")
+                News(type: .littleImage, title: "Do not Disturb", content: "Set a time...", image: Image("minutiae_clock_square"))
+                News(type: .bigImage, title: "NEW POSTERS AVAILABLE!", content: "We’ve just launched...", image: Image("minutiae_poster_notification"))
+            }
+            .background(Color(hex: "1D1D1D"))}
+        .padding(.horizontal, 20)
+    }
+}
+
+#Preview {
+    NewsView()
+}

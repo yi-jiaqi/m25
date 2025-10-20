@@ -7,3 +7,11 @@ Have showMenu in GridView and showGrid in MenuView, synced. Once active at a tim
 	•	No cross-binding → no environment pollution.
 	•	Dismissals stay predictable.
 	•	Future you can replace fullScreenCover with NavigationStack or shared environment routing easily.
+
+NavigationLink(destination: ShopView()) {
+    Text("SHOP")
+        .font(.system(size: 22, weight: .semibold))
+        .multilineTextAlignment(.center)
+        .foregroundColor(Color(hex: "FFFFFF"))
+}
+This will be same-place replacement instead of Full Screen occupy.

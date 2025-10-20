@@ -34,26 +34,39 @@ struct News: View {
                         .foregroundColor(Color(hex: "1D1D1D"))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.horizontal, 6)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .multilineTextAlignment(.leading)
+                        .lineLimit(2)
                     Text(content)
                         .font(Font.custom("Rubik", size: 18).weight(.light))
                         .foregroundColor(Color(hex: "1D1D1D"))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.horizontal, 6)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .multilineTextAlignment(.leading)
+                        .lineLimit(5)
                 }
                 .frame(maxWidth: .infinity, alignment: .center)
                 
                     // MARK: - Little Image
             case .littleImage:
-                HStack(alignment: .top, spacing: 6) {
+                HStack(alignment: .top) {
                     VStack(alignment: .leading, spacing: 6) {
                         Text(title.uppercased())
                             .font(Font.custom("Rubik", size: 20).weight(.medium))
                             .foregroundColor(Color(hex: "1D1D1D"))
+                            .fixedSize(horizontal: false, vertical: true)
+                            .multilineTextAlignment(.leading)
+                            .lineLimit(2)
                         
                         Text(content)
                             .font(Font.custom("Rubik", size: 18).weight(.light))
                             .foregroundColor(Color(hex: "1D1D1D"))
+                            .fixedSize(horizontal: false, vertical: true)
+                            .multilineTextAlignment(.leading)
+                            .lineLimit(5)
                     }
+                    Spacer()
                     
                     if let image = image {
                         image
@@ -71,10 +84,16 @@ struct News: View {
                     Text(title.uppercased())
                         .font(Font.custom("Rubik", size: 20).weight(.medium))
                         .foregroundColor(Color(hex: "1D1D1D"))
+                        .fixedSize(horizontal: false, vertical: true)
+                        .multilineTextAlignment(.leading)
+                        .lineLimit(2)
                     
                     Text(content)
                         .font(Font.custom("Rubik", size: 20).weight(.light))
                         .foregroundColor(Color(hex: "1D1D1D"))
+                        .fixedSize(horizontal: false, vertical: true)
+                        .multilineTextAlignment(.leading)
+                        .lineLimit(5)
                     
                     
                     if let image = image {
@@ -105,7 +124,10 @@ struct News: View {
                     Text(title.uppercased())
                         .font(Font.custom("Rubik", size: 20).weight(.medium))
                         .foregroundColor(Color(hex: "1D1D1D"))
-                        .frame(maxWidth: .infinity, alignment: .center)
+                        .multilineTextAlignment(.center) 
+                        .frame(maxWidth: .infinity, alignment: .center)                .fixedSize(horizontal: false, vertical: true)
+                        .multilineTextAlignment(.leading)
+                        .lineLimit(5)
                 }
                     // MARK: - Thumb Image - for showing item in Shop(ShopView)
             case .thumbImage:
@@ -151,8 +173,18 @@ struct News: View {
 
 #Preview {
     ScrollView {
+        VStack {
+            News(type: .noImage, title: "Demo", content: "Quick demo on how the project works.")
+            News(type: .littleImage, title: "Do not Disturb", content: "Set a time...", image: Image("minutiae_clock_square"))
+            News(type: .bigImage, title: "NEW POSTERS AVAILABLE!", content: "We’ve just launched...", image: Image("minutiae_poster_notification"))
+        }
+        .padding(.horizontal,30)
+        
         VStack(spacing: 40) {
-                // Regular previews
+            News(type: .littleImage,
+                 title: "Little Image",
+                 content: "When there’s a small image, put it on the right side.",
+                 image: Image("minutiae_clock_square"))
 
             
                 // MARK: 🧩 Demo: Grid layout using thumbImage

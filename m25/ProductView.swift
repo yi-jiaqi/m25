@@ -54,6 +54,7 @@ struct ProductView: View {
                         }
                     }
                 }
+                .padding(.horizontal, 16)
                 .padding(.vertical)
                 
                     // 5. Available records
@@ -89,6 +90,7 @@ struct ProductView: View {
                                       size: i == product.descriptions.count - 1 ? 20 : 20))
                         .foregroundColor(.black)
                         .multilineTextAlignment(.leading)
+                        .padding(.horizontal, 24)
                 }
                 
                     // 7. BUY
@@ -113,6 +115,9 @@ struct ProductView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
         }
         .background(Color(hex: "E6E6E6").ignoresSafeArea())
+        .padding(.horizontal, 16)
+        .navigationBarBackButtonHidden(true)
+        .navigationBarHidden(true)
     }
 }
 

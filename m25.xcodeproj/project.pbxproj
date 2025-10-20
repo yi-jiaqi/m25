@@ -38,16 +38,28 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
+				MenuView_bak.txt,
 			);
 			target = B206014C2E9D57E7005129F9 /* m25 */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+		B2B894D62EA6DB0A00B5C0C8 /* Exceptions for "m25" folder in "Compile Sources" phase from "m25" target */ = {
+			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
+			buildPhase = B20601492E9D57E7005129F9 /* Sources */;
+			membershipExceptions = (
+				MenuView_bak.txt,
+			);
+		};
+/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		B206014F2E9D57E7005129F9 /* m25 */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				B20601D22E9E9241005129F9 /* Exceptions for "m25" folder in "m25" target */,
+				B2B894D62EA6DB0A00B5C0C8 /* Exceptions for "m25" folder in "Compile Sources" phase from "m25" target */,
 			);
 			path = m25;
 			sourceTree = "<group>";

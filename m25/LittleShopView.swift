@@ -9,30 +9,63 @@ import Foundation
 import SwiftUI
 
 struct LittleShopView: View {
-    var body: some View {
+    @State private var showShopView = false   // ✅ state to control fullscreen modal
     
-            VStack(spacing: 40) {
+    var body: some View {
+        NavigationStack {
+            VStack(spacing: 20) {
+                Headline(type: .menu, heading: "Shop")
                 
-                    // MARK: - News Section
-                News(type: .veryBigImage, title: "[NEW] Constellation Posters - Four Years", content: "_", image: Image("minutiae_poster_notification"))
-                
-                    // MARK: - About-style Text Section
-                VStack(spacing: 20) {
-                    Text("SHOP")
-                        .font(.system(size: 22, weight: .semibold))
-                        .multilineTextAlignment(.center)
-                        .foregroundColor(Color(hex: "FFFFFF"))
+                VStack(spacing: 40) {
+                        // MARK: - News Section
+                    Button {
+                        showShopView = true
+                    } label: {
+                        News(
+                            type: .veryBigImage,
+                            title: "[NEW] Constellation Posters - Four Years",
+                            content: "_",
+                            image: Image("minutiae_poster_notification")
+                        )
+                    }
+                    .buttonStyle(PlainButtonStyle()) // ✅ prevents highlight
                     
-                    Text("GIFT minutiae")
-                        .font(.system(size: 20, weight: .light))
-                        .multilineTextAlignment(.center)
-                        .foregroundColor(Color(hex: "FFFFFF"))
+                    Spacer()
+                    
+                        // MARK: - About-style Text Section
+                    VStack(spacing: 20) {
+                        Button {
+                            showShopView = true
+                        } label: {
+                            Text("SHOP")
+                                .font(.system(size: 22, weight: .semibold))
+                                .multilineTextAlignment(.center)
+                                .foregroundColor(Color(hex: "FFFFFF"))
+                        }
+                        
+                        Button {
+                            showShopView = true
+                        } label: {
+                            Text("GIFT minutiae")
+                                .font(.system(size: 22, weight: .semibold))
+                                .multilineTextAlignment(.center)
+                                .foregroundColor(Color(hex: "FFFFFF"))
+                        }
+                    }
+                    .padding(.bottom, 40)
                 }
-                .padding(.bottom, 40)
+                .background(Color(hex: "1D1D1D"))
+                .frame(maxWidth: .infinity)
             }
-            .frame(maxWidth: .infinity)
-            .padding(.horizontal)
-
+            .padding(.horizontal, 20)
+            .padding(.bottom, 60)
+            .background(Color(hex: "1D1D1D"))
+            .navigationBarBackButtonHidden(true)
+                // ✅ Full Screen Presentation
+            .fullScreenCover(isPresented: $showShopView) {
+                ShopView()
+            }
+        }
     }
 }
 

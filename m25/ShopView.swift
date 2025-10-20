@@ -8,43 +8,50 @@
 import SwiftUI
 
 struct ShopView: View {
+    
+    @Environment(\.dismiss) private var dismiss
     var body: some View {
-        VStack(alignment: .leading, spacing: 30){
-            ButtonsBar(type: .setting)
-            ScrollView{
-                VStack(alignment: .leading, spacing: 6) {
-                    Headline(type: .shop, heading: "What's New").padding(.horizontal, 16)
-                    let columns = [
-                        GridItem(.flexible(), spacing: 6),
-                        GridItem(.flexible(), spacing: 6)
-                    ]
-                    
-                    LazyVGrid(columns: columns, spacing: 6) {
-                        NavigationLink(destination: ProductView(product: sampleProduct)) {
-                            News(type: .thumbImage,
-                                 title: "Minutiae Poster",
-                                 content: "From $199",
-                                 image: Image("minutiae_poster_notification"))
+        NavigationStack {
+            VStack(alignment: .leading, spacing: 30){
+                ButtonsBar(
+                    type: .setting,
+                    onClose: { dismiss() } //
+                )
+                ScrollView{
+                    VStack(alignment: .leading, spacing: 6) {
+                        Headline(type: .shop, heading: "What's New").padding(.horizontal, 16)
+                        let columns = [
+                            GridItem(.flexible(), spacing: 6),
+                            GridItem(.flexible(), spacing: 6)
+                        ]
+                        
+                        LazyVGrid(columns: columns, spacing: 6) {
+                            NavigationLink(destination: ProductView(product: sampleProduct)) {
+                                News(type: .thumbImage,
+                                     title: "Minutiae Poster",
+                                     content: "From $199",
+                                     image: Image("minutiae_poster_notification"))
+                            }
+                            NavigationLink(destination: ProductView(product: sampleProduct)) {
+                                News(type: .thumbImage,
+                                     title: "Minutiae Poster",
+                                     content: "From $199",
+                                     image: Image("minutiae_poster_notification"))
+                            }
+                            NavigationLink(destination: ProductView(product: sampleProduct)) {
+                                News(type: .thumbImage,
+                                     title: "Minutiae Poster",
+                                     content: "From $199",
+                                     image: Image("minutiae_poster_notification"))
+                            }
+                            
                         }
-                        NavigationLink(destination: ProductView(product: sampleProduct)) {
-                            News(type: .thumbImage,
-                                 title: "Minutiae Poster",
-                                 content: "From $199",
-                                 image: Image("minutiae_poster_notification"))
-                        }
-                        NavigationLink(destination: ProductView(product: sampleProduct)) {
-                            News(type: .thumbImage,
-                                 title: "Minutiae Poster",
-                                 content: "From $199",
-                                 image: Image("minutiae_poster_notification"))
-                        }
-
-                    }
-                }.padding(.horizontal, 16)
+                    }.padding(.horizontal, 16)
+                }
+                
             }
-            
+            .background(Color(hex: "6C6C6C").ignoresSafeArea())
         }
-        .background(Color(hex: "6C6C6C").ignoresSafeArea())
     }
 }
 
