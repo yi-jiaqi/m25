@@ -64,7 +64,7 @@ struct ProductView: View {
                     HStack(spacing: 12) {
                         ForEach(records, id: \.self) { record in
                             Text("\(record)")
-                                .font(.custom("Rubik-Medium", size: 18))
+                                .font(.xSmallHeadline)
                                 .frame(width: 48, height: 48)
                                 .background(
                                     RoundedRectangle(cornerRadius: 24)
@@ -123,6 +123,7 @@ struct ProductView: View {
 
 let sampleProduct = ProductModel(
     title: "Product Title",
+    demonstratedPrice: "from $79",
     images: ["minutiae_poster_notification",
              "minutiae_poster_notification",
              "minutiae_poster_notification"],
@@ -137,19 +138,20 @@ let sampleProduct = ProductModel(
     ]
 )
 
-struct ProductPrice {
+struct ProductPrice: Codable, Hashable {
     let name: String
     let subtitle: String
     let current: String
     let original: String
 }
 
-struct ProductModel {
+struct ProductModel: Codable, Hashable {
     let title: String
+    let demonstratedPrice: String
     let images: [String]
     let availableRecords: [Int]?
-    let descriptions: [String]  // Normal and bold text
-    let prices: [ProductPrice]  // Each price option
+    let descriptions: [String]
+    let prices: [ProductPrice]
 }
 
 struct ProductPosterView: View {
@@ -215,7 +217,7 @@ struct ProductPosterView: View {
                 HStack(spacing: 12) {
                     ForEach(1..<5) { i in
                         Text("\(i)")
-                            .font(.custom("Rubik-Medium", size: 18))
+                            .font(.xSmallHeadline)
                             .frame(width: 48, height: 48)
                             .background(
                                 RoundedRectangle(cornerRadius: 24)

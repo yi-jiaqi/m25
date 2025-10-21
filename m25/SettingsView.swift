@@ -33,17 +33,17 @@ struct SettingsView: View {
                     .padding(.top, 20)
                 
                 Text("Your Email:")
-                    .font(.custom("Rubik-Light", size: 20))
+                    .font(.bodyText)
                     .foregroundColor(.white)
                     .padding(.horizontal, 30)
                 
                 Text("Delete Account:")
-                    .font(.custom("Rubik-Light", size: 20))
+                    .font(.bodyText)
                     .foregroundColor(.white)
                     .padding(.horizontal, 30)
                 
                 Text("Redeem")
-                    .font(.custom("Rubik-Light", size: 20))
+                    .font(.bodyText)
                     .foregroundColor(.white)
                     .padding(.horizontal, 30)
                 
@@ -56,17 +56,17 @@ struct SettingsView: View {
                     .padding(.top, 20)
                 
                 Text("minutiae Website")
-                    .font(.custom("Rubik-Light", size: 20))
+                    .font(.bodyText)
                     .foregroundColor(.white)
                     .padding(.horizontal, 30)
                 
                 Text("Shop")
-                    .font(.custom("Rubik-Light", size: 20))
+                    .font(.bodyText)
                     .foregroundColor(.white)
                     .padding(.horizontal, 30)
                 
                 Text("Gift")
-                    .font(.custom("Rubik-Light", size: 20))
+                    .font(.bodyText)
                     .foregroundColor(.white)
                     .padding(.horizontal, 30)
                 
@@ -89,7 +89,7 @@ struct ToggleRow: View {
     var body: some View {
         HStack {
             Text(label)
-                .font(.custom("Rubik-Light", size: 20))
+                .font(.bodyText)
                 .foregroundColor(.white)
             Spacer()
             Toggle("", isOn: $isOn)

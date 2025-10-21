@@ -212,7 +212,7 @@ struct GridViewModal: View {
             VStack(spacing: 20) {
                     // 1. Title
                 Text(tabIndex == 0 ? "COLLECTION VIEW" : "RECORD \(tabIndex)")
-                    .font(.custom("Rubik-Medium", size: 20))
+                    .font(.smallHeadline)
                     .foregroundColor(.white)
                     .textCase(.uppercase)
                 
@@ -223,7 +223,7 @@ struct GridViewModal: View {
                         Spacer()
                         Text(dateFormatter.string(from: endDate))
                     }
-                    .font(.custom("Rubik-Light", size: 16))
+                    .font(.smallBodyText)
                     .foregroundColor(.white)
                     .padding(.horizontal, 4)
                     
@@ -247,7 +247,7 @@ struct GridViewModal: View {
                         Spacer()
                         Text("Remaining: \(remainingCount)")
                     }
-                    .font(.custom("Rubik-Light", size: 16))
+                    .font(.smallBodyText)
                     .foregroundColor(.white)
                     .padding(.horizontal, 4)
                 }
@@ -255,11 +255,11 @@ struct GridViewModal: View {
                     // 3. Demo text section
                 VStack(spacing: 12) {
                     Text("DEMO")
-                        .font(.custom("Rubik-Medium", size: 16))
+                        .font(.xSmallHeadline)
                         .foregroundColor(.white)
                         .textCase(.uppercase)
                     Text("WHEN I FINISH…")
-                        .font(.custom("Rubik-Medium", size: 16))
+                        .font(.xSmallHeadline)
                         .foregroundColor(.white)
                         .textCase(.uppercase)
                 }

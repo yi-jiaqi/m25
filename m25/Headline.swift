@@ -39,9 +39,9 @@ struct Headline: View {
                         .background(Color.white.opacity(0.7))
                         .frame(height: 2)
                     Text(heading)
-                        .font(.custom("Rubik-Medium", size: 24))
+                        .font(.headline)
                         .foregroundColor(.white)
-                        .padding()
+                        .padding(.vertical,12)
                         .textCase(.uppercase)
          
                     Divider()
@@ -55,7 +55,7 @@ struct Headline: View {
         case .reading:
                     // 📖 READING version
                 Text(heading)
-                    .font(.custom("Rubik", size: 32).weight(.medium))
+                    .font(.largeHeadline)
                     .foregroundColor(Color(red: 0.11, green: 0.11, blue: 0.11))
                     .frame(width: 454, height: 55)
 
@@ -64,7 +64,7 @@ struct Headline: View {
                     // 🏪 SHOP version
                 VStack(alignment: .leading, spacing: 10) {
                     Text(heading)
-                        .font(.custom("Rubik", size: 32).weight(.medium))
+                        .font(.largeHeadline)
                         .foregroundColor(.white)
                     
                     Rectangle()
@@ -78,7 +78,7 @@ struct Headline: View {
                 // SETTING version
             VStack(alignment: .leading, spacing: 10) {
                 Text(heading)
-                    .font(.custom("Rubik", size: 28).weight(.medium))
+                    .font(.headline)
                     .foregroundColor(.white)
                 
                 Rectangle()

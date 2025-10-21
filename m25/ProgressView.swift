@@ -33,37 +33,37 @@ struct ProgressView: View {
             VStack(spacing: 20) {
                 VStack(spacing: 6) {
                     Text("Starting date")
-                        .font(.custom("Rubik-Medium", size: 24))
+                        .font(.headline)
                         .foregroundColor(.white)
                     Text(dateFormatter.string(from: today))
-                        .font(.custom("Rubik-Light", size: 22))
+                        .font(.largeBodytext)
                         .foregroundColor(.white.opacity(0.9))
                 }
                 
                 VStack(spacing: 6) {
                     Text("Completion date")
-                        .font(.custom("Rubik-Medium", size: 24))
+                        .font(.headline)
                         .foregroundColor(.white)
                     Text(dateFormatter.string(from: completionDate))
-                        .font(.custom("Rubik-Light", size: 22))
+                        .font(.largeBodytext)
                         .foregroundColor(.white.opacity(0.9))
                 }
                 
                 VStack(spacing: 6) {
                     Text("Captured moments")
-                        .font(.custom("Rubik-Medium", size: 24))
+                        .font(.headline)
                         .foregroundColor(.white)
                     Text("\(capturedMoments)")
-                        .font(.custom("Rubik-Light", size: 22))
+                        .font(.largeBodytext)
                         .foregroundColor(.white.opacity(0.9))
                 }
                 
                 VStack(spacing: 6) {
                     Text("Remaining moments")
-                        .font(.custom("Rubik-Medium", size: 24))
+                        .font(.headline)
                         .foregroundColor(.white)
                     Text("\(remainingMoments)")
-                        .font(.custom("Rubik-Light", size: 22))
+                        .font(.largeBodytext)
                         .foregroundColor(.white.opacity(0.9))
                 }
             }

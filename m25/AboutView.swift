@@ -38,14 +38,14 @@ struct AboutView: View {
                         }
                         Text("YOUR MEMBERSHIP")
                     }
-                    .font(.custom("Rubik-Medium", size: 22))
+                    .font(.headline)
                     .foregroundColor(.white)
                     
                     VStack(spacing: 40) {
                         Text("DO NOT DISTURB")
                         Text("DEMO")
                     }
-                    .font(.custom("Rubik-Medium", size: 22))
+                    .font(.headline)
                     .foregroundColor(.white)
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)

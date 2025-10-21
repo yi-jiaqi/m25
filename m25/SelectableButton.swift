@@ -59,16 +59,16 @@ extension SelectableButton {
         HStack {
             VStack(alignment: .leading, spacing: 2) {
                 Text(texts[safe: 0] ?? "")
-                    .font(.custom("Rubik-Medium", size: 18))
+                    .font(.xSmallHeadline)
                 Text(texts[safe: 1] ?? "")
-                    .font(.custom("Rubik-Light", size: 16))
+                    .font(.smallBodyText)
             }
             Spacer()
             VStack(alignment: .trailing, spacing: 2) {
                 Text(texts[safe: 2] ?? "")
-                    .font(.custom("Rubik-Medium", size: 18))
+                    .font(.xSmallHeadline)
                 Text(texts[safe: 3] ?? "")
-                    .font(.custom("Rubik-Light", size: 16))
+                    .font(.smallBodyText)
             }
         }
         .foregroundColor(isSelected ? .white : .black)
@@ -77,7 +77,7 @@ extension SelectableButton {
         // MARK: - Single-text style
     private var buttonSingleText: some View {
         Text(texts.first ?? "")
-            .font(.custom("Rubik-Medium", size: 18))
+            .font(.xSmallHeadline)
             .foregroundColor(isSelected ? .white : .black)
             .frame(maxWidth: .infinity, alignment: .center)
     }
@@ -85,7 +85,7 @@ extension SelectableButton {
         // MARK: - External Link
     private var buttonExternalLink: some View {
         Text(texts.first ?? "")
-            .font(.custom("Rubik-Medium", size: 18))
+            .font(.xSmallHeadline)
             .foregroundColor(.black)
             .frame(maxWidth: .infinity, alignment: .center)
             .frame(height: 60) // consistent height + vertical centering

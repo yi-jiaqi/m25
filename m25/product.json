@@ -1,0 +1,33 @@
+[
+    {
+        "title": "Minutiae Poster",
+        "demonstratedPrice": "from $79",
+        "images": [
+            "minutiae_poster_notification",
+            "minutiae_poster_notification",
+            "minutiae_poster_notification"
+        ],
+        "availableRecords": [1, 2, 3, 4],
+        "descriptions": [
+            "The minutiae 360 Edition contains all your captured moments over a one-year period. The spine is stamped with the participant’s initials and the corresponding record number.",
+            "Your shipping address will be added after you press the continue button."
+        ],
+        "prices": [
+            { "name": "UNFRAMED", "subtitle": "Full Price", "current": "$79", "original": "$99" },
+            { "name": "FRAMED", "subtitle": "Full Price", "current": "$139", "original": "$159" }
+        ]
+    },
+    {
+        "title": "360 Edition - One Year Book",
+        "demonstratedPrice": "from $109",
+        "images": ["minutiae_book_cover"],
+        "availableRecords": [1],
+        "descriptions": [
+            "One-year hardcover book containing 360 captured moments.",
+            "Printed on archival paper with matte finish."
+        ],
+        "prices": [
+            { "name": "STANDARD", "subtitle": "Full Price", "current": "$109", "original": "$129" }
+        ]
+    }
+]

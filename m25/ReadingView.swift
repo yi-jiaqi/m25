@@ -37,6 +37,7 @@ struct ReadingView: View {
                 .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
             }
         }
+        .ignoresSafeArea(.all)
     }
 }
 
@@ -48,7 +49,7 @@ struct ReadingPage1: View {
             VStack(spacing: 24) {
                 Headline(type: .reading,heading: "MANIFESTO")
                 Text("You are not your timeline.")
-                    .font(.custom("Rubik-Medium", size: 24))
+                    .font(.headline)
                     .foregroundColor(.black)
                     .multilineTextAlignment(.center)
                 Text("""
@@ -68,7 +69,7 @@ minutiae is not a normal app
 §minutiae is (let's be honest) not for everyone
 minutiae is your automated self-portrait
 """)
-                .font(.custom("Rubik-Light", size: 24))
+                .font(.bodyText)
                 .foregroundColor(.black)
                 .multilineTextAlignment(.leading)
                 
@@ -88,7 +89,7 @@ struct ReadingPage2: View {
 
                 Headline(type: .reading,heading: "Rules")
                 Text("Each day, one minute. No filters.")
-                    .font(.custom("Rubik-Medium", size: 24))
+                    .font(.headline)
                     .foregroundColor(.white)
                     .multilineTextAlignment(.center)
                 Text("""
@@ -100,7 +101,7 @@ struct ReadingPage2: View {
  6. At the end of each 360-moment cycle (1 year), you will have the option to order a book with all your moments.
  7. You'll also be able to download all your images as an archive at the end of the full 1440-moment cycle.
 """)
-                .font(.custom("Rubik-Light", size: 24))
+                .font(.bodyText)
                 .foregroundColor(.black)
                 .multilineTextAlignment(.leading)
             }
@@ -122,30 +123,30 @@ struct ReadingPage3: View {
 minutiae is an interdisciplinary art project, participatory performance, and a book.
 Created by artists working across multiple media, including photography and film.
 """)
-                .font(.custom("Rubik-Light", size: 24))
+                .font(.bodyText)
                 .foregroundColor(.black)
                 .multilineTextAlignment(.leading)
                 
                 Text("Martin Adolfsson")
-                    .font(.custom("Rubik-Medium", size: 24))
+                    .font(.headline)
                     .foregroundColor(.white)
                     .multilineTextAlignment(.center)
                 Text("""
 Martin Adolfsson is a Swedish-born photographer and artist based in New York City.
 Adolfsson is the founder of InsaneLittleProjects, a digital studio focusing on projects at the intersection of Photography, Technology, and Behavior.
 """)
-                .font(.custom("Rubik-Light", size: 24))
+                .font(.bodyText)
                 .foregroundColor(.black)
                 .multilineTextAlignment(.leading)
                 Text("MDaniel J Wilson")
-                    .font(.custom("Rubik-Medium", size: 24))
+                    .font(.headline)
                     .foregroundColor(.white)
                     .multilineTextAlignment(.center)
                 Text("""
 Daniel J Wilson is an artist and filmmaker working across multiple media. 
 He is currently a Ph.D. candidate studying cognitive neuroscience at the University of Toronto.
 """)
-                .font(.custom("Rubik-Light", size: 24))
+                .font(.bodyText)
                 .foregroundColor(.black)
                 .multilineTextAlignment(.leading)
             }
@@ -163,14 +164,14 @@ struct ReadingPage4: View {
 
                 Headline(type: .reading,heading: "FAQ")
                 Text("Why am I not getting alerts?")
-                    .font(.custom("Rubik-Medium", size: 24))
+                    .font(.headline)
                     .foregroundColor(.white)
                     .multilineTextAlignment(.center)
                 Text("""
 Notifications come at the same time for everyone around the world.
 Make sure you have enabled Time Sensitive Notifications for minutiae.
 """)
-                .font(.custom("Rubik-Light", size: 24))
+                .font(.bodyText)
                 .foregroundColor(.black)
                 .multilineTextAlignment(.leading)
             }
@@ -200,7 +201,7 @@ Help us build the largest (and greatest) participatory art work in the world...a
 
 Martin, creator of minutiae
 """)
-                .font(.custom("Rubik-Light", size: 24))
+                .font(.bodyText)
                 .foregroundColor(.black)
                 .multilineTextAlignment(.leading)
                 
@@ -215,7 +216,7 @@ Privacy Mode
 High-res version of your archive
 Monthly summary of your journey & Discounted books and posters
 """)
-                    .font(.custom("Rubik-Light", size: 24))
+                    .font(.bodyText)
                     .foregroundColor(.black)
                     .multilineTextAlignment(.leading)
                     
@@ -236,7 +237,7 @@ Monthly summary of your journey & Discounted books and posters
                     Text("""
 By subscribing, you agree to our Privacy Policy • Subscriptions auto-renew unless canceled at least 24 hours before the end of the current period.
 """)
-                    .font(.custom("Rubik-Light", size: 16))
+                    .font(.smallBodyText)
                     .foregroundColor(.black)
                     .multilineTextAlignment(.center)
                 }
@@ -251,7 +252,7 @@ Low-res version of your archive
 Full price Books and Posters
 No soup for us...
 """)
-                    .font(.custom("Rubik-Light", size: 24))
+                    .font(.bodyText)
                     .foregroundColor(.black)
                     .multilineTextAlignment(.leading)
                     
@@ -281,7 +282,7 @@ Hard cover matte linen book.
 Taxes + shipping included*
 Ships worldwide.
 """)
-                    .font(.custom("Rubik-Light", size: 24))
+                    .font(.bodyText)
                     .foregroundColor(.black)
                     .multilineTextAlignment(.leading)
                     
@@ -296,7 +297,7 @@ Ships worldwide.
 * Excludes UAE, HK, SG, AUS, NZ
 Ships after a completed one year cycle.
 """)
-                    .font(.custom("Rubik-Light", size: 16))
+                    .font(.smallBodyText)
                     .foregroundColor(.black)
                     .multilineTextAlignment(.center)
                 }
@@ -323,7 +324,7 @@ Includes all the benefits in the supporter section.
 Includes one Edition of the Limited Edition Book.
 Appear as a benefactor in the Credits section.
 """)
-                    .font(.custom("Rubik-Light", size: 24))
+                    .font(.bodyText)
                     .foregroundColor(.black)
                     .multilineTextAlignment(.leading)
                 }
@@ -334,5 +335,6 @@ Appear as a benefactor in the Credits section.
             .frame(maxWidth: 512)
             .frame(maxWidth: .infinity, alignment: .leading)
         }
+        .padding(.horizontal, 80)
     }
 }

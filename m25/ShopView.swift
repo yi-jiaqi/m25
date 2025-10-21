@@ -18,6 +18,7 @@ struct ShopView: View {
                     onClose: { dismiss() } //
                 )
                 ScrollView{
+                    
                     VStack(alignment: .leading, spacing: 6) {
                         Headline(type: .shop, heading: "What's New").padding(.horizontal, 16)
                         let columns = [
@@ -38,15 +39,41 @@ struct ShopView: View {
                                      content: "From $199",
                                      image: Image("minutiae_poster_notification"))
                             }
+                            
+                        }
+                    }.padding(.horizontal, 16)
+                    
+                    VStack(alignment: .leading, spacing: 6) {
+                        Headline(type: .shop, heading: "Books").padding(.horizontal, 16)
+                        let columns = [
+                            GridItem(.flexible(), spacing: 6),
+                            GridItem(.flexible(), spacing: 6)
+                        ]
+                        
+                        LazyVGrid(columns: columns, spacing: 6) {
                             NavigationLink(destination: ProductView(product: sampleProduct)) {
                                 News(type: .thumbImage,
-                                     title: "Minutiae Poster",
-                                     content: "From $199",
+                                     title: " 360 Edition - One Year Book",
+                                     content: "From $109",
+                                     image: Image("minutiae_poster_notification"))
+                            }
+                            NavigationLink(destination: ProductView(product: sampleProduct)) {
+                                News(type: .thumbImage,
+                                     title: "1440 Edition - Four years",
+                                     content: "From $249",
+                                     image: Image("minutiae_poster_notification"))
+                            }
+                            NavigationLink(destination: ProductView(product: sampleProduct)) {
+                                News(type: .thumbImage,
+                                     title: "Limited Edition Book",
+                                     content: "From $1440",
                                      image: Image("minutiae_poster_notification"))
                             }
                             
                         }
                     }.padding(.horizontal, 16)
+                    
+                    
                 }
                 
             }

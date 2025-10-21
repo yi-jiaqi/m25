@@ -17,20 +17,20 @@ struct CreditsView: View {
                     // MARK: - Creators
                 VStack(spacing: 10) { // Minor group gap = 10
                     Text("Creators")
-                        .font(.custom("Rubik-Medium", size: 20))
+                        .font(.smallHeadline)
                         .multilineTextAlignment(.center)
                     
                     VStack(spacing: 4) {
                         Text("Martin Adolfsson")
                         Text("Daniel J Wilson")
                     }
-                    .font(.custom("Rubik-Light", size: 16))
+                    .font(.smallBodyText)
                 }
                 
                     // MARK: - Supported By
                 VStack(spacing: 10) {
                     Text("Supported By")
-                        .font(.custom("Rubik-Medium", size: 20))
+                        .font(.smallHeadline)
                         .multilineTextAlignment(.center)
                     
                         // Images (same height)
@@ -56,14 +56,14 @@ struct CreditsView: View {
                         Text("The Swedish Aers Grants Committee")
                         Text("New INC")
                     }
-                    .font(.custom("Rubik-Light", size: 16))
+                    .font(.smallBodyText)
                     .multilineTextAlignment(.center)
                 }
                 
                     // MARK: - Benefactors
                 VStack(spacing: 10) {
                     Text("Benefactors")
-                        .font(.custom("Rubik-Medium", size: 20))
+                        .font(.smallHeadline)
                     
                     VStack(spacing: 6) {
                         HStack {
@@ -87,21 +87,21 @@ struct CreditsView: View {
                             Text("Nicole Sletterink")
                         }
                     }
-                    .font(.custom("Rubik-Light", size: 16))
+                    .font(.smallBodyText)
                     .multilineTextAlignment(.center)
                 }
                 
                     // MARK: - minutiae Team
                 VStack(spacing: 10) {
                     Text("minutiae Team")
-                        .font(.custom("Rubik-Medium", size: 20))
+                        .font(.smallHeadline)
                     
                     HStack(spacing: 20) {
                         Text("migge")
                         Text("Yoshikuni Kato")
                         Text("Jiaqi Yi")
                     }
-                    .font(.custom("Rubik-Light", size: 16))
+                    .font(.smallBodyText)
                 }
                 Spacer()
             }

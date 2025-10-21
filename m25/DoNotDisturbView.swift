@@ -43,19 +43,19 @@ struct DoNotDisturbView: View {
                     HStack {
                         VStack {
                             Text("Bedtime")
-                                .font(.custom("Rubik-Light", size: 20))
+                                .font(.bodyText)
                                 .foregroundColor(.white)
                             Text(formatTime(bedtime))
-                                .font(.custom("Rubik-Medium", size: 24))
+                                .font(.headline)
                                 .foregroundColor(.white)
                         }
                         Spacer()
                         VStack {
                             Text("Wake")
-                                .font(.custom("Rubik-Light", size: 20))
+                                .font(.bodyText)
                                 .foregroundColor(.white)
                             Text(formatTime(wake))
-                                .font(.custom("Rubik-Medium", size: 24))
+                                .font(.headline)
                                 .foregroundColor(.white)
                         }
                     }
@@ -76,7 +76,7 @@ struct DoNotDisturbView: View {
                         dismiss()
                     } label: {
                         Text("CONFIRM")
-                            .font(.custom("Rubik-Medium", size: 20))
+                            .font(.smallHeadline)
                             .foregroundColor(.white)
                             .frame(maxWidth: .infinity)
                             .padding()

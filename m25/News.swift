@@ -30,7 +30,7 @@ struct News: View {
             case .noImage:
                 VStack(alignment: .leading) {
                     Text(title.uppercased())
-                        .font(Font.custom("Rubik", size: 20).weight(.medium))
+                        .font(.smallHeadline)
                         .foregroundColor(Color(hex: "1D1D1D"))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.horizontal, 6)
@@ -38,7 +38,7 @@ struct News: View {
                         .multilineTextAlignment(.leading)
                         .lineLimit(2)
                     Text(content)
-                        .font(Font.custom("Rubik", size: 18).weight(.light))
+                        .font(.smallHeadline)
                         .foregroundColor(Color(hex: "1D1D1D"))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.horizontal, 6)
@@ -53,7 +53,7 @@ struct News: View {
                 HStack(alignment: .top) {
                     VStack(alignment: .leading, spacing: 6) {
                         Text(title.uppercased())
-                            .font(Font.custom("Rubik", size: 20).weight(.medium))
+                            .font(.smallHeadline)
                             .foregroundColor(Color(hex: "1D1D1D"))
                             .fixedSize(horizontal: false, vertical: true)
                             .multilineTextAlignment(.leading)
@@ -82,14 +82,14 @@ struct News: View {
             case .bigImage:
                 VStack(alignment: .leading, spacing: 6) {
                     Text(title.uppercased())
-                        .font(Font.custom("Rubik", size: 20).weight(.medium))
+                        .font(.smallHeadline)
                         .foregroundColor(Color(hex: "1D1D1D"))
                         .fixedSize(horizontal: false, vertical: true)
                         .multilineTextAlignment(.leading)
                         .lineLimit(2)
                     
                     Text(content)
-                        .font(Font.custom("Rubik", size: 20).weight(.light))
+                        .font(.bodyText)
                         .foregroundColor(Color(hex: "1D1D1D"))
                         .fixedSize(horizontal: false, vertical: true)
                         .multilineTextAlignment(.leading)
@@ -122,7 +122,7 @@ struct News: View {
                     }
                     
                     Text(title.uppercased())
-                        .font(Font.custom("Rubik", size: 20).weight(.medium))
+                        .font(.smallHeadline)
                         .foregroundColor(Color(hex: "1D1D1D"))
                         .multilineTextAlignment(.center) 
                         .frame(maxWidth: .infinity, alignment: .center)                .fixedSize(horizontal: false, vertical: true)
@@ -151,12 +151,12 @@ struct News: View {
                     }
                     
                     Text(title.uppercased())
-                        .font(Font.custom("Rubik", size: 18).weight(.medium))
+                        .font(.xSmallHeadline)
                         .foregroundColor(Color(hex: "1D1D1D"))
                         .frame(maxWidth: .infinity, alignment: .center)
                     
                     Text(content.lowercased())
-                        .font(Font.custom("Rubik", size: 14).weight(.light))
+                        .font(.xSmallBodyText)
                         .foregroundColor(Color(hex: "1D1D1D"))
                         .frame(maxWidth: .infinity, alignment: .center)
                 }
