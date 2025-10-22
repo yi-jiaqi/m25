@@ -33,37 +33,37 @@ struct ProgressView: View {
             VStack(spacing: 20) {
                 VStack(spacing: 6) {
                     Text("Starting date")
-                        .font(.headline)
+                        .font(.smallHeadline)
                         .foregroundColor(.white)
                     Text(dateFormatter.string(from: today))
-                        .font(.largeBodytext)
+                        .font(.smallBodyText)
                         .foregroundColor(.white.opacity(0.9))
                 }
                 
                 VStack(spacing: 6) {
                     Text("Completion date")
-                        .font(.headline)
+                        .font(.smallHeadline)
                         .foregroundColor(.white)
                     Text(dateFormatter.string(from: completionDate))
-                        .font(.largeBodytext)
+                        .font(.smallBodyText)
                         .foregroundColor(.white.opacity(0.9))
                 }
                 
                 VStack(spacing: 6) {
                     Text("Captured moments")
-                        .font(.headline)
+                        .font(.smallHeadline)
                         .foregroundColor(.white)
                     Text("\(capturedMoments)")
-                        .font(.largeBodytext)
+                        .font(.smallBodyText)
                         .foregroundColor(.white.opacity(0.9))
                 }
                 
                 VStack(spacing: 6) {
                     Text("Remaining moments")
-                        .font(.headline)
+                        .font(.smallHeadline)
                         .foregroundColor(.white)
                     Text("\(remainingMoments)")
-                        .font(.largeBodytext)
+                        .font(.smallBodyText)
                         .foregroundColor(.white.opacity(0.9))
                 }
             }

@@ -43,6 +43,7 @@ struct ReadingView: View {
 
     // MARK: - Reading Pages
 
+//TODO: Finalize layout
 struct ReadingPage1: View {
     var body: some View {
         ScrollView {
@@ -87,19 +88,19 @@ struct ReadingPage2: View {
         ScrollView {
             VStack(spacing: 24) {
 
-                Headline(type: .reading,heading: "Rules")
+                Headline(type: .reading,heading: "RULES")
                 Text("Each day, one minute. No filters.")
                     .font(.headline)
                     .foregroundColor(.white)
                     .multilineTextAlignment(.center)
                 Text("""
-1. Once a day, at a random moment, all minutiae participants around the world receive a simultaneous alert.
- ﻿﻿﻿2. You have exactly one minute (an extra four minutes when you subscribe or pre-order the 360 Edition One Year Book) to respond to the notification and open your minutiae app.
- 3. Once you open the app, you have five seconds to take a photo of whatever is in front of you, there and then.
- ﻿﻿﻿4. If you miss a moment - which can happen - you will get a black square in place of your image.
- ﻿﻿﻿5. Once you capture your moment, you will have 60 seconds to explore previous moments - both your own and those of a random stranger you are matched with each day.
- 6. At the end of each 360-moment cycle (1 year), you will have the option to order a book with all your moments.
- 7. You'll also be able to download all your images as an archive at the end of the full 1440-moment cycle.
+1. Once a day, at a random moment, all minutiae participants around the world receive a simultaneous alert.\n
+﻿﻿﻿2. You have exactly one minute (an extra four minutes when you subscribe or pre-order the 360 Edition One Year Book) to respond to the notification and open your minutiae app.\n
+3. Once you open the app, you have five seconds to take a photo of whatever is in front of you, there and then.\n
+﻿﻿﻿4. If you miss a moment - which can happen - you will get a black square in place of your image.\n
+﻿﻿﻿5. Once you capture your moment, you will have 60 seconds to explore previous moments - both your own and those of a random stranger you are matched with each day.\n
+6. At the end of each 360-moment cycle (1 year), you will have the option to order a book with all your moments.\n
+7. You'll also be able to download all your images as an archive at the end of the full 1440-moment cycle.
 """)
                 .font(.bodyText)
                 .foregroundColor(.black)
@@ -111,13 +112,14 @@ struct ReadingPage2: View {
         }
     }
 }
+//TODO: Finalize layout
 
 struct ReadingPage3: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 24) {
 
-                Headline(type: .reading,heading: "the artists")
+                Headline(type: .reading,heading: "THE ARTISTS")
  
                 Text("""
 minutiae is an interdisciplinary art project, participatory performance, and a book.
@@ -157,19 +159,80 @@ He is currently a Ph.D. candidate studying cognitive neuroscience at the Univers
     }
 }
 
+//TODO: Finalize layout
+
 struct ReadingPage4: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 24) {
 
-                Headline(type: .reading,heading: "FAQ")
+                Headline(type: .reading,heading: "F.A.Q")
                 Text("Why am I not getting alerts?")
                     .font(.headline)
                     .foregroundColor(.white)
                     .multilineTextAlignment(.center)
                 Text("""
-Notifications come at the same time for everyone around the world.
-Make sure you have enabled Time Sensitive Notifications for minutiae.
+I'm not receiving any notifications. Is this a bug?
+
+All participants receive notifications at the exact same minute, no matter where they are in the world.
+
+Because notifications are scheduled in UTC time, you might get two alerts on one day and none on another.
+
+However, over the full 1440-day cycle, every participant will capture the same total number of moments regardless of location.
+
+
+I only get alerts at night, so I can't use the app.
+During the 1440-day cycle, notifications are spread across every minute of the day. This means about 30% of your notifications will happen at night, no matter where in the world you are.
+
+
+Why can't notifications be adjusted to my time zone?
+
+Good question! The main reason is that the minutiae cycle spans years, and during that time, you might move or travel between time zones.
+
+Additionally, having time-zone-specific notifications would isolate participants by region, which goes against the project's goal of connecting people globally.
+
+
+How can I avoid missing notifications?
+
+To make sure you see every notification, enable Time Sensitive Notifications for minutiae:
+
+Go to your phone's Settings ->
+Notifications -> minutiae.
+
+Enable Time Sensitive Notifications so alerts can bypass settings like Focus mode.
+
+
+My settings are correct, so why am I still missing notifications?
+
+Notifications may be delivered silently in the following situations:
+
+﻿﻿Do Not Disturb mode is on.
+﻿﻿CarPlay is active.
+﻿﻿Do Not Disturb is enabled within the app.
+
+
+How do I see photos from other participants?
+
+When you capture your daily moment, you're automatically paired with another participant who captured their moment at the exact same time somewhere else in the world.
+
+To view their photo: Tap the black box located beneath your captured moment on the timeline.
+
+
+What do the numbers on the grid mean?
+
+The grid represents the 1440 minutes in a day, which is the total number of moments you'll capture over the 1440-day cycle of minutiae. 
+
+Here's how it works:
+
+﻿﻿Each square corresponds to one specific minute of the day.
+﻿﻿The top left corner is 00:00 (12:00 AM).
+the first minute of the day.
+﻿﻿The bottom right corner is 23:59 (11:59
+PM), the last minute of the day.
+
+Every time you capture a moment, the corresponding square on the grid is filled in.
+
+See demo for more details.
 """)
                 .font(.bodyText)
                 .foregroundColor(.black)
@@ -181,6 +244,9 @@ Make sure you have enabled Time Sensitive Notifications for minutiae.
         }
     }
 }
+
+
+//TODO: USE PAYWALL FROM MINUTAE PROJECT
 
 struct ReadingPage5: View {
     @State private var isMonthlySelected = false
@@ -337,4 +403,9 @@ Appear as a benefactor in the Credits section.
         }
         .padding(.horizontal, 80)
     }
+}
+ 
+
+#Preview {
+    ReadingView(initialPage: 0)
 }
