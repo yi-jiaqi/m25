@@ -1,9 +1,9 @@
-    //
-    //  SettingsView.swift
-    //  m25
-    //
-    //  Created by Jiaqi Yi on 2025.10.15.
-    //
+//
+//  SettingsView.swift
+//  m25
+//
+//  Created by Jiaqi Yi on 2025.10.15.
+//
 
 import SwiftUI
 
@@ -20,7 +20,7 @@ struct SettingsView: View {
             VStack(alignment: .leading, spacing: 20) {
                 Headline(type: .setting, heading: "SETTING")
                     .padding(.top, 20)
-                ToggleRow(label: "Location", isOn: $locationEnabled)
+                ToggleRow(label: "Location Service", isOn: $locationEnabled)
                 ToggleRow(label: "Automatic Flash", isOn: $flashEnabled)
                 ToggleRow(label: "Missed Moments Count", isOn: $missedCountEnabled)
                 
@@ -32,18 +32,13 @@ struct SettingsView: View {
                 Headline(type: .setting, heading: "ACCOUNT")
                     .padding(.top, 20)
                 
-                Text("Your Email:")
+                Text("Account Email")
                     .font(.bodyText)
                     .foregroundColor(.white)
                     .padding(.horizontal, 30)
                 
-                Text("Delete Account:")
-                    .font(.bodyText)
-                    .foregroundColor(.white)
-                    .padding(.horizontal, 30)
-                
-                Text("Redeem")
-                    .font(.bodyText)
+                Text("Delete Account")
+                    .font(.bodyTextBold)
                     .foregroundColor(.white)
                     .padding(.horizontal, 30)
                 
@@ -55,20 +50,31 @@ struct SettingsView: View {
                 Headline(type: .setting, heading: "LINKS")
                     .padding(.top, 20)
                 
-                Text("minutiae Website")
-                    .font(.bodyText)
-                    .foregroundColor(.white)
-                    .padding(.horizontal, 30)
+                Link(destination: URL(string: "https://minutiae-app.com")!) {
+                    Text("minutiae Website")
+                        .font(.bodyText)
+                        .foregroundColor(.white)
+                        .padding(.horizontal, 30)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
                 
-                Text("Shop")
-                    .font(.bodyText)
-                    .foregroundColor(.white)
-                    .padding(.horizontal, 30)
+                //TODO: This should link to TOS page.
+                Link(destination: URL(string: "https://minutiae-app.com/tos")!) {
+                    Text("Terms of Service")
+                        .font(.bodyText)
+                        .foregroundColor(.white)
+                        .padding(.horizontal, 30)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
                 
-                Text("Gift")
-                    .font(.bodyText)
-                    .foregroundColor(.white)
-                    .padding(.horizontal, 30)
+                //TODO: This should link to website support page
+                Link(destination: URL(string: "https://minutiae-app.com/support")!) {
+                    Text("Contact Support")
+                        .font(.bodyText)
+                        .foregroundColor(.white)
+                        .padding(.horizontal, 30)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
                 
             }
             .padding(.horizontal, 30)
@@ -81,7 +87,7 @@ struct SettingsView: View {
 }
 
 
-    // MARK: - Subcomponent: Toggle Row
+// MARK: - Subcomponent: Toggle Row
 struct ToggleRow: View {
     var label: String
     @Binding var isOn: Bool
@@ -95,7 +101,7 @@ struct ToggleRow: View {
             Toggle("", isOn: $isOn)
                 .labelsHidden()
         }
-        .padding(.horizontal, 30)
+        .padding(.horizontal, 20)
     }
 }
 

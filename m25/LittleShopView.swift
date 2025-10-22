@@ -46,7 +46,7 @@ struct LittleShopView: View {
                         Button {
                             showShopView = true
                         } label: {
-                            Text("GIFT minutiae")
+                            Text("GIFT")
                                 .font(.system(size: 22, weight: .semibold))
                                 .multilineTextAlignment(.center)
                                 .foregroundColor(Color(hex: "FFFFFF"))
