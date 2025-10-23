@@ -32,3 +32,39 @@ class ProductManager: ObservableObject {
         }
     }
 }
+
+extension ProductManager {
+    enum ProductCategory: String, CaseIterable {
+        case book = "Books"
+        case poster = "Posters"
+        case other = "Others"
+    }
+    
+    func products(for category: ProductCategory) -> [ProductModel] {
+            // 1️⃣ Filter products by category (first digit)
+        let filtered = products.filter { product in
+            guard let code = product.code else { return false }
+            switch category {
+            case .book:   return code / 100 == 1
+            case .poster: return code / 100 == 2
+            case .other:  return code / 100 == 3
+            }
+        }
+        
+            // 2️⃣ Keep only the first product per two-digit prefix
+        var seenPrefixes = Set<Int>()
+        var uniqueProducts: [ProductModel] = []
+        
+        for product in filtered {
+            if let code = product.code {
+                let prefix = code / 10  // first two digits
+                if !seenPrefixes.contains(prefix) {
+                    seenPrefixes.insert(prefix)
+                    uniqueProducts.append(product)
+                }
+            }
+        }
+        
+        return uniqueProducts
+    }
+}

@@ -24,7 +24,7 @@ struct LittleShopView: View {
                         News(
                             type: .veryBigImage,
                             title: "[NEW] Constellation Posters - Four Years",
-                            content: "_",
+                            content: "From $199",
                             image: Image("minutiae_poster_notification")
                         )
                     }
@@ -33,7 +33,7 @@ struct LittleShopView: View {
                     Spacer()
                     
                         // MARK: - About-style Text Section
-                    VStack(spacing: 20) {
+                    VStack(spacing: 40) {
                         Button {
                             showShopView = true
                         } label: {

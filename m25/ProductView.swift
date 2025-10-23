@@ -45,7 +45,7 @@ struct ProductView: View {
                         let price = product.prices[i]
                         SelectableButton(
                             type: .multipleText,
-                            texts: [price.name, price.subtitle, price.current, price.original],
+                            texts: [price.name, price.subtitle, price.current, price.original].compactMap { $0 },
                             linkURL: nil,
                             isSelected: .constant(i == selectedPriceIndex)
                         )
@@ -141,9 +141,9 @@ let sampleProduct = ProductModel(
 
 struct ProductPrice: Codable, Hashable {
     let name: String
-    let subtitle: String
+    let subtitle: String?
     let current: String
-    let original: String
+    let original: String?
 }
 
 struct ProductModel: Codable, Hashable {

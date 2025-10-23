@@ -128,6 +128,13 @@ struct News: View {
                         .frame(maxWidth: .infinity, alignment: .center)                .fixedSize(horizontal: false, vertical: true)
                         .multilineTextAlignment(.leading)
                         .lineLimit(5)
+                    Text(content)
+                        .font(.bodyText)
+                        .foregroundColor(Color(hex: "1D1D1D"))
+                        .multilineTextAlignment(.center)
+                        .frame(maxWidth: .infinity, alignment: .center)                .fixedSize(horizontal: false, vertical: true)
+                        .multilineTextAlignment(.leading)
+                        .lineLimit(5)
                 }
                     // MARK: - Thumb Image - for showing item in Shop(ShopView)
             case .thumbImage:

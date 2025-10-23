@@ -21,7 +21,7 @@
     
     
     {
-        "title": "360 Edition - One Year Book",
+        "title": "360 Edition One Year Book",
         "code": 111,
         "demonstratedPrice": "from $109",
         "images": ["book_360_edition5","book_360_edition6","book_360_edition3"],
@@ -30,13 +30,13 @@
             "The minutiae 360 Edition contains all your captured moments over a one-year period. The spine is stamped with the participant’s initials and the corresponding record number.",
         ],
         "prices": [
-            { "name": "STANDARD", "subtitle": "Full Price", "current": "$109", "original": "$129" }
+            { "name": "STANDARD", "subtitle": "Full Price", "current": "$109", "original": "$129" },
             { "name": "PREMIUM", "subtitle": "Full Price", "current": "$139", "original": "$159" }
         ]
     },
     
     {
-        "title": "360 Edition - One Year Book",
+        "title": "360 Edition One Year Book",
         "code": 112,
         "demonstratedPrice": "from $109",
         "images": ["book_360_edition7","book_360_edition6","book_360_edition3"],
@@ -45,13 +45,13 @@
             "The minutiae 360 Edition contains all your captured moments over a one-year period. The spine is stamped with the participant’s initials and the corresponding record number.",
         ],
         "prices": [
-            { "name": "STANDARD", "subtitle": "Full Price", "current": "$109", "original": "$129" }
+            { "name": "STANDARD", "subtitle": "Full Price", "current": "$109", "original": "$129" },
             { "name": "PREMIUM", "subtitle": "Full Price", "current": "$139", "original": "$159" }
         ]
     },
     
     {
-        "title": "360 Edition - One Year Book",
+        "title": "360 Edition One Year Book",
         "code": 113,
         "demonstratedPrice": "from $109",
         "images": ["book_360_edition1","book_360_edition6","book_360_edition3"],
@@ -60,13 +60,13 @@
             "The minutiae 360 Edition contains all your captured moments over a one-year period. The spine is stamped with the participant’s initials and the corresponding record number.",
         ],
         "prices": [
-            { "name": "STANDARD", "subtitle": "Full Price", "current": "$109", "original": "$129" }
+            { "name": "STANDARD", "subtitle": "Full Price", "current": "$109", "original": "$129" },
             { "name": "PREMIUM", "subtitle": "Full Price", "current": "$139", "original": "$159" }
         ]
     },
     
     {
-        "title": "360 Edition - One Year Book",
+        "title": "360 Edition One Year Book",
         "code": 114,
         "demonstratedPrice": "from $109",
         "images": ["book_360_edition8","book_360_edition6","book_360_edition3"],
@@ -75,14 +75,14 @@
             "The minutiae 360 Edition contains all your captured moments over a one-year period. The spine is stamped with the participant’s initials and the corresponding record number.",
         ],
         "prices": [
-            { "name": "STANDARD", "subtitle": "Full Price", "current": "$109", "original": "$129" }
+            { "name": "STANDARD", "subtitle": "Full Price", "current": "$109", "original": "$129" },
             { "name": "PREMIUM", "subtitle": "Full Price", "current": "$139", "original": "$159" }
         ]
     },
     
     {
-        "title": "1440 Edition - Four years",
-        "code": 12,
+        "title": "1440 Edition Four years",
+        "code": 120,
         "demonstratedPrice": "from $249",
         "images": ["book_1440_edition"],
         "availableRecords": [1,2,3,4],
@@ -90,13 +90,13 @@
             "One-year hardcover book containing 360 captured moments."
         ],
         "prices": [
-            { "name": "STANDARD", "subtitle": "Full Price", "current": "$269", "original": "$249" }
+            { "name": "STANDARD", "subtitle": "Full Price", "current": "$269", "original": "$249" },
         ]
     },
     
     {
         "title": "Limited Edition Book",
-        "code": 13,
+        "code": 130,
         "demonstratedPrice": "from $1440",
         "images": ["limited_edition1","limited_edition2","limited_edition3","limited_edition4"],
         "availableRecords": [1,2,3,4],
@@ -110,7 +110,7 @@
     
     {
         "title": "Classical Poster with Frame",
-        "code": 21,
+        "code": 210,
         "demonstratedPrice": "from $199",
         "images": ["poster_classical_framed1","poster_classical_framed2"],
         "availableRecords": [1,2,3,4],
@@ -119,7 +119,7 @@
             "Museum-quality custom frames",
             "Giclée Enhanced Matte Paper Print",
             "Plexiglass front",
-            "For indoor use"",
+            "For indoor use",
         ],
         "prices": [
             { "name": "STANDARD", "current": "$199"}
@@ -128,7 +128,7 @@
     
     {
         "title": "Classical Poster without Frame",
-        "code": 22,
+        "code": 220,
         "demonstratedPrice": "from $179",
         "images": ["poster_classical_unframed1","poster_classical_unframed2"],
         "availableRecords": [1,2,3,4],
@@ -142,10 +142,10 @@
     },
     
     {
-        "title": "Constellation Posters - One Year",
+        "title": "Constellation Posters One Year",
         "code": 231,
         "demonstratedPrice": "from $79",
-        "images": ["poster_const_1"],
+        "images": ["poster_const1"],
         "availableRecords": [1],
         "descriptions": [
             "Size 24x36 in (61x91 cm)",
@@ -157,7 +157,7 @@
     },
     
     {
-        "title": "Constellation Posters - One Year",
+        "title": "Constellation Posters One Year",
         "code": 232,
         "demonstratedPrice": "from $79",
         "images": ["poster_const2"],
@@ -172,7 +172,7 @@
     },
     
     {
-        "title": "Constellation Posters - One Year",
+        "title": "Constellation Posters One Year",
         "code": 233,
         "demonstratedPrice": "from $79",
         "images": ["poster_const3"],
@@ -187,7 +187,7 @@
     },
     
     {
-        "title": "Constellation Posters - One Year",
+        "title": "Constellation Posters One Year",
         "code": 234,
         "demonstratedPrice": "from $79",
         "images": ["poster_const4"],
@@ -202,8 +202,8 @@
     },
     
     {
-        "title": "Constellation Posters - Four Years",
-        "code": 24,
+        "title": "Constellation Posters Four Years",
+        "code": 240,
         "demonstratedPrice": "from $179",
         "images": ["minutiae_poster_notification"],
         "availableRecords": [4],
@@ -218,7 +218,7 @@
     
     {
         "title": "minutiae Tote Bag",
-        "code": 31,
+        "code": 310,
         "demonstratedPrice": "from $35",
         "images": ["tote_bag"],
         "availableRecords": [1,2,3,4],
