@@ -115,6 +115,7 @@ struct ProductView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
         }
         .background(Color(hex: "E6E6E6").ignoresSafeArea())
+        .ignoresSafeArea(.all)
         .padding(.horizontal, 16)
         .navigationBarBackButtonHidden(true)
         .navigationBarHidden(true)

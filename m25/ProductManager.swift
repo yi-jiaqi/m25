@@ -67,4 +67,8 @@ extension ProductManager {
         
         return uniqueProducts
     }
+    
+    func product(code: Int) -> ProductModel? {
+        return products.first(where: { $0.code == code })
+    }
 }

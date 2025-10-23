@@ -158,7 +158,7 @@ struct News: View {
                     }
                     
                     Text(title.uppercased())
-                        .font(.xSmallHeadline)
+                        .font(.xXSmallHeadline)
                         .foregroundColor(Color(hex: "1D1D1D"))
                         .frame(maxWidth: .infinity, alignment: .center)
                     

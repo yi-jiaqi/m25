@@ -85,7 +85,7 @@ struct MenuView: View {
                 }
             }
         }
-        .edgesIgnoringSafeArea(.all)
+        .ignoresSafeArea(.all)
         .fullScreenCover(isPresented: $showGrid) {
             GridView()
                 .transaction { t in t.animation = nil }

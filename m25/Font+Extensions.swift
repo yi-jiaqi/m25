@@ -14,6 +14,7 @@ extension Font {
     static let headline = Font.custom("Rubik-Medium", size: 24)
     static let smallHeadline = Font.custom("Rubik-Medium", size: 20)
     static let xSmallHeadline = Font.custom("Rubik-Medium", size: 16)
+    static let xXSmallHeadline = Font.custom("Rubik-Medium", size: 14)
     
     
     static let xlargeBodytext = Font.custom("Rubik-Light", size:24)

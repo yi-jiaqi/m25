@@ -90,6 +90,7 @@ struct DoNotDisturbView: View {
                 .frame(maxWidth: .infinity, alignment: .topLeading)
             }}
         .background(Color.black.ignoresSafeArea())
+        .ignoresSafeArea(.all)
     }
     
         // Helper to format seconds → time string

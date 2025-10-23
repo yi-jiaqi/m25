@@ -27,8 +27,8 @@ struct ShopView: View {
                 .padding(.bottom, 60)
             }
             .background(Color(hex: "6C6C6C").ignoresSafeArea())
+            .ignoresSafeArea(.all)
         }
-        .ignoresSafeArea() // ✅ this applies to the whole screen (top, bottom, sides)
     }
 }
 

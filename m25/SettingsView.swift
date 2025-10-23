@@ -81,6 +81,7 @@ struct SettingsView: View {
             .frame(maxWidth: .infinity, alignment: .topLeading)
         }
         .background(Color.black.ignoresSafeArea())
+        .ignoresSafeArea(.all)
         
     }
     

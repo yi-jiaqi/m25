@@ -176,6 +176,9 @@ struct GridViewModal: View {
     private var remainingCount: Int { Int.random(in: 0...360) }
     private var progress: Double { Double.random(in: 0.2...0.9) }
     
+    @State private var showPosterProduct = false
+    @State private var showBookProduct = false
+    @State private var showReadingFAQ = false
         // MARK: - Dates
     private var startDate: Date {
         switch tabIndex {
@@ -197,78 +200,126 @@ struct GridViewModal: View {
         return f
     }
     
+    private var thisBook: ProductModel? {
+            // tabIndex 1–4 correspond to year 1–4
+        let year = max(1, min(tabIndex, 4)) // clamp between 1–4
+        let code = 110 + year // → 111, 112, 113, 114
+        return ProductManager.shared.product(code: code)
+    }
+    
+    private var thisPoster: ProductModel? {
+        let year = max(1, min(tabIndex, 4))
+        let code = 230 + year // → 231, 232, 233, 234
+        return ProductManager.shared.product(code: code)
+    }
+    
     var body: some View {
-        ZStack {
-                // Background overlay (tapping outside dismisses)
-            Color.black.opacity(0.3)
-                .ignoresSafeArea()
-                .onTapGesture {
-                    withAnimation {
-                        isVisible = false
-                    }
-                }
-            
-                // Modal content
-            VStack(spacing: 20) {
-                    // 1. Title
-                Text(tabIndex == 0 ? "COLLECTION VIEW" : "RECORD \(tabIndex)")
-                    .font(.smallHeadline)
-                    .foregroundColor(.white)
-                    .textCase(.uppercase)
-                
-                    // 2. Date Range + Progress
-                VStack(spacing: 0) {
-                    HStack {
-                        Text(dateFormatter.string(from: startDate))
-                        Spacer()
-                        Text(dateFormatter.string(from: endDate))
-                    }
-                    .font(.smallBodyText)
-                    .foregroundColor(.white)
-                    .padding(.horizontal, 4)
-                    
-                        // Progress bar
-                    GeometryReader { geo in
-                        ZStack(alignment: .leading) {
-                            RoundedRectangle(cornerRadius: geo.size.height / 2)
-                                .fill(Color(hex: "C6C6C6"))
-                                .frame(width: geo.size.width+8)
-                            RoundedRectangle(cornerRadius: geo.size.height / 4)
-                                .fill(Color(hex: "6C6C6C"))
-                                .frame(width: geo.size.width * progress,height:8)
-                                .offset(x:4)
+        NavigationStack{
+            ZStack {
+                    // Background overlay (tapping outside dismisses)
+                Color.black.opacity(0.3)
+                    .ignoresSafeArea()
+                    .onTapGesture {
+                        withAnimation {
+                            isVisible = false
                         }
                     }
-                    .frame(height: 16)
-                    .padding(.vertical, 8)
-                    
-                    HStack {
-                        Text("Captured: \(capturedCount)")
-                        Spacer()
-                        Text("Remaining: \(remainingCount)")
-                    }
-                    .font(.smallBodyText)
-                    .foregroundColor(.white)
-                    .padding(.horizontal, 4)
-                }
                 
-                    // 3. Demo text section
-                VStack(spacing: 12) {
-                    Text("DEMO")
+                    // Modal content
+                VStack(spacing: 20) {
+                        // 1. Title
+                    Text(tabIndex == 0 ? "COLLECTION VIEW" : "RECORD \(tabIndex)")
+                        .font(.smallHeadline)
+                        .foregroundColor(.white)
+                        .textCase(.uppercase)
+                    
+                        // 2. Date Range + Progress
+                    VStack(spacing: 0) {
+                        HStack {
+                            Text(dateFormatter.string(from: startDate))
+                            Spacer()
+                            Text(dateFormatter.string(from: endDate))
+                        }
+                        .font(.smallBodyText)
+                        .foregroundColor(.white)
+                        .padding(.horizontal, 4)
+                        
+                            // Progress bar
+                        GeometryReader { geo in
+                            ZStack(alignment: .leading) {
+                                RoundedRectangle(cornerRadius: geo.size.height / 2)
+                                    .fill(Color(hex: "C6C6C6"))
+                                    .frame(width: geo.size.width+8)
+                                RoundedRectangle(cornerRadius: geo.size.height / 4)
+                                    .fill(Color(hex: "6C6C6C"))
+                                    .frame(width: geo.size.width * progress,height:8)
+                                    .offset(x:4)
+                            }
+                        }
+                        .frame(height: 16)
+                        .padding(.vertical, 8)
+                        
+                        HStack {
+                            Text("Captured: \(capturedCount)")
+                            Spacer()
+                            Text("Remaining: \(remainingCount)")
+                        }
+                        .font(.smallBodyText)
+                        .foregroundColor(.white)
+                        .padding(.horizontal, 4)
+                    }
+                    
+                        // 3. Demo text section
+                    VStack(spacing: 12) {
+                        Text("DEMO")
+                            .font(.xSmallHeadline)
+                            .foregroundColor(.white)
+                            .textCase(.uppercase)
+                        
+                        Button("ORDER BOOK") {
+                            showBookProduct = true
+                        }
                         .font(.xSmallHeadline)
                         .foregroundColor(.white)
                         .textCase(.uppercase)
-                    Text("WHEN I FINISH…")
+                        
+                        Button("ORDER POSTER") {
+                            showPosterProduct = true
+                        }
                         .font(.xSmallHeadline)
                         .foregroundColor(.white)
                         .textCase(.uppercase)
+                        
+                        Button("WHEN I FINISH...") {
+                            showReadingFAQ = true
+                        }
+                        .font(.xSmallHeadline)
+                        .foregroundColor(.white)
+                        .textCase(.uppercase)
+                    }
                 }
+                .padding(.horizontal, 30)
+                .padding(.vertical, 25)
+                .background(Color(hex: "6C6C6C"))
+                .cornerRadius(10)
+                .padding(.horizontal, 30)
             }
-            .padding(.horizontal, 30)
-            .padding(.vertical, 25)
-            .background(Color(hex: "6C6C6C"))
-            .cornerRadius(10)
-            .padding(.horizontal, 30)
+        }
+        .fullScreenCover(isPresented: $showBookProduct) {
+            if let thisBook = thisBook {
+                ProductView(product: thisBook)
+            } else {
+                Text("Book not found.")
+            }
+        }
+        .fullScreenCover(isPresented: $showPosterProduct) {
+            if let thisPoster = thisPoster {
+                ProductView(product: thisPoster)
+            } else {
+                Text("Poster not found.")
+            }
+        }.fullScreenCover(isPresented: $showReadingFAQ) {
+            ReadingView(initialPage: 3)
         }
     }
 }
