@@ -38,7 +38,7 @@ struct LittleShopView: View {
                             showShopView = true
                         } label: {
                             Text("SHOP")
-                                .font(.system(size: 22, weight: .semibold))
+                                .font(.smallHeadline)
                                 .multilineTextAlignment(.center)
                                 .foregroundColor(Color(hex: "FFFFFF"))
                         }
@@ -47,7 +47,7 @@ struct LittleShopView: View {
                             showShopView = true
                         } label: {
                             Text("GIFT")
-                                .font(.system(size: 22, weight: .semibold))
+                                .font(.smallHeadline)
                                 .multilineTextAlignment(.center)
                                 .foregroundColor(Color(hex: "FFFFFF"))
                         }
@@ -61,7 +61,6 @@ struct LittleShopView: View {
             .padding(.bottom, 60)
             .background(Color(hex: "1D1D1D"))
             .navigationBarBackButtonHidden(true)
-                // ✅ Full Screen Presentation
             .fullScreenCover(isPresented: $showShopView) {
                 ShopView()
             }

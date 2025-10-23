@@ -38,7 +38,7 @@ struct News: View {
                         .multilineTextAlignment(.leading)
                         .lineLimit(2)
                     Text(content)
-                        .font(.smallHeadline)
+                        .font(.bodyText)
                         .foregroundColor(Color(hex: "1D1D1D"))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.horizontal, 6)
@@ -60,7 +60,7 @@ struct News: View {
                             .lineLimit(2)
                         
                         Text(content)
-                            .font(Font.custom("Rubik", size: 18).weight(.light))
+                            .font(.bodyText)
                             .foregroundColor(Color(hex: "1D1D1D"))
                             .fixedSize(horizontal: false, vertical: true)
                             .multilineTextAlignment(.leading)
@@ -114,7 +114,7 @@ struct News: View {
                             image
                                 .resizable()
                                 .scaledToFill()
-                                .frame(width: 280, height: 280)
+                                .frame(width: 300, height: 300)
                                 .clipped()
                                 .cornerRadius(12)
                                 .frame(maxWidth: .infinity, alignment: .center)
@@ -122,7 +122,7 @@ struct News: View {
                     }
                     
                     Text(title.uppercased())
-                        .font(.smallHeadline)
+                        .font(.xSmallHeadline)
                         .foregroundColor(Color(hex: "1D1D1D"))
                         .multilineTextAlignment(.center) 
                         .frame(maxWidth: .infinity, alignment: .center)                .fixedSize(horizontal: false, vertical: true)

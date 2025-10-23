@@ -10,6 +10,7 @@ import SwiftUI
 
 struct AboutView: View {
     @State private var showReading = false
+    @State private var showDoNotDisturb = false
     @State private var selectedPage = 0
     
     var body: some View {
@@ -36,16 +37,21 @@ struct AboutView: View {
                             selectedPage = 3
                             showReading = true
                         }
-                        Text("YOUR MEMBERSHIP")
+                        Button("YOUR MEMBERSHIP") {
+                            selectedPage = 4
+                            showReading = true
+                        }
                     }
-                    .font(.headline)
+                    .font(.smallHeadline)
                     .foregroundColor(.white)
                     
                     VStack(spacing: 40) {
-                        Text("DO NOT DISTURB")
+                        Button("DO NOT DISTURB") {
+                            showDoNotDisturb = true
+                        }
                         Text("DEMO")
                     }
-                    .font(.headline)
+                    .font(.smallHeadline)
                     .foregroundColor(.white)
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -53,6 +59,9 @@ struct AboutView: View {
                 .background(Color(hex: "1D1D1D"))
                 .fullScreenCover(isPresented: $showReading) {
                     ReadingView(initialPage: selectedPage)
+                }
+                .fullScreenCover(isPresented: $showDoNotDisturb) {
+                    DoNotDisturbView()
                 }
             }
         }

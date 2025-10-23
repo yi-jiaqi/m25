@@ -334,12 +334,43 @@ No soup for us...
                 VStack(spacing: 16) {
                     Headline(type: .reading, heading: "ADD: One Year Book")
                     
-                    Image("minutiae_add_one_year_book")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(maxWidth: 300)
-                        .cornerRadius(10)
-                        .padding(.top, 8)
+                    TabView {
+                        Image("book_360_edition2")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(maxWidth: 300)
+                            .cornerRadius(10)
+                            .padding(.top, 8)
+                        Image("book_360_edition1")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(maxWidth: 300)
+                            .cornerRadius(10)
+                            .padding(.top, 8)
+                        Image("book_360_edition6")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(maxWidth: 300)
+                            .cornerRadius(10)
+                            .padding(.top, 8)
+                        Image("book_360_edition7")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(maxWidth: 300)
+                            .cornerRadius(10)
+                            .padding(.top, 8)
+                        Image("book_360_edition8")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(maxWidth: 300)
+                            .cornerRadius(10)
+                            .padding(.top, 8)
+
+                    }
+                    .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
+                    .frame(height: 330)
+                    .indexViewStyle(.page(backgroundDisplayMode: .always))
+
                     
                     Text("""
 Includes all the benefits above.
@@ -372,12 +403,37 @@ Ships after a completed one year cycle.
                 VStack(spacing: 16) {
                     Headline(type: .reading, heading: "Benefactor")
                     
-                    Image("minutiae_benefactor")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(maxWidth: 280)
-                        .cornerRadius(10)
-                        .padding(.top, 8)
+                    TabView {
+                        Image("limited_edition1")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(maxWidth: 300)
+                            .cornerRadius(10)
+                            .padding(.top, 8)
+                        Image("limited_edition2")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(maxWidth: 300)
+                            .cornerRadius(10)
+                            .padding(.top, 8)
+                        Image("limited_edition3")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(maxWidth: 300)
+                            .cornerRadius(10)
+                            .padding(.top, 8)
+                        Image("limited_edition4")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(maxWidth: 300)
+                            .cornerRadius(10)
+                            .padding(.top, 8)
+                        
+                    }
+                    .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
+                    .frame(height: 330)
+                    .indexViewStyle(.page(backgroundDisplayMode: .always))
+                    
                     
                     Text("""
 As a benefactor, you provide additional support to the project. Your membership includes a numbered edition of the Limited Edition Book and much more.
@@ -397,11 +453,10 @@ Appear as a benefactor in the Credits section.
                 
                 Spacer(minLength: 40)
             }
-            .padding(.horizontal, 40)
+            .padding(.horizontal, 80)
             .frame(maxWidth: 512)
             .frame(maxWidth: .infinity, alignment: .leading)
         }
-        .padding(.horizontal, 80)
     }
 }
  

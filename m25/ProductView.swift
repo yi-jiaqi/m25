@@ -123,6 +123,7 @@ struct ProductView: View {
 
 let sampleProduct = ProductModel(
     title: "Product Title",
+    code: 0,
     demonstratedPrice: "from $79",
     images: ["minutiae_poster_notification",
              "minutiae_poster_notification",
@@ -147,6 +148,7 @@ struct ProductPrice: Codable, Hashable {
 
 struct ProductModel: Codable, Hashable {
     let title: String
+    let code: Int?
     let demonstratedPrice: String
     let images: [String]
     let availableRecords: [Int]?

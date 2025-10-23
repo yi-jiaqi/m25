@@ -35,12 +35,12 @@ struct SettingsView: View {
                 Text("Account Email")
                     .font(.bodyText)
                     .foregroundColor(.white)
-                    .padding(.horizontal, 30)
+                    .padding(0)
                 
                 Text("Delete Account")
                     .font(.bodyTextBold)
                     .foregroundColor(.white)
-                    .padding(.horizontal, 30)
+                    .padding(0)
                 
             }
             .padding(.horizontal, 30)
@@ -54,7 +54,7 @@ struct SettingsView: View {
                     Text("minutiae Website")
                         .font(.bodyText)
                         .foregroundColor(.white)
-                        .padding(.horizontal, 30)
+                        .padding(0)
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
                 
@@ -63,7 +63,7 @@ struct SettingsView: View {
                     Text("Terms of Service")
                         .font(.bodyText)
                         .foregroundColor(.white)
-                        .padding(.horizontal, 30)
+                        .padding(0)
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
                 
@@ -72,7 +72,7 @@ struct SettingsView: View {
                     Text("Contact Support")
                         .font(.bodyText)
                         .foregroundColor(.white)
-                        .padding(.horizontal, 30)
+                        .padding(0)
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
                 
@@ -100,6 +100,7 @@ struct ToggleRow: View {
             Spacer()
             Toggle("", isOn: $isOn)
                 .labelsHidden()
+                .scaleEffect(0.8)
         }
         .padding(.horizontal, 20)
     }

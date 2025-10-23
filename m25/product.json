@@ -1,6 +1,7 @@
 [
     {
-        "title": "Minutiae Poster",
+        "title": "Sample Product",
+        "code": 0,
         "demonstratedPrice": "from $79",
         "images": [
             "minutiae_poster_notification",
@@ -17,17 +18,224 @@
             { "name": "FRAMED", "subtitle": "Full Price", "current": "$139", "original": "$159" }
         ]
     },
+    
+    
     {
         "title": "360 Edition - One Year Book",
+        "code": 111,
         "demonstratedPrice": "from $109",
-        "images": ["minutiae_book_cover"],
+        "images": ["book_360_edition5","book_360_edition6","book_360_edition3"],
         "availableRecords": [1],
         "descriptions": [
-            "One-year hardcover book containing 360 captured moments.",
-            "Printed on archival paper with matte finish."
+            "The minutiae 360 Edition contains all your captured moments over a one-year period. The spine is stamped with the participant’s initials and the corresponding record number.",
         ],
         "prices": [
             { "name": "STANDARD", "subtitle": "Full Price", "current": "$109", "original": "$129" }
+            { "name": "PREMIUM", "subtitle": "Full Price", "current": "$139", "original": "$159" }
         ]
-    }
+    },
+    
+    {
+        "title": "360 Edition - One Year Book",
+        "code": 112,
+        "demonstratedPrice": "from $109",
+        "images": ["book_360_edition7","book_360_edition6","book_360_edition3"],
+        "availableRecords": [2],
+        "descriptions": [
+            "The minutiae 360 Edition contains all your captured moments over a one-year period. The spine is stamped with the participant’s initials and the corresponding record number.",
+        ],
+        "prices": [
+            { "name": "STANDARD", "subtitle": "Full Price", "current": "$109", "original": "$129" }
+            { "name": "PREMIUM", "subtitle": "Full Price", "current": "$139", "original": "$159" }
+        ]
+    },
+    
+    {
+        "title": "360 Edition - One Year Book",
+        "code": 113,
+        "demonstratedPrice": "from $109",
+        "images": ["book_360_edition1","book_360_edition6","book_360_edition3"],
+        "availableRecords": [3],
+        "descriptions": [
+            "The minutiae 360 Edition contains all your captured moments over a one-year period. The spine is stamped with the participant’s initials and the corresponding record number.",
+        ],
+        "prices": [
+            { "name": "STANDARD", "subtitle": "Full Price", "current": "$109", "original": "$129" }
+            { "name": "PREMIUM", "subtitle": "Full Price", "current": "$139", "original": "$159" }
+        ]
+    },
+    
+    {
+        "title": "360 Edition - One Year Book",
+        "code": 114,
+        "demonstratedPrice": "from $109",
+        "images": ["book_360_edition8","book_360_edition6","book_360_edition3"],
+        "availableRecords": [4],
+        "descriptions": [
+            "The minutiae 360 Edition contains all your captured moments over a one-year period. The spine is stamped with the participant’s initials and the corresponding record number.",
+        ],
+        "prices": [
+            { "name": "STANDARD", "subtitle": "Full Price", "current": "$109", "original": "$129" }
+            { "name": "PREMIUM", "subtitle": "Full Price", "current": "$139", "original": "$159" }
+        ]
+    },
+    
+    {
+        "title": "1440 Edition - Four years",
+        "code": 12,
+        "demonstratedPrice": "from $249",
+        "images": ["book_1440_edition"],
+        "availableRecords": [1,2,3,4],
+        "descriptions": [
+            "One-year hardcover book containing 360 captured moments."
+        ],
+        "prices": [
+            { "name": "STANDARD", "subtitle": "Full Price", "current": "$269", "original": "$249" }
+        ]
+    },
+    
+    {
+        "title": "Limited Edition Book",
+        "code": 13,
+        "demonstratedPrice": "from $1440",
+        "images": ["limited_edition1","limited_edition2","limited_edition3","limited_edition4"],
+        "availableRecords": [1,2,3,4],
+        "descriptions": [
+            "One-year hardcover book containing 360 captured moments."
+        ],
+        "prices": [
+            { "name": "STANDARD", "current": "$1440", }
+        ]
+    },
+    
+    {
+        "title": "Classical Poster with Frame",
+        "code": 21,
+        "demonstratedPrice": "from $199",
+        "images": ["poster_classical_framed1","poster_classical_framed2"],
+        "availableRecords": [1,2,3,4],
+        "descriptions": [
+            "Size 24x36 in (61x91 cm)",
+            "Museum-quality custom frames",
+            "Giclée Enhanced Matte Paper Print",
+            "Plexiglass front",
+            "For indoor use"",
+        ],
+        "prices": [
+            { "name": "STANDARD", "current": "$199"}
+        ]
+    },
+    
+    {
+        "title": "Classical Poster without Frame",
+        "code": 22,
+        "demonstratedPrice": "from $179",
+        "images": ["poster_classical_unframed1","poster_classical_unframed2"],
+        "availableRecords": [1,2,3,4],
+        "descriptions": [
+            "Size 24x36 in (61x91 cm)",
+            "Museum-quality posters made on thick and durable matte paper."
+        ],
+        "prices": [
+            { "name": "STANDARD", "subtitle": "Full Price", "current": "$179", "original": "$199", }
+        ]
+    },
+    
+    {
+        "title": "Constellation Posters - One Year",
+        "code": 231,
+        "demonstratedPrice": "from $79",
+        "images": ["poster_const_1"],
+        "availableRecords": [1],
+        "descriptions": [
+            "Size 24x36 in (61x91 cm)",
+            "Museum-quality posters made on thick and durable matte paper. Inspired by constellations, your moments are arranged as stars."
+        ],
+        "prices": [
+            { "name": "STANDARD", "subtitle": "Full Price", "current": "$79", "original": "$99", }
+        ]
+    },
+    
+    {
+        "title": "Constellation Posters - One Year",
+        "code": 232,
+        "demonstratedPrice": "from $79",
+        "images": ["poster_const2"],
+        "availableRecords": [2],
+        "descriptions": [
+            "Size 24x36 in (61x91 cm)",
+            "Museum-quality posters made on thick and durable matte paper. Inspired by constellations, your moments are arranged as stars."
+        ],
+        "prices": [
+            { "name": "STANDARD", "subtitle": "Full Price", "current": "$79", "original": "$99", }
+        ]
+    },
+    
+    {
+        "title": "Constellation Posters - One Year",
+        "code": 233,
+        "demonstratedPrice": "from $79",
+        "images": ["poster_const3"],
+        "availableRecords": [3],
+        "descriptions": [
+            "Size 24x36 in (61x91 cm)",
+            "Museum-quality posters made on thick and durable matte paper. Inspired by constellations, your moments are arranged as stars."
+        ],
+        "prices": [
+            { "name": "STANDARD", "subtitle": "Full Price", "current": "$79", "original": "$99", }
+        ]
+    },
+    
+    {
+        "title": "Constellation Posters - One Year",
+        "code": 234,
+        "demonstratedPrice": "from $79",
+        "images": ["poster_const4"],
+        "availableRecords": [4],
+        "descriptions": [
+            "Size 24x36 in (61x91 cm)",
+            "Museum-quality posters made on thick and durable matte paper. Inspired by constellations, your moments are arranged as stars."
+        ],
+        "prices": [
+            { "name": "STANDARD", "subtitle": "Full Price", "current": "$79", "original": "$99", }
+        ]
+    },
+    
+    {
+        "title": "Constellation Posters - Four Years",
+        "code": 24,
+        "demonstratedPrice": "from $179",
+        "images": ["minutiae_poster_notification"],
+        "availableRecords": [4],
+        "descriptions": [
+            "Size 48x72 in (122x182 cm)",
+            "Museum-quality posters made on thick and durable matte paper. Inspired by constellations, your moments are arranged as stars. When four years combined, it makes a universe on your wall."
+        ],
+        "prices": [
+            { "name": "STANDARD", "subtitle": "Full Price", "current": "$179", "original": "$199", }
+        ]
+    },
+    
+    {
+        "title": "minutiae Tote Bag",
+        "code": 31,
+        "demonstratedPrice": "from $35",
+        "images": ["tote_bag"],
+        "availableRecords": [1,2,3,4],
+        "descriptions": [
+            "Only available for participants who completed the 1440 days cycle.",
+            "100% certified organic cotton 3/1 twill",
+            "Fabric weight: 8 oz/yd² (272 g/m²)",
+            "Dimensions: 16″ × 14 ½″ × 5″ (40.6 cm × 35.6 cm × 12.7 cm)",
+            "Weight limit: 30 lbs (13.6 kg)",
+            "1″ (2.5 cm) wide dual straps, 24.5″ (62.2 cm) length",
+],
+        "prices": [
+            { "name": "STANDARD", "current": "$35", }
+        ]
+    },
+    
+
+    
+
 ]

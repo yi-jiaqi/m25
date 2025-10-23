@@ -18,13 +18,14 @@ extension Color {
     static let grayRegular         = Color(hex: "C6C6C6")
     // Major gray
     
-    static let grayContrast         = Color(hex: "868686")
+    static let grayContrast         = Color(hex: "888888")
     static let grayDark         = Color(hex: "6C6C6C")
     // For contrast, buttons and accessibility
     
     static let blackRegular        = Color(hex: "1D1D1D")
     // Major black
     static let blackPure      = Color(hex: "000000")
-    
+    static let minutiaeBlack = blackRegular
+    static let minutiaeLightGray = grayContrast
     
 }
