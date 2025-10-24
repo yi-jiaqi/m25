@@ -9,11 +9,11 @@ import SwiftUI
 
 @main
 struct m25App: App {
-    
+    @StateObject private var appData = AppDataManager.shared
     @StateObject private var productManager = ProductManager.shared
     var body: some Scene {
         WindowGroup {
-            GridView()
+            GridView().environmentObject(appData)
         }
     }
 }
