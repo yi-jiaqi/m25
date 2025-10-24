@@ -19,27 +19,37 @@ struct AboutView: View {
             Headline(type: .menu, heading: "About")
             NavigationStack {
                 
-                VStack(spacing: 60) {
+                VStack(spacing: 75) {
                     VStack(spacing: 30) {
                         Button("MANIFESTO") {
                             selectedPage = 0
-                            showReading = true
+                            DispatchQueue.main.async {
+                                showReading = true
+                            }
                         }
                         Button("RULES") {
                             selectedPage = 1
-                            showReading = true
+                            DispatchQueue.main.async {
+                                showReading = true
+                            }
                         }
                         Button("THE ARTISTS") {
                             selectedPage = 2
-                            showReading = true
+                            DispatchQueue.main.async {
+                                showReading = true
+                            }
                         }
                         Button("FAQ") {
                             selectedPage = 3
-                            showReading = true
+                            DispatchQueue.main.async {
+                                showReading = true
+                            }
                         }
                         Button("YOUR MEMBERSHIP") {
                             selectedPage = 4
-                            showReading = true
+                            DispatchQueue.main.async {
+                                showReading = true
+                            }
                         }
                     }
                     .font(.smallHeadline)

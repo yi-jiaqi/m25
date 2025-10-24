@@ -300,7 +300,11 @@ struct GridViewModal: View {
                         HStack {
                             Text("Captured: \(capturedCount)")
                             Spacer()
-                            Text("Remaining: \(remainingCount)")
+                            if remainingCount == 0{
+                                Text("Finished!")
+                            }else{
+                                Text("Remaining: \(remainingCount)")
+                            }
                         }
                         .font(.smallBodyText)
                         .foregroundColor(.white)

@@ -434,6 +434,14 @@ No soup for us...
                         linkURL: nil,
                         isSelected: .constant(true)
                     )
+                    
+                    SelectableButton(
+                        type: .singleText,
+                        texts: ["Not Yet A Member?"],
+                        linkURL: nil,
+                        isSelected: .constant(true)
+                    )
+                    // This will lead to the paywall
                 }
                 
                     // MARK: - Add One Year Book Section

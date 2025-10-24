@@ -54,6 +54,7 @@ struct ButtonsBar: View {
                         .scaledToFit()
                         .frame(width: 30, height: 30)
                         .foregroundColor(.black)
+                        .symbolRenderingMode(.monochrome)
                 }
                 Spacer()
                 Button(action: {
@@ -64,6 +65,7 @@ struct ButtonsBar: View {
                         .scaledToFit()
                         .frame(width: 30, height: 30)
                         .foregroundColor(.black)
+                        .symbolRenderingMode(.monochrome)
                 }
                 
             case .reading:
@@ -75,6 +77,7 @@ struct ButtonsBar: View {
                         .scaledToFit()
                         .frame(width: 30, height: 30)
                         .foregroundColor(.black)
+                        .symbolRenderingMode(.monochrome)
                 }
                 Spacer()
             case .setting:
@@ -86,6 +89,7 @@ struct ButtonsBar: View {
                         .scaledToFit()
                         .frame(width: 30, height: 30)
                         .foregroundColor(.white)
+                        .symbolRenderingMode(.monochrome) 
                 }
                 Spacer()
             }

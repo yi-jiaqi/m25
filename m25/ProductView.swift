@@ -38,6 +38,7 @@ struct ProductView: View {
                 .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
                 .frame(height: UIScreen.main.bounds.width)
                 .indexViewStyle(.page(backgroundDisplayMode: .always))
+                .padding(.horizontal,8)
                 
                     // 4. Pricing buttons
                 VStack(spacing: 12) {
@@ -59,25 +60,27 @@ struct ProductView: View {
                 
                     // 5. Available records
                 if let records = product.availableRecords {
-                    Headline(type: .reading, heading: "Available Records:")
-                    
-                    HStack(spacing: 12) {
-                        ForEach(records, id: \.self) { record in
-                            Text("\(record)")
-                                .font(.xSmallHeadline)
-                                .frame(width: 48, height: 48)
-                                .background(
-                                    RoundedRectangle(cornerRadius: 24)
-                                        .fill(selectedRecord == record ? Color.black : Color.clear)
-                                )
-                                .foregroundColor(selectedRecord == record ? .white : .black)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 24)
-                                        .stroke(Color.black, lineWidth: 1)
-                                )
-                                .onTapGesture {
-                                    selectedRecord = record
-                                }
+                    if records[0] !=  0{
+                        Headline(type: .reading, heading: "Available Records:")
+                        
+                        HStack(spacing: 12) {
+                            ForEach(records, id: \.self) { record in
+                                Text("\(record)")
+                                    .font(.xSmallHeadline)
+                                    .frame(width: 48, height: 48)
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 24)
+                                            .fill(selectedRecord == record ? Color.black : Color.clear)
+                                    )
+                                    .foregroundColor(selectedRecord == record ? .white : .black)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 24)
+                                            .stroke(Color.black, lineWidth: 1)
+                                    )
+                                    .onTapGesture {
+                                        selectedRecord = record
+                                    }
+                            }
                         }
                     }
                 }
@@ -165,12 +168,12 @@ struct ProductPosterView: View {
     
     var body: some View {
         ScrollView {
-            VStack(spacing: 12) {
+            VStack(spacing: 0) {
                     // 1. Buttons Bar
-                ButtonsBar(type: .reading, onClose: { dismiss() })
+                ButtonsBar(type: .reading, onClose: { dismiss() }).padding(.bottom,12)
                 
                     // 2. Headline
-                Headline(type: .reading, heading: "Poster")
+                Headline(type: .reading, heading: "Poster").padding(.bottom,6)
                 
                     // 3. Image Carousel
                 TabView {
@@ -186,6 +189,7 @@ struct ProductPosterView: View {
                 .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
                 .frame(height: UIScreen.main.bounds.width)
                 .indexViewStyle(.page(backgroundDisplayMode: .always))
+                .padding(.horizontal,8)
                 
                     // 4. Selectable Buttons for Options
                 VStack(spacing: 12) {

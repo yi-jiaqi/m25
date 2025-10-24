@@ -17,6 +17,7 @@ struct ShopView: View {
                 VStack(alignment: .leading, spacing: 30) {
                     ButtonsBar(type: .setting, onClose: { dismiss() })
                     
+                    Headline(type: .shop_title, heading: "SHOP").padding(.bottom,6).padding(.horizontal,30)
                     ForEach(ProductManager.ProductCategory.allCases, id: \.self) { category in
                         let products = productManager.products(for: category)
                         if !products.isEmpty {

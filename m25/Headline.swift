@@ -22,7 +22,9 @@ struct Headline: View {
         case menu
         case reading
         case shop
+        case shop_title
         case setting
+        
     }
     
     var type: HeadlineType
@@ -71,6 +73,15 @@ struct Headline: View {
                         .frame(height: 1)
                         .foregroundColor(.white.opacity(0.7))
                 }
+            
+        case .shop_title:
+                // 🏪 SHOP version
+            VStack(alignment: .leading, spacing: 10) {
+                Text(heading)
+                    .font(.xLargeHeadline)
+                    .foregroundColor(.white)
+                
+            }
 
 
             
