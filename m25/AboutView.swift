@@ -61,7 +61,7 @@ struct AboutView: View {
                 .fullScreenCover(isPresented: $showDoNotDisturb) {
                     DoNotDisturbView()
                 }
-            }
+            }.padding(0)
         }
         .padding(.horizontal,20)
     }

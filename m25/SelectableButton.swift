@@ -32,7 +32,7 @@ struct SelectableButton: View {
         }
         .frame(maxWidth: .infinity)
         .frame(height: 60) // ✅ consistent height
-        .padding(.horizontal,30)
+        .padding(.horizontal,12)
         .background(backgroundColor)
         .overlay(
             RoundedRectangle(cornerRadius: 10)

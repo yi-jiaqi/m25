@@ -26,19 +26,13 @@ struct ProductView: View {
                     // 3. Image Carousel
                 TabView {
                     ForEach(product.images, id: \.self) { imgName in
-                        Image(imgName)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: UIScreen.main.bounds.width,
-                                   height: UIScreen.main.bounds.width)
-                            .clipped()
-                            .cornerRadius(10)
+                        ZoomableImageView(imageName: imgName) // we'll define this next
+                            .padding(.horizontal, 16) // ✅ inside each tab page
                     }
                 }
                 .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
                 .frame(height: UIScreen.main.bounds.width)
                 .indexViewStyle(.page(backgroundDisplayMode: .always))
-                .padding(.horizontal,8)
                 
                     // 4. Pricing buttons
                 VStack(spacing: 12) {
@@ -54,9 +48,18 @@ struct ProductView: View {
                             selectedPriceIndex = i
                         }
                     }
+                    HStack{
+                        SelectableButton(
+                            type: .singleText,
+                            texts:["Not A Member Yet?"],
+                            linkURL: nil,
+                            isSelected: .constant(true)
+                        )
+                    }.padding(.horizontal,90)
                 }
                 .padding(.horizontal, 16)
                 .padding(.vertical)
+
                 
                     // 5. Available records
                 if let records = product.availableRecords {
@@ -256,12 +259,12 @@ The minutiae 360 Edition contains all your captured moments over a one-year peri
                     .multilineTextAlignment(.leading)
                 
                     // 9. BUY button
-                SelectableButton(
-                    type: .singleText,
-                    texts: ["ORDER"],
-                    linkURL: nil,
-                    isSelected: .constant(true)
-                )
+                    SelectableButton(
+                        type: .singleText,
+                        texts: ["ORDER"],
+                        linkURL: nil,
+                        isSelected: .constant(true)
+                    )
                 
 //                    // 10. SHOP MORE button
 //                SelectableButton(
@@ -282,4 +285,36 @@ The minutiae 360 Edition contains all your captured moments over a one-year peri
 
 #Preview {
     ProductView(product: sampleProduct)
+}
+
+
+struct ZoomableImageView: View {
+    let imageName: String
+    @State private var scale: CGFloat = 1.0
+    @State private var lastScale: CGFloat = 1.0
+    
+    var body: some View {
+        GeometryReader { geo in
+            Image(imageName)
+                .resizable()
+                .scaledToFit()
+                .frame(width: geo.size.width)
+                .scaleEffect(scale)
+                .gesture(
+                    MagnificationGesture()
+                        .onChanged { value in
+                            scale = lastScale * value
+                        }
+                        .onEnded { _ in
+                            withAnimation(.spring()) {
+                                if scale < 1.0 { scale = 1.0 } // reset zoom out
+                                lastScale = scale
+                            }
+                        }
+                )
+                .clipped()
+                .cornerRadius(10)
+        }
+        .frame(height: UIScreen.main.bounds.width)
+    }
 }

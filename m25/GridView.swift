@@ -33,7 +33,7 @@ struct GridView: View {
             }
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
             .indexViewStyle(.page(backgroundDisplayMode: .always))
-            .ignoresSafeArea()
+            .ignoresSafeArea(.all)
             
                 // ✅ Overlay modal on top of everything
             if showInfoModal, let tabIndex = activeTabIndex {
@@ -46,6 +46,7 @@ struct GridView: View {
             }
         }
         .animation(.easeInOut, value: showInfoModal)
+        .ignoresSafeArea(.all)
         
     }
 }
@@ -254,125 +255,131 @@ struct GridViewModal: View {
     }
     
     var body: some View {
-        NavigationStack{
-            ZStack {
-                    // Background overlay (tapping outside dismisses)
-                Color.black.opacity(0.001)
-                    .blendMode(.destinationOver)
-                    .ignoresSafeArea()
-                    .onTapGesture {
-                        withAnimation {
-                            isVisible = false
+        
+            NavigationStack{
+                ZStack {
+                        // Background overlay (tapping outside dismisses)
+                    Color.clear
+                        .contentShape(Rectangle())
+                        .ignoresSafeArea()
+                        .onTapGesture {
+                            withAnimation { isVisible = false }
                         }
-                    }
-                
-                    // Modal content
-                VStack(spacing: 20) {
-                        // 1. Title
-                    Text(tabIndex == 0 ? "COLLECTION VIEW" : "RECORD \(tabIndex)")
-                        .font(.smallHeadline)
-                        .foregroundColor(.white)
-                        .textCase(.uppercase)
                     
-                        // 2. Date Range + Progress
-                    VStack(spacing: 0) {
-                        HStack {
-                            Text(dateFormatter.string(from: startDate))
-                            Spacer()
-                            Text(dateFormatter.string(from: endDate))
-                        }
-                        .font(.smallBodyText)
-                        .foregroundColor(.white)
-                        .padding(.horizontal, 4)
-                        
-                            // Progress bar
-                        GeometryReader { geo in
-                            ZStack(alignment: .leading) {
-                                RoundedRectangle(cornerRadius: geo.size.height / 2)
-                                    .fill(Color(hex: "C6C6C6"))
-                                    .frame(width: geo.size.width+8)
-                                RoundedRectangle(cornerRadius: geo.size.height / 4)
-                                    .fill(Color(hex: "6C6C6C"))
-                                    .frame(width: geo.size.width * progress,height:8)
-                                    .offset(x:4)
-                            }
-                        }
-                        .frame(height: 16)
-                        .padding(.vertical, 8)
-                        
-                        HStack {
-                            Text("Captured: \(capturedCount)")
-                            Spacer()
-                            if remainingCount == 0{
-                                Text("Finished!")
-                            }else{
-                                Text("Remaining: \(remainingCount)")
-                            }
-                        }
-                        .font(.smallBodyText)
-                        .foregroundColor(.white)
-                        .padding(.horizontal, 4)
-                    }
-                    
-                        // 3. Demo text section
-                    VStack(spacing: 12) {
-                            // Always show DEMO
-                        Text("DEMO")
-                            .font(.xSmallHeadline)
+                        // Modal content
+                    VStack(spacing: 20) {
+                            // 1. Title
+                        Text(tabIndex == 0 ? "COLLECTION VIEW" : "RECORD \(tabIndex)")
+                            .font(.smallHeadline)
                             .foregroundColor(.white)
                             .textCase(.uppercase)
                         
-                            // Conditional content
-                        if progress < 1.0 {
-                                // Show "WHEN I FINISH..." only
-                            Button("WHEN I FINISH...") {
-                                showReadingFAQ = true
+                            // 2. Date Range + Progress
+                        VStack(spacing: 0) {
+                            HStack {
+                                Text(dateFormatter.string(from: startDate))
+                                Spacer()
+                                Text(dateFormatter.string(from: endDate))
                             }
-                            .font(.xSmallHeadline)
+                            .font(.smallBodyText)
                             .foregroundColor(.white)
-                            .textCase(.uppercase)
-                        } else {
-                                // Show "ORDER BOOK" and "ORDER POSTER"
-                            Button("ORDER BOOK") {
-                                showBookProduct = true
-                            }
-                            .font(.xSmallHeadline)
-                            .foregroundColor(.white)
-                            .textCase(.uppercase)
+                            .padding(.horizontal, 4)
                             
-                            Button("ORDER POSTER") {
-                                showPosterProduct = true
+                                // Progress bar
+                            GeometryReader { geo in
+                                ZStack(alignment: .leading) {
+                                    RoundedRectangle(cornerRadius: geo.size.height / 2)
+                                        .fill(Color(hex: "C6C6C6"))
+                                        .frame(width: geo.size.width+8)
+                                    RoundedRectangle(cornerRadius: geo.size.height / 4)
+                                        .fill(Color(hex: "6C6C6C"))
+                                        .frame(width: geo.size.width * progress,height:8)
+                                        .offset(x:4)
+                                }
                             }
-                            .font(.xSmallHeadline)
+                            .frame(height: 16)
+                            .padding(.vertical, 8)
+                            
+                            HStack {
+                                Text("Captured: \(capturedCount)")
+                                Spacer()
+                                if remainingCount == 0{
+                                    Text("Finished!")
+                                }else{
+                                    Text("Remaining: \(remainingCount)")
+                                }
+                            }
+                            .font(.smallBodyText)
                             .foregroundColor(.white)
-                            .textCase(.uppercase)
+                            .padding(.horizontal, 4)
+                        }
+                        
+                            // 3. Demo text section
+                        VStack(spacing: 12) {
+                                // Always show DEMO
+                            Text("DEMO")
+                                .font(.xSmallHeadline)
+                                .foregroundColor(.white)
+                                .textCase(.uppercase)
+                            
+                                // Conditional content
+                            if progress < 1.0 {
+                                    // Show "WHEN I FINISH..." only
+                                Button("WHEN I FINISH...") {
+                                    showReadingFAQ = true
+                                }
+                                .font(.xSmallHeadline)
+                                .foregroundColor(.white)
+                                .textCase(.uppercase)
+                            } else {
+                                    // Show "ORDER BOOK" and "ORDER POSTER"
+                                Button("ORDER BOOK") {
+                                    showBookProduct = true
+                                }
+                                .font(.xSmallHeadline)
+                                .foregroundColor(.white)
+                                .textCase(.uppercase)
+                                
+                                Button("ORDER POSTER") {
+                                    showPosterProduct = true
+                                }
+                                .font(.xSmallHeadline)
+                                .foregroundColor(.white)
+                                .textCase(.uppercase)
+                            }
                         }
                     }
+                    .padding(.horizontal, 30)
+                    .padding(.vertical, 25)
+                    .background(Color.grayDark)
+                    .cornerRadius(10)
+                    .padding(.horizontal, 30)
                 }
-                .padding(.horizontal, 30)
-                .padding(.vertical, 25)
-                .background(Color(hex: "6C6C6C"))
-                .cornerRadius(10)
-                .padding(.horizontal, 30)
+                .scrollContentBackground(.hidden)   // hides NavigationStack’s white background
+                .background(Color.clear)
+            }.background {
+                Color.clear
+                    .ignoresSafeArea()
             }
-        }
-        .fullScreenCover(isPresented: $showBookProduct) {
-            if let thisBook = thisBook {
-                ProductView(product: thisBook)
-            } else {
-                Text("Book not found.")
+            .fullScreenCover(isPresented: $showBookProduct) {
+                if let thisBook = thisBook {
+                    ProductView(product: thisBook)
+                } else {
+                    Text("Book not found.")
+                }
             }
-        }
-        .fullScreenCover(isPresented: $showPosterProduct) {
-            if let thisPoster = thisPoster {
-                ProductView(product: thisPoster)
-            } else {
-                Text("Poster not found.")
+            .fullScreenCover(isPresented: $showPosterProduct) {
+                if let thisPoster = thisPoster {
+                    ProductView(product: thisPoster)
+                } else {
+                    Text("Poster not found.")
+                }
             }
-        }.fullScreenCover(isPresented: $showReadingFAQ) {
-            ReadingView(initialPage: 3)
-        } .background(Color.clear) // ensures no white background
-            .presentationBackground(.clear)
+            .fullScreenCover(isPresented: $showReadingFAQ) {
+                ReadingView(initialPage: 3)
+            }
+            .toolbar(.hidden, for: .navigationBar)  // hides nav bar background
+            .toolbarBackground(.hidden, for: .navigationBar)
     }
 }
 
