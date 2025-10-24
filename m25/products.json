@@ -21,7 +21,7 @@
     
     
     {
-        "title": "360 Edition - One Year Book",
+        "title": "360 Edition - One Year",
         "code": 111,
         "demonstratedPrice": "from $109",
         "images": ["360-Edition---Record-I","360 Edition - Open book V2","360-Edition-front-with-Graphics","360 Edition - Premium Quality","360 Edition - Standard Quality","360-Edition-in-environment"],
@@ -96,7 +96,7 @@
     },
     
     {
-        "title": "Limited Edition Book",
+        "title": "Limited Edition",
         "code": 130,
         "demonstratedPrice": "from $1440",
         "images": ["limited_edition1","limited_edition2","limited_edition3","limited_edition4"],
@@ -110,10 +110,10 @@
     },
     
     {
-        "title": "Classic with Frame",
+        "title": "Classic",
         "code": 210,
         "demonstratedPrice": "from $199",
-        "images": ["poster_classical_framed1","poster_classical_framed2"],
+        "images": ["poster_classical_framed1","poster_classical_framed2","poster_classical_unframed1","poster_classical_unframed2"],
         "availableRecords": [1],
         "descriptions": [
             "Size 24x36 in (61x91 cm)",
@@ -123,7 +123,8 @@
             "For indoor use",
         ],
         "prices": [
-            { "name": "MEMBER", "subtitle": "Full Price", "current": "$199", "original": "$249", }
+            { "name": "WITHOUT FRAME", "subtitle": "Full Price", "current": "$79", "original": "$99", },
+            { "name": "WITH FRAME", "subtitle": "Full Price", "current": "$199", "original": "$249", }
         ]
     },
     
@@ -143,17 +144,18 @@
     },
     
     {
-        "title": "Constellation Posters One Year",
+        "title": "Constellations",
         "code": 231,
         "demonstratedPrice": "from $79",
         "images": ["poster_const1"],
         "availableRecords": [1],
         "descriptions": [
-            "Size 24x36 in (61x91 cm)",
+            "Size 18x24 in (45.72 x 60.96 cm)",
             "Museum-quality posters made on thick and durable matte paper. Inspired by constellations, your moments are arranged as stars."
         ],
         "prices": [
-            { "name": "MEMBER", "subtitle": "Full Price", "current": "$79", "original": "$99", }
+            { "name": "WITHOUT FRAME", "subtitle": "Full Price", "current": "$79", "original": "$99", },
+            { "name": "WITH FRAME", "subtitle": "Full Price", "current": "$199", "original": "$249", }
         ]
     },
     
@@ -164,11 +166,12 @@
         "images": ["poster_const2"],
         "availableRecords": [2],
         "descriptions": [
-            "Size 24x36 in (61x91 cm)",
+            "Size 18x24 in (45.72 x 60.96 cm)",
             "Museum-quality posters made on thick and durable matte paper. Inspired by constellations, your moments are arranged as stars."
         ],
         "prices": [
-            { "name": "MEMBER", "subtitle": "Full Price", "current": "$79", "original": "$99", }
+            { "name": "WITHOUT FRAME", "subtitle": "Full Price", "current": "$79", "original": "$99", },
+            { "name": "WITH FRAME", "subtitle": "Full Price", "current": "$199", "original": "$249", }
         ]
     },
     
@@ -179,11 +182,12 @@
         "images": ["poster_const3"],
         "availableRecords": [3],
         "descriptions": [
-            "Size 24x36 in (61x91 cm)",
+            "Size 18x24 in (45.72 x 60.96 cm)",
             "Museum-quality posters made on thick and durable matte paper. Inspired by constellations, your moments are arranged as stars."
         ],
         "prices": [
-            { "name": "MEMBER", "subtitle": "Full Price", "current": "$79", "original": "$99", }
+            { "name": "WITHOUT FRAME", "subtitle": "Full Price", "current": "$79", "original": "$99", },
+            { "name": "WITH FRAME", "subtitle": "Full Price", "current": "$199", "original": "$249", }
         ]
     },
     
@@ -194,11 +198,12 @@
         "images": ["poster_const4"],
         "availableRecords": [4],
         "descriptions": [
-            "Size 24x36 in (61x91 cm)",
+            "Size 18x24 in (45.72 x 60.96 cm)",
             "Museum-quality posters made on thick and durable matte paper. Inspired by constellations, your moments are arranged as stars."
         ],
         "prices": [
-            { "name": "MEMBER", "subtitle": "Full Price", "current": "$79", "original": "$99", }
+            { "name": "WITHOUT FRAME", "subtitle": "Full Price", "current": "$79", "original": "$99", },
+            { "name": "WITH FRAME", "subtitle": "Full Price", "current": "$199", "original": "$249", }
         ]
     },
     
