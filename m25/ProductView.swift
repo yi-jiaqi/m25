@@ -96,7 +96,7 @@ struct ProductView: View {
                     // 7. BUY
                 SelectableButton(
                     type: .singleText,
-                    texts: ["BUY"],
+                    texts: ["ORDER"],
                     linkURL: nil,
                     isSelected: .constant(true)
                 )
@@ -254,7 +254,7 @@ The minutiae 360 Edition contains all your captured moments over a one-year peri
                     // 9. BUY button
                 SelectableButton(
                     type: .singleText,
-                    texts: ["BUY"],
+                    texts: ["ORDER"],
                     linkURL: nil,
                     isSelected: .constant(true)
                 )

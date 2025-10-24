@@ -85,7 +85,7 @@
         "code": 120,
         "demonstratedPrice": "from $249",
         "images": ["book_1440_edition1","book_1440_edition2","book_1440_edition3"],
-        "availableRecords": [1,2,3,4],
+        "availableRecords": [1],
         "descriptions": [
             "The minutiae 1440 Edition contains all your captured minutiae moments over a four-year period.\nThe spine is stamped with the participant’s initials and the corresponding record and volume number.\n\nThe book includes missed moments and is sequenced by UTC time (each page represents one minute)"
         ],
@@ -100,12 +100,12 @@
         "code": 130,
         "demonstratedPrice": "from $1440",
         "images": ["limited_edition1","limited_edition2","limited_edition3","limited_edition4"],
-        "availableRecords": [1,2,3,4],
+        "availableRecords": [1],
         "descriptions": [
             "One-year hardcover book containing 360 captured moments."
         ],
         "prices": [
-            { "name": "STANDARD", "current": "$1440", }
+            { "name": "MEMBER", "current": "$1440", }
         ]
     },
     
@@ -114,7 +114,7 @@
         "code": 210,
         "demonstratedPrice": "from $199",
         "images": ["poster_classical_framed1","poster_classical_framed2"],
-        "availableRecords": [1,2,3,4],
+        "availableRecords": [1],
         "descriptions": [
             "Size 24x36 in (61x91 cm)",
             "Museum-quality custom frames",
@@ -123,22 +123,22 @@
             "For indoor use",
         ],
         "prices": [
-            { "name": "STANDARD", "current": "$199"}
+            { "name": "MEMBER", "subtitle": "Full Price", "current": "$199", "original": "$249", }
         ]
     },
     
     {
         "title": "Classic without Frame",
         "code": 220,
-        "demonstratedPrice": "from $179",
+        "demonstratedPrice": "from $79",
         "images": ["poster_classical_unframed1","poster_classical_unframed2"],
-        "availableRecords": [1,2,3,4],
+        "availableRecords": [1],
         "descriptions": [
             "Size 24x36 in (61x91 cm)",
             "Museum-quality posters made on thick and durable matte paper."
         ],
         "prices": [
-            { "name": "STANDARD", "subtitle": "Full Price", "current": "$179", "original": "$199", }
+            { "name": "MEMBER", "subtitle": "Full Price", "current": "$79", "original": "$99", }
         ]
     },
     
@@ -153,7 +153,7 @@
             "Museum-quality posters made on thick and durable matte paper. Inspired by constellations, your moments are arranged as stars."
         ],
         "prices": [
-            { "name": "STANDARD", "subtitle": "Full Price", "current": "$79", "original": "$99", }
+            { "name": "MEMBER", "subtitle": "Full Price", "current": "$79", "original": "$99", }
         ]
     },
     
@@ -168,7 +168,7 @@
             "Museum-quality posters made on thick and durable matte paper. Inspired by constellations, your moments are arranged as stars."
         ],
         "prices": [
-            { "name": "STANDARD", "subtitle": "Full Price", "current": "$79", "original": "$99", }
+            { "name": "MEMBER", "subtitle": "Full Price", "current": "$79", "original": "$99", }
         ]
     },
     
@@ -183,7 +183,7 @@
             "Museum-quality posters made on thick and durable matte paper. Inspired by constellations, your moments are arranged as stars."
         ],
         "prices": [
-            { "name": "STANDARD", "subtitle": "Full Price", "current": "$79", "original": "$99", }
+            { "name": "MEMBER", "subtitle": "Full Price", "current": "$79", "original": "$99", }
         ]
     },
     
@@ -198,7 +198,7 @@
             "Museum-quality posters made on thick and durable matte paper. Inspired by constellations, your moments are arranged as stars."
         ],
         "prices": [
-            { "name": "STANDARD", "subtitle": "Full Price", "current": "$79", "original": "$99", }
+            { "name": "MEMBER", "subtitle": "Full Price", "current": "$79", "original": "$99", }
         ]
     },
     
@@ -213,7 +213,7 @@
             "Museum-quality posters made on thick and durable matte paper. Inspired by constellations, your moments are arranged as stars. When four years combined, it makes a universe on your wall."
         ],
         "prices": [
-            { "name": "STANDARD", "subtitle": "Full Price", "current": "$179", "original": "$199", }
+            { "name": "MEMBER", "subtitle": "Full Price", "current": "$179", "original": "$199", }
         ]
     },
     
