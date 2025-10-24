@@ -43,6 +43,7 @@ struct ButtonsBar: View {
                         .scaledToFit()
                         .frame(width: 30, height: 30)
                         .foregroundColor(.white)
+                        .symbolRenderingMode(.monochrome)
                 }
                 
             case .grid:
@@ -55,6 +56,11 @@ struct ButtonsBar: View {
                         .frame(width: 30, height: 30)
                         .foregroundColor(.black)
                         .symbolRenderingMode(.monochrome)
+                        .background(
+                            Circle()
+                                .fill(Color.white) // The solid background color
+                        )
+                        .clipShape(Circle())
                 }
                 Spacer()
                 Button(action: {
@@ -66,6 +72,11 @@ struct ButtonsBar: View {
                         .frame(width: 30, height: 30)
                         .foregroundColor(.black)
                         .symbolRenderingMode(.monochrome)
+                        .background(
+                            Circle()
+                                .fill(Color.white) // The solid background color
+                        )
+                        .clipShape(Circle())
                 }
                 
             case .reading:
@@ -89,7 +100,7 @@ struct ButtonsBar: View {
                         .scaledToFit()
                         .frame(width: 30, height: 30)
                         .foregroundColor(.white)
-                        .symbolRenderingMode(.monochrome) 
+                        .symbolRenderingMode(.monochrome)
                 }
                 Spacer()
             }

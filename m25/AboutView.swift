@@ -23,37 +23,25 @@ struct AboutView: View {
                     VStack(spacing: 30) {
                         Button("MANIFESTO") {
                             selectedPage = 0
-                            DispatchQueue.main.async {
-                                showReading = true
-                            }
                         }
                         Button("RULES") {
                             selectedPage = 1
-                            DispatchQueue.main.async {
-                                showReading = true
-                            }
                         }
                         Button("THE ARTISTS") {
                             selectedPage = 2
-                            DispatchQueue.main.async {
-                                showReading = true
-                            }
                         }
                         Button("FAQ") {
                             selectedPage = 3
-                            DispatchQueue.main.async {
-                                showReading = true
-                            }
                         }
                         Button("YOUR MEMBERSHIP") {
                             selectedPage = 4
-                            DispatchQueue.main.async {
-                                showReading = true
-                            }
                         }
                     }
                     .font(.smallHeadline)
                     .foregroundColor(.white)
+                    .onChange(of: selectedPage) { _ in
+                        showReading = true
+                    }
                     
                     VStack(spacing: 40) {
                         Button("DO NOT DISTURB") {

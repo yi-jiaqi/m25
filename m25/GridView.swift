@@ -41,10 +41,12 @@ struct GridView: View {
                     .environmentObject(appData)
                     .transition(.opacity)
                     .zIndex(10)
+                    .background(Color.clear) // ensures no white background
+                    .presentationBackground(.clear)
             }
         }
         .animation(.easeInOut, value: showInfoModal)
-
+        
     }
 }
 
@@ -255,7 +257,8 @@ struct GridViewModal: View {
         NavigationStack{
             ZStack {
                     // Background overlay (tapping outside dismisses)
-                Color.black.opacity(0.3)
+                Color.black.opacity(0.001)
+                    .blendMode(.destinationOver)
                     .ignoresSafeArea()
                     .onTapGesture {
                         withAnimation {
@@ -368,7 +371,8 @@ struct GridViewModal: View {
             }
         }.fullScreenCover(isPresented: $showReadingFAQ) {
             ReadingView(initialPage: 3)
-        }
+        } .background(Color.clear) // ensures no white background
+            .presentationBackground(.clear)
     }
 }
 
