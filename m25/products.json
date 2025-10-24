@@ -112,7 +112,7 @@
     {
         "title": "Classic",
         "code": 210,
-        "demonstratedPrice": "from $199",
+        "demonstratedPrice": "From $199",
         "images": ["poster_classical_framed1","poster_classical_framed2","poster_classical_unframed1","poster_classical_unframed2"],
         "availableRecords": [1],
         "descriptions": [
