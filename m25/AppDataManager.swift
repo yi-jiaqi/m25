@@ -67,6 +67,8 @@ class AppDataManager: ObservableObject {
 
         // Combine
         let computedState = UserState(
+            
+            startingDate: user.startingDate,
             passedDays: passedDays,
             didCaptureMoments: didCaptureMoments,
             capturedMoments: capturedMoments,

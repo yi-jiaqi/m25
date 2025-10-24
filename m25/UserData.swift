@@ -12,6 +12,7 @@ struct TestingUser: Codable {
 }
 
 struct UserState {
+    let startingDate: Date 
     let passedDays: Int
     let didCaptureMoments: [Bool]
     let capturedMoments: Int

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct GridView: View {
+    @EnvironmentObject var appData: AppDataManager
     @State private var selectedTab = 0
     @State private var showInfoModal = false
     @State private var activeTabIndex: Int? = nil
@@ -16,15 +17,18 @@ struct GridView: View {
     var body: some View {
         ZStack {
             TabView(selection: $selectedTab) {
-                ForEach((0..<5).reversed(), id: \.self) { index in
-                    GridPageView(
-                        index: index,
-                        showInfoModal: $showInfoModal,
-                        activeTabIndex: $activeTabIndex,
-                        isDateVisible: $isDateVisible[index],
-                        zoomScale: $zoomScale
-                    )
-                    .tag(index)
+                if let user = appData.userState {
+                    let yearCount = max(1, min(user.currentYearIndex + 1, 4)) // Year 0 (Collection) + 1..N
+                    ForEach((0...yearCount).reversed(), id: \.self) { index in
+                        GridPageView(
+                            index: index,
+                            showInfoModal: $showInfoModal,
+                            activeTabIndex: $activeTabIndex,
+                            isDateVisible: $isDateVisible[index],
+                            zoomScale: $zoomScale
+                        )
+                        .tag(index)
+                    }
                 }
             }
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
@@ -34,6 +38,7 @@ struct GridView: View {
                 // ✅ Overlay modal on top of everything
             if showInfoModal, let tabIndex = activeTabIndex {
                 GridViewModal(tabIndex: tabIndex, isVisible: $showInfoModal)
+                    .environmentObject(appData)
                     .transition(.opacity)
                     .zIndex(10)
             }
@@ -171,26 +176,59 @@ struct GridViewModal: View {
     @Binding var isVisible: Bool
     @Environment(\.dismiss) private var dismiss
     
-        // MARK: - Randomized values
-    private var capturedCount: Int { Int.random(in: 0...360) }
-    private var remainingCount: Int { Int.random(in: 0...360) }
-    private var progress: Double { Double.random(in: 0.2...0.9) }
+        // MARK: - Applied values
+    @EnvironmentObject var appData: AppDataManager
+    
+    private var capturedCount: Int {
+        guard let user = appData.userState else { return 0 }
+        
+        if tabIndex == 0 {
+                // Sum of all captured moments across 4 years
+            return user.eachYearCapturedMoments.reduce(0, +)
+        } else {
+            return user.eachYearCapturedMoments[tabIndex - 1]
+        }
+    }
+    
+    private var remainingCount: Int {
+        guard let user = appData.userState else { return 0 }
+        
+        if tabIndex == 0 {
+                // Total remaining moments out of 1440
+            return max(1440 - user.passedDays, 0)
+        } else {
+            let endOfThisYear = tabIndex * 360
+            return max(endOfThisYear - user.passedDays, 0)
+        }
+    }
+    
+    private var progress: Double {
+        guard let user = appData.userState else { return 0 }
+        
+        if tabIndex == 0 {
+                // Overall progress for 1440-day cycle
+            let value = Double(user.passedDays) / 1440.0
+            return min(max(value, 0), 1)
+        } else {
+            let value = user.eachYearProgress[tabIndex - 1]
+            return min(max(value, 0), 1)
+        }
+    }
     
     @State private var showPosterProduct = false
     @State private var showBookProduct = false
     @State private var showReadingFAQ = false
         // MARK: - Dates
     private var startDate: Date {
-        switch tabIndex {
-        case 0: return Date()
-        case 1: return Date()
-        default: return Calendar.current.date(byAdding: .day, value: (tabIndex - 1) * 360, to: Date()) ?? Date()
-        }
+        guard let user = appData.userState else { return Date() }
+        if tabIndex == 0 { return user.startingDate }
+        return Calendar.current.date(byAdding: .day, value: (tabIndex - 1) * 360, to: user.startingDate) ?? user.startingDate
     }
     
     private var endDate: Date {
-        let daysLater = (tabIndex == 0) ? 1440 : 360
-        return Calendar.current.date(byAdding: .day, value: daysLater, to: startDate) ?? Date()
+        guard let user = appData.userState else { return Date() }
+        if tabIndex == 0 { return user.finishingDate }
+        return Calendar.current.date(byAdding: .day, value: (tabIndex) * 360, to: user.startingDate) ?? user.finishingDate
     }
     
         // MARK: - Date Formatter
@@ -271,31 +309,37 @@ struct GridViewModal: View {
                     
                         // 3. Demo text section
                     VStack(spacing: 12) {
+                            // Always show DEMO
                         Text("DEMO")
                             .font(.xSmallHeadline)
                             .foregroundColor(.white)
                             .textCase(.uppercase)
                         
-                        Button("ORDER BOOK") {
-                            showBookProduct = true
+                            // Conditional content
+                        if progress < 1.0 {
+                                // Show "WHEN I FINISH..." only
+                            Button("WHEN I FINISH...") {
+                                showReadingFAQ = true
+                            }
+                            .font(.xSmallHeadline)
+                            .foregroundColor(.white)
+                            .textCase(.uppercase)
+                        } else {
+                                // Show "ORDER BOOK" and "ORDER POSTER"
+                            Button("ORDER BOOK") {
+                                showBookProduct = true
+                            }
+                            .font(.xSmallHeadline)
+                            .foregroundColor(.white)
+                            .textCase(.uppercase)
+                            
+                            Button("ORDER POSTER") {
+                                showPosterProduct = true
+                            }
+                            .font(.xSmallHeadline)
+                            .foregroundColor(.white)
+                            .textCase(.uppercase)
                         }
-                        .font(.xSmallHeadline)
-                        .foregroundColor(.white)
-                        .textCase(.uppercase)
-                        
-                        Button("ORDER POSTER") {
-                            showPosterProduct = true
-                        }
-                        .font(.xSmallHeadline)
-                        .foregroundColor(.white)
-                        .textCase(.uppercase)
-                        
-                        Button("WHEN I FINISH...") {
-                            showReadingFAQ = true
-                        }
-                        .font(.xSmallHeadline)
-                        .foregroundColor(.white)
-                        .textCase(.uppercase)
                     }
                 }
                 .padding(.horizontal, 30)
