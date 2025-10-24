@@ -2,7 +2,7 @@
     {
         "title": "Sample Product",
         "code": 0,
-        "demonstratedPrice": "from $79",
+        "demonstratedPrice": "From $79",
         "images": [
             "minutiae_poster_notification",
             "minutiae_poster_notification",
@@ -21,9 +21,9 @@
     
     
     {
-        "title": "360 Edition - One Year Book",
+        "title": "360 Edition - One Year",
         "code": 111,
-        "demonstratedPrice": "from $109",
+        "demonstratedPrice": "From $109",
         "images": ["360-Edition---Record-I","360 Edition - Open book V2","360-Edition-front-with-Graphics","360 Edition - Premium Quality","360 Edition - Standard Quality","360-Edition-in-environment"],
         "availableRecords": [1],
         "descriptions": [
@@ -38,7 +38,7 @@
     {
         "title": "360 Edition - One Year",
         "code": 112,
-        "demonstratedPrice": "from $109",
+        "demonstratedPrice": "From $109",
         "images": ["360-Edition--Record-II","360 Edition - Open book V2","360-Edition-front-with-Graphics","360 Edition - Premium Quality","360 Edition - Standard Quality","360-Edition-in-environment"],
         "availableRecords": [2],
         "descriptions": [
@@ -53,7 +53,7 @@
     {
         "title": "360 Edition - One Year",
         "code": 113,
-        "demonstratedPrice": "from $109",
+        "demonstratedPrice": "From $109",
         "images": ["360-Edition--Record-III","360 Edition - Open book V2","360-Edition-front-with-Graphics","360 Edition - Premium Quality","360 Edition - Standard Quality","360-Edition-in-environment"],
         "availableRecords": [3],
         "descriptions": [
@@ -68,7 +68,7 @@
     {
         "title": "360 Edition - One Year",
         "code": 114,
-        "demonstratedPrice": "from $109",
+        "demonstratedPrice": "From $109",
         "images": ["360-Edition--Record-IV","360 Edition - Open book V2","360-Edition-front-with-Graphics","360 Edition - Premium Quality","360 Edition - Standard Quality","360-Edition-in-environment"],
         "availableRecords": [4],
         "descriptions": [
@@ -83,9 +83,9 @@
     {
         "title": "1440 Edition - Four years",
         "code": 120,
-        "demonstratedPrice": "from $249",
+        "demonstratedPrice": "From $249",
         "images": ["book_1440_edition1","book_1440_edition2","book_1440_edition3"],
-        "availableRecords": [1,2,3,4],
+        "availableRecords": [1],
         "descriptions": [
             "The minutiae 1440 Edition contains all your captured minutiae moments over a four-year period.\nThe spine is stamped with the participant’s initials and the corresponding record and volume number.\n\nThe book includes missed moments and is sequenced by UTC time (each page represents one minute)"
         ],
@@ -96,25 +96,25 @@
     },
     
     {
-        "title": "Limited Edition Book",
+        "title": "Limited Edition",
         "code": 130,
-        "demonstratedPrice": "from $1440",
+        "demonstratedPrice": "From $1440",
         "images": ["limited_edition1","limited_edition2","limited_edition3","limited_edition4"],
-        "availableRecords": [1,2,3,4],
+        "availableRecords": [1],
         "descriptions": [
             "One-year hardcover book containing 360 captured moments."
         ],
         "prices": [
-            { "name": "STANDARD", "current": "$1440", }
+            { "name": "MEMBER", "current": "$1440", }
         ]
     },
     
     {
-        "title": "Classic with Frame",
+        "title": "Classic",
         "code": 210,
-        "demonstratedPrice": "from $199",
-        "images": ["poster_classical_framed1","poster_classical_framed2"],
-        "availableRecords": [1,2,3,4],
+        "demonstratedPrice": "From $199",
+        "images": ["poster_classical_framed1","poster_classical_framed2","poster_classical_unframed1","poster_classical_unframed2"],
+        "availableRecords": [1],
         "descriptions": [
             "Size 24x36 in (61x91 cm)",
             "Museum-quality custom frames",
@@ -123,89 +123,94 @@
             "For indoor use",
         ],
         "prices": [
-            { "name": "STANDARD", "current": "$199"}
+            { "name": "WITHOUT FRAME", "subtitle": "Full Price", "current": "$79", "original": "$99", },
+            { "name": "WITH FRAME", "subtitle": "Full Price", "current": "$199", "original": "$249", }
         ]
     },
     
     {
         "title": "Classic without Frame",
         "code": 220,
-        "demonstratedPrice": "from $179",
+        "demonstratedPrice": "From $79",
         "images": ["poster_classical_unframed1","poster_classical_unframed2"],
-        "availableRecords": [1,2,3,4],
+        "availableRecords": [1],
         "descriptions": [
             "Size 24x36 in (61x91 cm)",
             "Museum-quality posters made on thick and durable matte paper."
         ],
         "prices": [
-            { "name": "STANDARD", "subtitle": "Full Price", "current": "$179", "original": "$199", }
+            { "name": "MEMBER", "subtitle": "Full Price", "current": "$79", "original": "$99", }
         ]
     },
     
     {
-        "title": "Constellation Posters One Year",
+        "title": "Constellations",
         "code": 231,
-        "demonstratedPrice": "from $79",
+        "demonstratedPrice": "From $79",
         "images": ["poster_const1"],
         "availableRecords": [1],
         "descriptions": [
-            "Size 24x36 in (61x91 cm)",
+            "Size 18x24 in (45.72 x 60.96 cm)",
             "Museum-quality posters made on thick and durable matte paper. Inspired by constellations, your moments are arranged as stars."
         ],
         "prices": [
-            { "name": "STANDARD", "subtitle": "Full Price", "current": "$79", "original": "$99", }
+            { "name": "WITHOUT FRAME", "subtitle": "Full Price", "current": "$79", "original": "$99", },
+            { "name": "WITH FRAME", "subtitle": "Full Price", "current": "$199", "original": "$249", }
         ]
     },
     
     {
         "title": "Constellation Posters One Year",
         "code": 232,
-        "demonstratedPrice": "from $79",
+        "demonstratedPrice": "From $79",
         "images": ["poster_const2"],
         "availableRecords": [2],
         "descriptions": [
-            "Size 24x36 in (61x91 cm)",
+            "Size 18x24 in (45.72 x 60.96 cm)",
             "Museum-quality posters made on thick and durable matte paper. Inspired by constellations, your moments are arranged as stars."
         ],
         "prices": [
-            { "name": "STANDARD", "subtitle": "Full Price", "current": "$79", "original": "$99", }
+            { "name": "WITHOUT FRAME", "subtitle": "Full Price", "current": "$79", "original": "$99", },
+            { "name": "WITH FRAME", "subtitle": "Full Price", "current": "$199", "original": "$249", }
         ]
     },
     
     {
         "title": "Constellation Posters One Year",
         "code": 233,
-        "demonstratedPrice": "from $79",
+        "demonstratedPrice": "From $79",
         "images": ["poster_const3"],
         "availableRecords": [3],
         "descriptions": [
-            "Size 24x36 in (61x91 cm)",
+            "Size 18x24 in (45.72 x 60.96 cm)",
             "Museum-quality posters made on thick and durable matte paper. Inspired by constellations, your moments are arranged as stars."
         ],
         "prices": [
-            { "name": "STANDARD", "subtitle": "Full Price", "current": "$79", "original": "$99", }
+            { "name": "WITHOUT FRAME", "subtitle": "Full Price", "current": "$79", "original": "$99", },
+            { "name": "WITH FRAME", "subtitle": "Full Price", "current": "$199", "original": "$249", }
         ]
     },
     
     {
         "title": "Constellation Posters One Year",
         "code": 234,
-        "demonstratedPrice": "from $79",
+        "demonstratedPrice": "From $79",
         "images": ["poster_const4"],
         "availableRecords": [4],
         "descriptions": [
-            "Size 24x36 in (61x91 cm)",
+            "Size 18x24 in (45.72 x 60.96 cm)",
             "Museum-quality posters made on thick and durable matte paper. Inspired by constellations, your moments are arranged as stars."
         ],
         "prices": [
-            { "name": "STANDARD", "subtitle": "Full Price", "current": "$79", "original": "$99", }
+            { "name": "WITHOUT FRAME", "subtitle": "Full Price", "current": "$79", "original": "$99", },
+            { "name": "WITH FRAME", "subtitle": "Full Price", "current": "$199", "original": "$249", }
         ]
     },
     
     {
         "title": "Constellation Posters Four Years",
         "code": 240,
-        "demonstratedPrice": "from $179",
+        "demonstratedPrice": "From $179",
         "images": ["minutiae_poster_notification"],
         "availableRecords": [4],
         "descriptions": [
@@ -213,14 +218,14 @@
             "Museum-quality posters made on thick and durable matte paper. Inspired by constellations, your moments are arranged as stars. When four years combined, it makes a universe on your wall."
         ],
         "prices": [
-            { "name": "STANDARD", "subtitle": "Full Price", "current": "$179", "original": "$199", }
+            { "name": "MEMBER", "subtitle": "Full Price", "current": "$179", "original": "$199", }
         ]
     },
     
     {
         "title": "minutiae Tote Bag",
         "code": 310,
-        "demonstratedPrice": "from $35",
+        "demonstratedPrice": "$35",
         "images": ["tote_bag"],
         "availableRecords": [0],
         "descriptions": [

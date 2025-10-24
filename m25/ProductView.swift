@@ -99,18 +99,18 @@ struct ProductView: View {
                     // 7. BUY
                 SelectableButton(
                     type: .singleText,
-                    texts: ["BUY"],
+                    texts: ["ORDER"],
                     linkURL: nil,
                     isSelected: .constant(true)
                 )
                 
-                    // 8. SHOP MORE
-                SelectableButton(
-                    type: .externalLink,
-                    texts: ["SHOP MORE"],
-                    linkURL: URL(string: "https://minutiae-app.com/shop"),
-                    isSelected: .constant(false)
-                )
+//                    // 8. SHOP MORE
+//                SelectableButton(
+//                    type: .externalLink,
+//                    texts: ["SHOP MORE"],
+//                    linkURL: URL(string: "https://minutiae-app.com/shop"),
+//                    isSelected: .constant(false)
+//                )
             }
             .padding(.horizontal, 32)
             .padding(.bottom, 80)
@@ -258,18 +258,18 @@ The minutiae 360 Edition contains all your captured moments over a one-year peri
                     // 9. BUY button
                 SelectableButton(
                     type: .singleText,
-                    texts: ["BUY"],
+                    texts: ["ORDER"],
                     linkURL: nil,
                     isSelected: .constant(true)
                 )
                 
-                    // 10. SHOP MORE button
-                SelectableButton(
-                    type: .externalLink,
-                    texts: ["SHOP MORE"],
-                    linkURL: URL(string: "https://minutiae-app.com/shop"),
-                    isSelected: .constant(false)
-                )
+//                    // 10. SHOP MORE button
+//                SelectableButton(
+//                    type: .externalLink,
+//                    texts: ["SHOP MORE"],
+//                    linkURL: URL(string: "https://minutiae-app.com/shop"),
+//                    isSelected: .constant(false)
+//                )
             }
             .padding(.horizontal, 32)
             .padding(.bottom, 80)

@@ -37,7 +37,7 @@ extension ProductManager {
     enum ProductCategory: String, CaseIterable {
         case book = "Books"
         case poster = "Posters"
-        case other = "Others"
+        case other = "Misc"
     }
     
     func products(for category: ProductCategory) -> [ProductModel] {
