@@ -2,7 +2,7 @@
     {
         "title": "Sample Product",
         "code": 0,
-        "demonstratedPrice": "from $79",
+        "demonstratedPrice": "From $79",
         "images": [
             "minutiae_poster_notification",
             "minutiae_poster_notification",
@@ -23,7 +23,7 @@
     {
         "title": "360 Edition - One Year",
         "code": 111,
-        "demonstratedPrice": "from $109",
+        "demonstratedPrice": "From $109",
         "images": ["360-Edition---Record-I","360 Edition - Open book V2","360-Edition-front-with-Graphics","360 Edition - Premium Quality","360 Edition - Standard Quality","360-Edition-in-environment"],
         "availableRecords": [1],
         "descriptions": [
@@ -38,7 +38,7 @@
     {
         "title": "360 Edition - One Year",
         "code": 112,
-        "demonstratedPrice": "from $109",
+        "demonstratedPrice": "From $109",
         "images": ["360-Edition--Record-II","360 Edition - Open book V2","360-Edition-front-with-Graphics","360 Edition - Premium Quality","360 Edition - Standard Quality","360-Edition-in-environment"],
         "availableRecords": [2],
         "descriptions": [
@@ -53,7 +53,7 @@
     {
         "title": "360 Edition - One Year",
         "code": 113,
-        "demonstratedPrice": "from $109",
+        "demonstratedPrice": "From $109",
         "images": ["360-Edition--Record-III","360 Edition - Open book V2","360-Edition-front-with-Graphics","360 Edition - Premium Quality","360 Edition - Standard Quality","360-Edition-in-environment"],
         "availableRecords": [3],
         "descriptions": [
@@ -68,7 +68,7 @@
     {
         "title": "360 Edition - One Year",
         "code": 114,
-        "demonstratedPrice": "from $109",
+        "demonstratedPrice": "From $109",
         "images": ["360-Edition--Record-IV","360 Edition - Open book V2","360-Edition-front-with-Graphics","360 Edition - Premium Quality","360 Edition - Standard Quality","360-Edition-in-environment"],
         "availableRecords": [4],
         "descriptions": [
@@ -83,7 +83,7 @@
     {
         "title": "1440 Edition - Four years",
         "code": 120,
-        "demonstratedPrice": "from $249",
+        "demonstratedPrice": "From $249",
         "images": ["book_1440_edition1","book_1440_edition2","book_1440_edition3"],
         "availableRecords": [1],
         "descriptions": [
@@ -98,7 +98,7 @@
     {
         "title": "Limited Edition",
         "code": 130,
-        "demonstratedPrice": "from $1440",
+        "demonstratedPrice": "From $1440",
         "images": ["limited_edition1","limited_edition2","limited_edition3","limited_edition4"],
         "availableRecords": [1],
         "descriptions": [
@@ -131,7 +131,7 @@
     {
         "title": "Classic without Frame",
         "code": 220,
-        "demonstratedPrice": "from $79",
+        "demonstratedPrice": "From $79",
         "images": ["poster_classical_unframed1","poster_classical_unframed2"],
         "availableRecords": [1],
         "descriptions": [
@@ -146,7 +146,7 @@
     {
         "title": "Constellations",
         "code": 231,
-        "demonstratedPrice": "from $79",
+        "demonstratedPrice": "From $79",
         "images": ["poster_const1"],
         "availableRecords": [1],
         "descriptions": [
@@ -162,7 +162,7 @@
     {
         "title": "Constellation Posters One Year",
         "code": 232,
-        "demonstratedPrice": "from $79",
+        "demonstratedPrice": "From $79",
         "images": ["poster_const2"],
         "availableRecords": [2],
         "descriptions": [
@@ -178,7 +178,7 @@
     {
         "title": "Constellation Posters One Year",
         "code": 233,
-        "demonstratedPrice": "from $79",
+        "demonstratedPrice": "From $79",
         "images": ["poster_const3"],
         "availableRecords": [3],
         "descriptions": [
@@ -194,7 +194,7 @@
     {
         "title": "Constellation Posters One Year",
         "code": 234,
-        "demonstratedPrice": "from $79",
+        "demonstratedPrice": "From $79",
         "images": ["poster_const4"],
         "availableRecords": [4],
         "descriptions": [
@@ -210,7 +210,7 @@
     {
         "title": "Constellation Posters Four Years",
         "code": 240,
-        "demonstratedPrice": "from $179",
+        "demonstratedPrice": "From $179",
         "images": ["minutiae_poster_notification"],
         "availableRecords": [4],
         "descriptions": [
@@ -225,7 +225,7 @@
     {
         "title": "minutiae Tote Bag",
         "code": 310,
-        "demonstratedPrice": "from $35",
+        "demonstratedPrice": "$35",
         "images": ["tote_bag"],
         "availableRecords": [1,2,3,4],
         "descriptions": [
