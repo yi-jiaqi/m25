@@ -6,14 +6,7 @@ struct MenuView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var showGrid = false
     
-    /*
-     TODO:
-     1. Snapping in vertical card swiping;
-     2. Dots indicator of segments;
-     3. Export the icon of M and Done Button from Storyboards/Main.storyboard
-     4. Confirmation of Rubik-light & Rubik-regular & Rubik-medium is correctly loaded
-     5. Correct snapping;
-     */
+
     
     // MARK: - Horizontal Tab View (Replaces Vertical Cards)
     @State private var currentTab = 0

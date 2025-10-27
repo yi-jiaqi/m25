@@ -79,6 +79,8 @@ struct GridPageView: View {
                             isDateVisible.toggle()
                         }
                     }
+                
+                
             }
             .ignoresSafeArea(.all)
             
@@ -326,7 +328,7 @@ struct GridViewModal: View {
                             if progress < 1.0 {
                                     // Show "WHEN I FINISH..." only
                                 Button("WHEN I FINISH...") {
-                                    showReadingFAQ = true
+                                    showReadingFAQ = true//shop
                                 }
                                 .font(.xSmallHeadline)
                                 .foregroundColor(.white)
@@ -382,5 +384,7 @@ struct GridViewModal: View {
             .toolbarBackground(.hidden, for: .navigationBar)
     }
 }
+
+
 
 

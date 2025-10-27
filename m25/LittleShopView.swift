@@ -15,47 +15,48 @@ struct LittleShopView: View {
         NavigationStack {
             VStack(spacing: 20) {
                 Headline(type: .menu, heading: "Shop")
-                
-                VStack(spacing: 40) {
-                        // MARK: - News Section
-                    Button {
-                        showShopView = true
-                    } label: {
-                        News(
-                            type: .veryBigImage,
-                            title: "[NEW] Constellation Posters - Four Years",
-                            content: "From $199",
-                            image: Image("minutiae_poster_notification")
-                        )
-                    }
-                    .buttonStyle(PlainButtonStyle()) // ✅ prevents highlight
-                    
-                    Spacer()
-                    
-                        // MARK: - About-style Text Section
+                ScrollView {
                     VStack(spacing: 40) {
+                            // MARK: - News Section
                         Button {
                             showShopView = true
                         } label: {
-                            Text("SHOP")
-                                .font(.smallHeadline)
-                                .multilineTextAlignment(.center)
-                                .foregroundColor(Color(hex: "FFFFFF"))
+                            News(
+                                type: .veryBigImage,
+                                title: "[NEW] Constellation Posters - Four Years",
+                                content: "From $199",
+                                image: Image("minutiae_poster_notification")
+                            )
                         }
+                        .buttonStyle(PlainButtonStyle()) // ✅ prevents highlight
                         
-                        Button {
-                            showShopView = true
-                        } label: {
-                            Text("GIFT")
-                                .font(.smallHeadline)
-                                .multilineTextAlignment(.center)
-                                .foregroundColor(Color(hex: "FFFFFF"))
+                        Spacer()
+                        
+                            // MARK: - About-style Text Section
+                        VStack(spacing: 20) {
+                            Button {
+                                showShopView = true
+                            } label: {
+                                Text("SHOP")
+                                    .font(.smallHeadline)
+                                    .multilineTextAlignment(.center)
+                                    .foregroundColor(Color(hex: "FFFFFF"))
+                            }
+                            
+                            Button {
+                                showShopView = true
+                            } label: {
+                                Text("GIFT")
+                                    .font(.smallHeadline)
+                                    .multilineTextAlignment(.center)
+                                    .foregroundColor(Color(hex: "FFFFFF"))
+                            }
                         }
+        
                     }
-                    .padding(.bottom, 40)
+                    .background(Color(hex: "1D1D1D"))
+                    .frame(maxWidth: .infinity)
                 }
-                .background(Color(hex: "1D1D1D"))
-                .frame(maxWidth: .infinity)
             }
             .padding(.horizontal, 20)
             .padding(.bottom, 60)

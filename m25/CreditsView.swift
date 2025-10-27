@@ -10,10 +10,11 @@ import SwiftUI
 
 struct CreditsView: View {
     var body: some View {
-            VStack(spacing: 20) { // Major group gap = 20
-                
-                Headline(type: .menu, heading: "Credits")
-                
+        VStack(spacing: 20) { // Major group gap = 20
+            
+            Headline(type: .menu, heading: "Credits")
+            
+            ScrollView{
                     // MARK: - Creators
                 VStack(spacing: 10) { // Minor group gap = 10
                     Text("Creators")
@@ -107,6 +108,7 @@ struct CreditsView: View {
             }
             .foregroundColor(.white)
             .padding(.horizontal, 20)
+        }
 
     }
 }

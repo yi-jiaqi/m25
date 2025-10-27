@@ -26,7 +26,7 @@ struct ProductView: View {
                     // 3. Image Carousel
                 TabView {
                     ForEach(product.images, id: \.self) { imgName in
-                        ZoomableImageView(imageName: imgName) // we'll define this next
+                        ZoomableImageView(imageName: imgName)
                             .padding(.horizontal, 16) // ✅ inside each tab page
                     }
                 }
@@ -295,26 +295,34 @@ struct ZoomableImageView: View {
     
     var body: some View {
         GeometryReader { geo in
-            Image(imageName)
-                .resizable()
-                .scaledToFit()
-                .frame(width: geo.size.width)
-                .scaleEffect(scale)
-                .gesture(
-                    MagnificationGesture()
-                        .onChanged { value in
-                            scale = lastScale * value
-                        }
-                        .onEnded { _ in
-                            withAnimation(.spring()) {
-                                if scale < 1.0 { scale = 1.0 } // reset zoom out
-                                lastScale = scale
+                // Center content to respect outer padding & preserve aspect
+            VStack {
+                Spacer()
+                
+                Image(imageName)
+                    .resizable()
+                    .scaledToFit() // ✅ keeps aspect ratio correctly
+                    .scaleEffect(scale)
+                    .gesture(
+                        MagnificationGesture()
+                            .onChanged { value in
+                                scale = lastScale * value
                             }
-                        }
-                )
-                .clipped()
-                .cornerRadius(10)
+                            .onEnded { _ in
+                                withAnimation(.spring()) {
+                                    if scale < 1.0 { scale = 1.0 }  // reset to normal
+                                    lastScale = scale
+                                }
+                            }
+                    )
+                    // ✅ use geo safe area width to constrain
+                    .frame(maxWidth: geo.size.width, maxHeight: geo.size.width)
+                    .clipped()
+                
+                Spacer()
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .contentShape(Rectangle())
         }
-        .frame(height: UIScreen.main.bounds.width)
     }
 }
