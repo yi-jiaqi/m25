@@ -74,6 +74,7 @@ struct GridPageView: View {
                            height: UIScreen.main.bounds.height)
                     .clipped()
                     .contentShape(Rectangle())
+                    .offset(y:-11)
                     .onTapGesture {
                         withAnimation(.easeInOut(duration: 0.3)) {
                             isDateVisible.toggle()
@@ -94,7 +95,6 @@ struct GridPageView: View {
                            onMenu: {     withAnimation(nil) {
                     showMenu = true
                 } })
-                .padding(.top, 20)
                 .onTapGesture {} // prevents tap passing through
                 Spacer()
             }
@@ -126,24 +126,34 @@ struct ZoomableScrollView<Content: View>: UIViewRepresentable {
         let scrollView = UIScrollView()
         scrollView.minimumZoomScale = 1.0
         scrollView.maximumZoomScale = 3.0
-        scrollView.bouncesZoom = true
         scrollView.delegate = context.coordinator
+        scrollView.bouncesZoom = true
         scrollView.showsVerticalScrollIndicator = false
         scrollView.showsHorizontalScrollIndicator = false
         
-        let hostedView = context.coordinator.hostingController.view!
-        hostedView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.addSubview(hostedView)
+            // 🔒 eliminate auto insets & any background
+        scrollView.contentInsetAdjustmentBehavior = .never
+        scrollView.contentInset = .zero
+        scrollView.scrollIndicatorInsets = .zero
+        scrollView.backgroundColor = .clear
+        scrollView.isOpaque = false
         
+        let hosted = context.coordinator.hostingController.view!
+        hosted.translatesAutoresizingMaskIntoConstraints = false
+        hosted.backgroundColor = .clear
+        hosted.isOpaque = false
+        context.coordinator.hostingController.additionalSafeAreaInsets = .zero
+        context.coordinator.hostingController.view.insetsLayoutMarginsFromSafeArea = false
+        
+        scrollView.addSubview(hosted)
         NSLayoutConstraint.activate([
-            hostedView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            hostedView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-            hostedView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            hostedView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            hostedView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-            hostedView.heightAnchor.constraint(equalTo: scrollView.heightAnchor)
+            hosted.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            hosted.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            hosted.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            hosted.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            hosted.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            hosted.heightAnchor.constraint(equalTo: scrollView.heightAnchor)
         ])
-        
         return scrollView
     }
     
