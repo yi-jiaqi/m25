@@ -22,6 +22,13 @@ struct News: View {
     var content: String
     var image: Image? = nil
     
+    private func lineHeight(for font: Font) -> CGFloat {
+        switch font {
+        case .xXSmallHeadline: return 14 // adjust to your actual line height
+        default: return 16
+        }
+    }
+    
     var body: some View {
         Group {
             switch type {
@@ -156,12 +163,19 @@ struct News: View {
                         }
                         .aspectRatio(1, contentMode: .fit)
                     }
-                    
-                    Text(title.uppercased())
-                        .font(.xXSmallHeadline)
-                        .foregroundColor(Color(hex: "1D1D1D"))
-                        .frame(maxWidth: .infinity, alignment: .center)
-                    
+                    HStack(alignment: .top) {
+                        Text(title.uppercased())
+                            .font(.xXSmallHeadline)
+                            .foregroundColor(Color(hex: "1D1D1D"))
+                            .frame(maxWidth: .infinity, alignment: .center)
+                            .multilineTextAlignment(.center)
+                            .lineLimit(3) // ✅ max 3 lines
+                            .fixedSize(horizontal: false, vertical: true)
+                            .frame(
+                                minHeight: Font.lineHeight(for: .xXSmallHeadline) * 2,
+                                maxHeight: Font.lineHeight(for: .xXSmallHeadline) * 3
+                            )
+                    }
                     Text(content.lowercased())
                         .font(.xSmallBodyText)
                         .foregroundColor(Color(hex: "1D1D1D"))

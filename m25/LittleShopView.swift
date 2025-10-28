@@ -16,7 +16,7 @@ struct LittleShopView: View {
             VStack(spacing: 20) {
                 Headline(type: .menu, heading: "Shop")
                 ScrollView {
-                    VStack(spacing: 40) {
+                    VStack(spacing: 30) {
                             // MARK: - News Section
                         Button {
                             showShopView = true

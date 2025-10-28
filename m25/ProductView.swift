@@ -55,18 +55,21 @@ struct ProductView: View {
                 VStack(spacing: 12) {
                     ForEach(product.prices.indices, id: \.self) { i in
                         let price = product.prices[i]
-                        
-                            // ✅ Determine which price to show
                         let mainPrice = isMember ? price.discounted : (price.original ?? price.discounted)
-                        let subPrice = isMember ? price.original : price.discounted
+                        let subPrice  = isMember ? price.original  : price.discounted
                         
                         SelectableButton(
                             type: .multipleText,
                             texts: [price.name, price.subtitle, mainPrice, subPrice].compactMap { $0 },
                             linkURL: nil,
-                            isSelected: .constant(i == selectedPriceIndex)
+                            isSelected: Binding(
+                                get: { selectedPriceIndex == i },
+                                set: { newValue in if newValue { selectedPriceIndex = i } }
+                            )
                         )
-                        .onTapGesture { selectedPriceIndex = i }
+                        .onTapGesture {
+                            selectedPriceIndex = i
+                        }
                     }
                     
                         // ✅ Not a member yet (ReadingView initialPage: 4)
@@ -116,16 +119,17 @@ struct ProductView: View {
                 
                 
                     // ✅ 6. Description
-                ForEach(product.descriptions.indices, id: \.self) { i in
-                    Text(product.descriptions[i])
-                        .font(.custom(i == product.descriptions.count - 1
-                                      ? "Rubik-Medium" : "Rubik-Light",
-                                      size: 20))
-                        .foregroundColor(.black)
-                        .multilineTextAlignment(.leading)
-                        .padding(.horizontal, 24)
+                VStack(alignment:.leading){
+                    ForEach(product.descriptions.indices, id: \.self) { i in
+                        let isBold = product.boldTexts?.contains(i) ?? false
+                        
+                        Text(product.descriptions[i])
+                            .font(isBold ? .smallHeadline : .bodyText)
+                            .foregroundColor(.black)
+                            .multilineTextAlignment(.leading)
+                            .padding(.horizontal, 24)
+                    }
                 }
-                
                 
                     // ✅ 7. Total summary
                 let totalText: String = {
@@ -212,9 +216,30 @@ struct ProductModel: Codable, Hashable {
     let images: [String]
     let availableRecords: [Int]?
     let descriptions: [String]
+    let boldTexts: [Int]?     // remains optional
     let prices: [ProductPrice]
+    
+        // ✅ custom memberwise initializer with default for boldTexts
+    init(
+        title: String,
+        code: Int? = nil,
+        demonstratedPrice: String,
+        images: [String],
+        availableRecords: [Int]? = nil,
+        descriptions: [String],
+        boldTexts: [Int]? = nil,
+        prices: [ProductPrice]
+    ) {
+        self.title = title
+        self.code = code
+        self.demonstratedPrice = demonstratedPrice
+        self.images = images
+        self.availableRecords = availableRecords
+        self.descriptions = descriptions
+        self.boldTexts = boldTexts
+        self.prices = prices
+    }
 }
-
 #Preview {
     ProductView(product: sampleProduct)
 }

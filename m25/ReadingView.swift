@@ -174,7 +174,7 @@ He is currently a Ph.D. candidate studying cognitive neuroscience at the Univers
 struct ReadingPage4: View {
     var body: some View {
         ScrollView {
-            VStack(spacing: 24) {
+            VStack(alignment: .leading,spacing: 24) {
 
                 Headline(type: .reading,heading: "F.A.Q")
 

@@ -15,6 +15,7 @@ struct CreditsView: View {
             Headline(type: .menu, heading: "Credits")
             
             ScrollView{
+                VStack(spacing: 20) {
                     // MARK: - Creators
                 VStack(spacing: 10) { // Minor group gap = 10
                     Text("Creators")
@@ -105,6 +106,7 @@ struct CreditsView: View {
                     .font(.smallBodyText)
                 }
                 Spacer()
+                }
             }
             .foregroundColor(.white)
             .padding(.horizontal, 20)

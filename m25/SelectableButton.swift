@@ -41,15 +41,11 @@ struct SelectableButton: View {
         .cornerRadius(10)
         .padding(.horizontal)
         .contentShape(Rectangle()) // better tap hit area
-        .onTapGesture {
-            if type != .externalLink {
-                withAnimation(.easeInOut(duration: 0.2)) {
-                    isSelected.toggle()
-                }
-            } else if let url = linkURL {
-                UIApplication.shared.open(url)
-            }
-        }
+//        .onTapGesture {
+//            if type == .externalLink, let url = linkURL {
+//                UIApplication.shared.open(url)
+//            }
+//        }
     }
 }
 
