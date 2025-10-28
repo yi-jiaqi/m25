@@ -5,129 +5,181 @@
 //  Created by Jiaqi Yi on 2025.10.16.
 //
 
+
 import SwiftUI
 
 struct ProductView: View {
     let product: ProductModel
+    @EnvironmentObject var appData: AppDataManager
     
     @Environment(\.dismiss) private var dismiss
-    @State private var selectedRecord: Int? = nil
+    @State private var selectedRecord: Set<Int> = [] // ✅ multiple selection
     @State private var selectedPriceIndex = 0
+    @State private var showReading = false
     
     var body: some View {
         ScrollView {
             VStack(spacing: 20) {
-                    // 1. Buttons Bar
                 ButtonsBar(type: .reading, onClose: { dismiss() })
-                
-                    // 2. Headline
                 Headline(type: .reading, heading: product.title)
                 
-                    // 3. Image Carousel
-                TabView {
-                    ForEach(product.images, id: \.self) { imgName in
-                        ZoomableImageView(imageName: imgName)
-                            .padding(.horizontal, 16) // ✅ inside each tab page
+                    // --- Image carousel safely wrapped
+                GeometryReader { geo in
+                    let safeWidth = min(geo.size.width, UIScreen.main.bounds.width)
+                    
+                    TabView {
+                        ForEach(product.images, id: \.self) { imgName in
+                            ZoomableImageView(imageName: imgName)
+                                .frame(width: safeWidth * 0.9, height: safeWidth * 0.9)
+                                .clipped()
+                        }
                     }
+                    .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
+                    .frame(width: safeWidth, height: safeWidth)
+                    .indexViewStyle(.page(backgroundDisplayMode: .always))
+                    .frame(maxWidth: .infinity)
                 }
-                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
-                .frame(height: UIScreen.main.bounds.width)
-                .indexViewStyle(.page(backgroundDisplayMode: .always))
+                .frame(height: UIScreen.main.bounds.width * 0.9)
+
+                
                 
                     // 4. Pricing buttons
+                let user = appData.userState
+                let isMember: Bool = {
+                    guard let user = user else { return false }
+                        // Example heuristic: anyone who has finished ≥ 360 days or has progressed beyond Year 1 is a supporter
+                    if user.currentYearIndex >= 1 { return true }
+                        // Or, if you later add a flag like user.isSupporter / user.isBenefactor, use that instead
+                    return false
+                }()
                 VStack(spacing: 12) {
                     ForEach(product.prices.indices, id: \.self) { i in
                         let price = product.prices[i]
+                        
+                            // ✅ Determine which price to show
+                        let mainPrice = isMember ? price.discounted : (price.original ?? price.discounted)
+                        let subPrice = isMember ? price.original : price.discounted
+                        
                         SelectableButton(
                             type: .multipleText,
-                            texts: [price.name, price.subtitle, price.current, price.original].compactMap { $0 },
+                            texts: [price.name, price.subtitle, mainPrice, subPrice].compactMap { $0 },
                             linkURL: nil,
                             isSelected: .constant(i == selectedPriceIndex)
                         )
-                        .onTapGesture {
-                            selectedPriceIndex = i
-                        }
+                        .onTapGesture { selectedPriceIndex = i }
                     }
-                    HStack{
-                        SelectableButton(
-                            type: .singleText,
-                            texts:["Not A Member Yet?"],
-                            linkURL: nil,
-                            isSelected: .constant(true)
-                        )
-                    }.padding(.horizontal,90)
+                    
+                        // ✅ Not a member yet (ReadingView initialPage: 4)
+                    Text("Not A Member Yet?")
+                        .font(.xSmallHeadline)
+                        .foregroundColor(.black)
+                        .onTapGesture { showReading = true }
+                        .padding(.top, 8)
                 }
                 .padding(.horizontal, 16)
                 .padding(.vertical)
-
+                
                 
                     // 5. Available records
                 if let records = product.availableRecords {
-                    if records[0] !=  0{
-                        Headline(type: .reading, heading: "Available Records:")
-                        
-                        HStack(spacing: 12) {
-                            ForEach(records, id: \.self) { record in
-                                Text("\(record)")
-                                    .font(.xSmallHeadline)
-                                    .frame(width: 48, height: 48)
-                                    .background(
-                                        RoundedRectangle(cornerRadius: 24)
-                                            .fill(selectedRecord == record ? Color.black : Color.clear)
-                                    )
-                                    .foregroundColor(selectedRecord == record ? .white : .black)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 24)
-                                            .stroke(Color.black, lineWidth: 1)
-                                    )
-                                    .onTapGesture {
-                                        selectedRecord = record
+                    let currentYear = currentYearIndex(for: appData.userState)
+                    Headline(type: .reading, heading: "Available Records:")
+                    
+                    HStack(spacing: 12) {
+                        ForEach(records, id: \.self) { record in
+                            let isAvailable = record <= currentYear
+                            let isSelected = selectedRecord.contains(record)
+                            
+                            Text("\(record)")
+                                .font(.xSmallHeadline)
+                                .frame(width: 48, height: 48)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 24)
+                                        .fill(isSelected ? Color.black : (isAvailable ? Color.clear : Color.gray.opacity(0.3)))
+                                )
+                                .foregroundColor(isSelected ? .white : .black)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 24)
+                                        .stroke(Color.black, lineWidth: 1)
+                                )
+                                .onTapGesture {
+                                    guard isAvailable else { return } // disable future years
+                                    if isSelected {
+                                        selectedRecord.remove(record)
+                                    } else {
+                                        selectedRecord.insert(record)
                                     }
-                            }
+                                }
                         }
                     }
                 }
                 
-                    // 6. Descriptive texts
+                
+                    // ✅ 6. Description
                 ForEach(product.descriptions.indices, id: \.self) { i in
                     Text(product.descriptions[i])
                         .font(.custom(i == product.descriptions.count - 1
                                       ? "Rubik-Medium" : "Rubik-Light",
-                                      size: i == product.descriptions.count - 1 ? 20 : 20))
+                                      size: 20))
                         .foregroundColor(.black)
                         .multilineTextAlignment(.leading)
                         .padding(.horizontal, 24)
                 }
                 
-                    // 7. BUY
+                
+                    // ✅ 7. Total summary
+                let totalText: String = {
+                    if selectedRecord.isEmpty {
+                        return " " // Keeps layout stable
+                    } else {
+                        let priceString = currentPriceValue(for: product, index: selectedPriceIndex, isMember: isMember)
+                        let numericPrice = priceString.replacingOccurrences(of: "$", with: "")
+                        let priceValue = Double(numericPrice) ?? 0
+                        let total = Double(selectedRecord.count) * priceValue
+                        return "Your total is: $\(String(format: "%.2f", total))"
+                    }
+                }()
+                
+                Text(totalText)
+                    .font(.custom("Rubik-Medium", size: 20))
+                    .foregroundColor(.black)
+                    .padding(.top, 8)
+                
+                    // ✅ 8. ORDER button
                 SelectableButton(
                     type: .singleText,
                     texts: ["ORDER"],
                     linkURL: nil,
                     isSelected: .constant(true)
                 )
-                
-//                    // 8. SHOP MORE
-//                SelectableButton(
-//                    type: .externalLink,
-//                    texts: ["SHOP MORE"],
-//                    linkURL: URL(string: "https://minutiae-app.com/shop"),
-//                    isSelected: .constant(false)
-//                )
             }
-            .padding(.horizontal, 32)
+            .frame(maxWidth: UIScreen.main.bounds.width)
+            .padding(.horizontal, UIScreen.main.bounds.width * 0.05)
             .padding(.bottom, 80)
-            .frame(maxWidth: 512)
-            .frame(maxWidth: .infinity, alignment: .leading)
         }
         .background(Color(hex: "E6E6E6").ignoresSafeArea())
         .ignoresSafeArea(.all)
-        .padding(.horizontal, 16)
         .navigationBarBackButtonHidden(true)
         .navigationBarHidden(true)
+        .fullScreenCover(isPresented: $showReading) {
+            ReadingView(initialPage: 4)
+        }
+    }
+    
+        // MARK: - Helpers
+    
+    func currentYearIndex(for user: UserState?) -> Int {
+        guard let user = user else { return 1 }
+        let daysPassed = user.passedDays
+        return min(4, max(1, Int(floor(Double(daysPassed) / 360.0)) + 1))
+    }
+    
+    func currentPriceValue(for product: ProductModel, index: Int, isMember: Bool) -> String {
+        guard product.prices.indices.contains(index) else { return "$0" }
+        let p = product.prices[index]
+        return isMember ? p.discounted : (p.original ?? p.discounted)
     }
 }
-
 let sampleProduct = ProductModel(
     title: "Product Title",
     code: 0,
@@ -141,15 +193,15 @@ let sampleProduct = ProductModel(
         "Your Shipping address will be added after you press the continue button."
     ],
     prices: [
-        ProductPrice(name: "UNFRAMED", subtitle: "Full Price", current: "$79", original: "$99"),
-        ProductPrice(name: "FRAMED", subtitle: "Full Price", current: "$139", original: "$159")
+        ProductPrice(name: "UNFRAMED", subtitle: "Full Price", discounted: "$79", original: "$99"),
+        ProductPrice(name: "FRAMED", subtitle: "Full Price", discounted: "$139", original: "$159")
     ]
 )
 
 struct ProductPrice: Codable, Hashable {
     let name: String
     let subtitle: String?
-    let current: String
+    let discounted: String
     let original: String?
 }
 
@@ -161,126 +213,6 @@ struct ProductModel: Codable, Hashable {
     let availableRecords: [Int]?
     let descriptions: [String]
     let prices: [ProductPrice]
-}
-
-struct ProductPosterView: View {
-    @Environment(\.dismiss) private var dismiss
-    @State private var isUnframedSelected = true
-    @State private var isFramedSelected = false
-    @State private var selectedRecord = 3
-    
-    var body: some View {
-        ScrollView {
-            VStack(spacing: 0) {
-                    // 1. Buttons Bar
-                ButtonsBar(type: .reading, onClose: { dismiss() }).padding(.bottom,12)
-                
-                    // 2. Headline
-                Headline(type: .reading, heading: "Poster").padding(.bottom,6)
-                
-                    // 3. Image Carousel
-                TabView {
-                    ForEach(0..<3) { index in
-                        Image("minutiae_poster_notification")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width)
-                            .clipped()
-                            .cornerRadius(10)
-                    }
-                }
-                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
-                .frame(height: UIScreen.main.bounds.width)
-                .indexViewStyle(.page(backgroundDisplayMode: .always))
-                .padding(.horizontal,8)
-                
-                    // 4. Selectable Buttons for Options
-                VStack(spacing: 12) {
-                    SelectableButton(
-                        type: .multipleText,
-                        texts: ["UNFRAMED", "Full Price", "$79", "$99"],
-                        linkURL: nil,
-                        isSelected: $isUnframedSelected
-                    )
-                    .onTapGesture {
-                        isUnframedSelected = true
-                        isFramedSelected = false
-                    }
-                    
-                    SelectableButton(
-                        type: .multipleText,
-                        texts: ["FRAMED", "Full Price", "$139", "$159"],
-                        linkURL: nil,
-                        isSelected: $isFramedSelected
-                    )
-                    .onTapGesture {
-                        isFramedSelected = true
-                        isUnframedSelected = false
-                    }
-                }
-                .padding()
-                
-                    // 5. Headline for Records
-                Headline(type: .reading, heading: "Available Records:")
-                
-                    // 6. Record number selector
-                HStack(spacing: 12) {
-                    ForEach(1..<5) { i in
-                        Text("\(i)")
-                            .font(.xSmallHeadline)
-                            .frame(width: 48, height: 48)
-                            .background(
-                                RoundedRectangle(cornerRadius: 24)
-                                    .fill(i == selectedRecord ? Color.black : Color.clear)
-                            )
-                            .foregroundColor(i == selectedRecord ? .white : .black)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 24)
-                                    .stroke(Color.black, lineWidth: 1)
-                            )
-                            .onTapGesture {
-                                selectedRecord = i
-                            }
-                    }
-                }
-                
-                    // 7. Normal descriptive text
-                Text("""
-The minutiae 360 Edition contains all your captured moments over a one-year period. The spine is stamped with the participant’s initials and the corresponding record number.
-""")
-                .font(.custom("Rubik-Light", size: 20))
-                .foregroundColor(.black)
-                .multilineTextAlignment(.leading)
-                
-                    // 8. Bold notice text
-                Text("Your Shipping address will be added after you press the continue button.")
-                    .font(.custom("Rubik-Medium", size: 20))
-                    .foregroundColor(.black)
-                    .multilineTextAlignment(.leading)
-                
-                    // 9. BUY button
-                    SelectableButton(
-                        type: .singleText,
-                        texts: ["ORDER"],
-                        linkURL: nil,
-                        isSelected: .constant(true)
-                    )
-                
-//                    // 10. SHOP MORE button
-//                SelectableButton(
-//                    type: .externalLink,
-//                    texts: ["SHOP MORE"],
-//                    linkURL: URL(string: "https://minutiae-app.com/shop"),
-//                    isSelected: .constant(false)
-//                )
-            }
-            .padding(.horizontal, 32)
-            .padding(.bottom, 80)
-            .frame(maxWidth: 512)
-            .frame(maxWidth: .infinity, alignment: .leading)
-        }
-        .background(Color(hex: "E6E6E6").ignoresSafeArea())
-    }
 }
 
 #Preview {

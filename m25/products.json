@@ -11,14 +11,48 @@
         "availableRecords": [1, 2, 3, 4],
         "descriptions": [
             "The minutiae 360 Edition contains all your captured moments over a one-year period. The spine is stamped with the participant’s initials and the corresponding record number.",
-            "Your shipping address will be added after you press the continue button."
+            "The book does not include missed moments and is sequenced in chronological order.",
+            "Size: 8.5 x 11 in (21x27 cm) ",
+            "Hardcover matte linen finish + dustwrapper",
+            "80# White - Coated: Ultra-smooth paper",
+            "Each page contains the date, location, and the local time of the moment captured",
+            "The number of pages depends on the total number of your captured moments.",
+            "Taxes & Shipping are included in the price (excl SG, AUS) - Worldwide shipping",
+            "Your initials, record number, and shipping address will be added after you press the continue button.",
+            "If you have a subscription or have donated to the project please use the order link in your email to receive a discounted rate on your book.",
+            "Your shipping address will be added after you press the continue button.",
         ],
         "prices": [
-            { "name": "UNFRAMED", "subtitle": "Full Price", "current": "$79", "original": "$99" },
-            { "name": "FRAMED", "subtitle": "Full Price", "current": "$139", "original": "$159" }
+            { "name": "UNFRAMED", "subtitle": "Full Price", "discounted": "$79", "original": "$99" },
+            { "name": "FRAMED", "subtitle": "Full Price", "discounted": "$139", "original": "$159" }
         ]
     },
     
+    
+    {
+        "title": "360 Edition - One Year",
+        "code": 110,
+        "demonstratedPrice": "From $109",
+        "images": ["360-Edition---Record-I","360 Edition - Open book V2","360-Edition-front-with-Graphics","360 Edition - Premium Quality","360 Edition - Standard Quality","360-Edition-in-environment"],
+        "availableRecords": [1,2,3,4],
+        "descriptions": [
+            "The minutiae 360 Edition contains all your captured moments over a one-year period. The spine is stamped with the participant’s initials and the corresponding record number.",
+            "The book does not include missed moments and is sequenced in chronological order.",
+            "Size: 8.5 x 11 in (21x27 cm) ",
+            "Hardcover matte linen finish + dustwrapper",
+            "80# White - Coated: Ultra-smooth paper",
+            "Each page contains the date, location, and the local time of the moment captured",
+            "The number of pages depends on the total number of your captured moments.",
+            "Taxes & Shipping are included in the price (excl SG, AUS) - Worldwide shipping",
+            "Your initials, record number, and shipping address will be added after you press the continue button.",
+            "If you have a subscription or have donated to the project please use the order link in your email to receive a discounted rate on your book.",
+            "Your shipping address will be added after you press the continue button.",
+        ],
+        "prices": [
+            { "name": "STANDARD", "subtitle": "Full Price", "discounted": "$109", "original": "$129" },
+            { "name": "PREMIUM", "subtitle": "Full Price", "discounted": "$139", "original": "$159" }
+        ]
+    },
     
     {
         "title": "360 Edition - One Year",
@@ -28,10 +62,20 @@
         "availableRecords": [1],
         "descriptions": [
             "The minutiae 360 Edition contains all your captured moments over a one-year period. The spine is stamped with the participant’s initials and the corresponding record number.",
+            "The book does not include missed moments and is sequenced in chronological order.",
+            "Size: 8.5 x 11 in (21x27 cm) ",
+            "Hardcover matte linen finish + dustwrapper",
+            "80# White - Coated: Ultra-smooth paper",
+            "Each page contains the date, location, and the local time of the moment captured",
+            "The number of pages depends on the total number of your captured moments.",
+            "Taxes & Shipping are included in the price (excl SG, AUS) - Worldwide shipping",
+            "Your initials, record number, and shipping address will be added after you press the continue button.",
+            "If you have a subscription or have donated to the project please use the order link in your email to receive a discounted rate on your book.",
+            "Your shipping address will be added after you press the continue button.",
         ],
         "prices": [
-            { "name": "STANDARD", "subtitle": "Full Price", "current": "$109", "original": "$129" },
-            { "name": "PREMIUM", "subtitle": "Full Price", "current": "$139", "original": "$159" }
+            { "name": "STANDARD", "subtitle": "Full Price", "discounted": "$109", "original": "$129" },
+            { "name": "PREMIUM", "subtitle": "Full Price", "discounted": "$139", "original": "$159" }
         ]
     },
     
@@ -43,10 +87,20 @@
         "availableRecords": [2],
         "descriptions": [
             "The minutiae 360 Edition contains all your captured moments over a one-year period. The spine is stamped with the participant’s initials and the corresponding record number.",
+            "The book does not include missed moments and is sequenced in chronological order.",
+            "Size: 8.5 x 11 in (21x27 cm) ",
+            "Hardcover matte linen finish + dustwrapper",
+            "80# White - Coated: Ultra-smooth paper",
+            "Each page contains the date, location, and the local time of the moment captured",
+            "The number of pages depends on the total number of your captured moments.",
+            "Taxes & Shipping are included in the price (excl SG, AUS) - Worldwide shipping",
+            "Your initials, record number, and shipping address will be added after you press the continue button.",
+            "If you have a subscription or have donated to the project please use the order link in your email to receive a discounted rate on your book.",
+            "Your shipping address will be added after you press the continue button.",
         ],
         "prices": [
-            { "name": "STANDARD", "subtitle": "Full Price", "current": "$109", "original": "$129" },
-            { "name": "PREMIUM", "subtitle": "Full Price", "current": "$139", "original": "$159" }
+            { "name": "STANDARD", "subtitle": "Full Price", "discounted": "$109", "original": "$129" },
+            { "name": "PREMIUM", "subtitle": "Full Price", "discounted": "$139", "original": "$159" }
         ]
     },
     
@@ -58,10 +112,20 @@
         "availableRecords": [3],
         "descriptions": [
             "The minutiae 360 Edition contains all your captured moments over a one-year period. The spine is stamped with the participant’s initials and the corresponding record number.",
+            "The book does not include missed moments and is sequenced in chronological order.",
+            "Size: 8.5 x 11 in (21x27 cm) ",
+            "Hardcover matte linen finish + dustwrapper",
+            "80# White - Coated: Ultra-smooth paper",
+            "Each page contains the date, location, and the local time of the moment captured",
+            "The number of pages depends on the total number of your captured moments.",
+            "Taxes & Shipping are included in the price (excl SG, AUS) - Worldwide shipping",
+            "Your initials, record number, and shipping address will be added after you press the continue button.",
+            "If you have a subscription or have donated to the project please use the order link in your email to receive a discounted rate on your book.",
+            "Your shipping address will be added after you press the continue button.",
         ],
         "prices": [
-            { "name": "STANDARD", "subtitle": "Full Price", "current": "$109", "original": "$129" },
-            { "name": "PREMIUM", "subtitle": "Full Price", "current": "$139", "original": "$159" }
+            { "name": "STANDARD", "subtitle": "Full Price", "discounted": "$109", "original": "$129" },
+            { "name": "PREMIUM", "subtitle": "Full Price", "discounted": "$139", "original": "$159" }
         ]
     },
     
@@ -73,10 +137,21 @@
         "availableRecords": [4],
         "descriptions": [
             "The minutiae 360 Edition contains all your captured moments over a one-year period. The spine is stamped with the participant’s initials and the corresponding record number.",
+            "The book does not include missed moments and is sequenced in chronological order.",
+            "Size: 8.5 x 11 in (21x27 cm) ",
+            "Hardcover matte linen finish + dustwrapper",
+            "80# White - Coated: Ultra-smooth paper",
+            "Each page contains the date, location, and the local time of the moment captured",
+            "The number of pages depends on the total number of your captured moments.",
+            "Taxes & Shipping are included in the price (excl SG, AUS) - Worldwide shipping",
+            "Your initials, record number, and shipping address will be added after you press the continue button.",
+            "If you have a subscription or have donated to the project please use the order link in your email to receive a discounted rate on your book.",
+            "Your shipping address will be added after you press the continue button.",
         ],
+        "boldTexts": [1,8,9],
         "prices": [
-            { "name": "STANDARD", "subtitle": "Full Price", "current": "$109", "original": "$129" },
-            { "name": "PREMIUM", "subtitle": "Full Price", "current": "$139", "original": "$159" }
+            { "name": "STANDARD", "subtitle": "Full Price", "discounted": "$109", "original": "$129" },
+            { "name": "PREMIUM", "subtitle": "Full Price", "discounted": "$139", "original": "$159" }
         ]
     },
     
@@ -87,11 +162,21 @@
         "images": ["book_1440_edition1","book_1440_edition2","book_1440_edition3"],
         "availableRecords": [1],
         "descriptions": [
-            "The minutiae 1440 Edition contains all your captured minutiae moments over a four-year period.\nThe spine is stamped with the participant’s initials and the corresponding record and volume number.\n\nThe book includes missed moments and is sequenced by UTC time (each page represents one minute)"
+            "+ Get a free annual subscription when you order.",
+            "The minutiae 1440 Edition contains all your captured minutiae moments over a four-year period.\nThe spine is stamped with the participant’s initials and the corresponding record and volume number.\n\nThe book includes missed moments and is sequenced by UTC time (each page represents one minute)",
+            "The book includes missed moments and is sequenced by UTC time (each page represents one minute)",
+            "The cover of the book comes in a matte linen finish and is protected by a dustwrapper for added protection.",
+            "Size: 8.5 x 11 in (21x27 cm) ",
+            "Hardcover matte linen finish + dustwrapper",
+            "80# White - Coated: Ultra-smooth paper",
+            "Each page contains the Universal Time Code (UTC), the date, and the local time of the moment captured",
+            "Taxes & Shipping are included in the price (excl SG, AUS) - Worldwide shipping",
+            "For more details, see FAQ at the bottom of the Book&Poster page",
         ],
+        "boldTexts": [0,2,11],
         "prices": [
-            { "name": "STANDARD", "subtitle": "Full Price", "current": "$249", "original": "$299" },
-            { "name": "PREMIUM", "subtitle": "Full Price", "current": "$399", "original": "$449" }
+            { "name": "STANDARD", "subtitle": "Full Price", "discounted": "$249", "original": "$299" },
+            { "name": "PREMIUM", "subtitle": "Full Price", "discounted": "$399", "original": "$449" }
         ]
     },
     
@@ -102,10 +187,19 @@
         "images": ["limited_edition1","limited_edition2","limited_edition3","limited_edition4"],
         "availableRecords": [1],
         "descriptions": [
-            "One-year hardcover book containing 360 captured moments."
+            "+ Receive a one-year free subscription to minutiae.",
+            "The minutiae Limited Edition is a unique work of art handbound by one of the world’s most accomplished bookbinders, situated in the heart of New York’s Lower East Side.",
+            "One Edition (47/100) of the Limited Edition is held within the distinguished Rare Books and Manuscript Library collection at Columbia University in New York City, bearing as a testament to its significance as an extraordinary amalgamation of age-old traditions and contemporary technology.",
+            "Each page spread is adorned with the Universal Time Code (UTC), the date, and the local time of the moment captured.",
+            "Limited to 100 individual editions.",
+            "The pages are composed of high-opacity, ultra-smooth, bright white paper, providing an unparalleled reading experience.",
+            "The cover of each edition is exquisitely stamped with the participant’s initials, as well as the commencement and conclusion dates of the cycle.",
+            "Optional: Have your name included as a Benefactor under the Credit section in the app. ",
+            "For more details, see FAQ at the bottom of the Book&Poster page.",
         ],
+        "boldTexts": [0,1,2],
         "prices": [
-            { "name": "MEMBER", "current": "$1440", }
+            { "name": "MEMBER", "discounted": "$1440", }
         ]
     },
     
@@ -123,8 +217,8 @@
             "For indoor use",
         ],
         "prices": [
-            { "name": "WITHOUT FRAME", "subtitle": "Full Price", "current": "$79", "original": "$99", },
-            { "name": "WITH FRAME", "subtitle": "Full Price", "current": "$199", "original": "$249", }
+            { "name": "WITHOUT FRAME", "subtitle": "Full Price", "discounted": "$79", "original": "$99", },
+            { "name": "WITH FRAME", "subtitle": "Full Price", "discounted": "$199", "original": "$249", }
         ]
     },
     
@@ -140,7 +234,7 @@
             "Museum-quality posters made on thick and durable matte paper. Inspired by constellations, your moments are arranged as stars. When four years combined, it makes a universe on your wall."
         ],
         "prices": [
-            { "name": "MEMBER", "subtitle": "Full Price", "current": "$179", "original": "$199", }
+            { "name": "MEMBER", "subtitle": "Full Price", "discounted": "$179", "original": "$199", }
         ]
     },
     
@@ -159,7 +253,7 @@
             "1″ (2.5 cm) wide dual straps, 24.5″ (62.2 cm) length",
 ],
         "prices": [
-            { "name": "STANDARD", "current": "$35", }
+            { "name": "STANDARD", "discounted": "$35", }
         ]
     },
     

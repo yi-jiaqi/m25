@@ -232,7 +232,7 @@ struct GridViewModal: View {
     
     @State private var showPosterProduct = false
     @State private var showBookProduct = false
-    @State private var showReadingFAQ = false
+    @State private var showShop = false
         // MARK: - Dates
     private var startDate: Date {
         guard let user = appData.userState else { return Date() }
@@ -338,7 +338,7 @@ struct GridViewModal: View {
                             if progress < 1.0 {
                                     // Show "WHEN I FINISH..." only
                                 Button("WHEN I FINISH...") {
-                                    showReadingFAQ = true//shop
+                                    showShop = true//shop
                                 }
                                 .font(.xSmallHeadline)
                                 .foregroundColor(.white)
@@ -387,8 +387,8 @@ struct GridViewModal: View {
                     Text("Poster not found.")
                 }
             }
-            .fullScreenCover(isPresented: $showReadingFAQ) {
-                ReadingView(initialPage: 3)
+            .fullScreenCover(isPresented: $showShop) {
+                ShopView()
             }
             .toolbar(.hidden, for: .navigationBar)  // hides nav bar background
             .toolbarBackground(.hidden, for: .navigationBar)
