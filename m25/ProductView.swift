@@ -16,6 +16,7 @@ struct ProductView: View {
     @State private var selectedRecord: Set<Int> = [] // ✅ multiple selection
     @State private var selectedPriceIndex = 0
     @State private var showReading = false
+    @State private var currentImageIndex = 0
     
     var body: some View {
         ScrollView {
@@ -27,11 +28,12 @@ struct ProductView: View {
                 GeometryReader { geo in
                     let safeWidth = min(geo.size.width, UIScreen.main.bounds.width)
                     
-                    TabView {
-                        ForEach(product.images, id: \.self) { imgName in
+                    TabView(selection: $currentImageIndex) {
+                        ForEach(product.images.indices, id: \.self) { i in
+                            let imgName = product.images[i]
                             ZoomableImageView(imageName: imgName)
                                 .frame(width: safeWidth * 0.9, height: safeWidth * 0.9)
-                                .clipped()
+                                .tag(i)
                         }
                     }
                     .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
@@ -69,6 +71,13 @@ struct ProductView: View {
                         )
                         .onTapGesture {
                             selectedPriceIndex = i
+                            if let target = price.imageTarget,
+                               let targetIndex = product.images.firstIndex(of: target) {
+                                    // scroll or jump carousel to target
+                                withAnimation {
+                                    currentImageIndex = targetIndex
+                                }
+                            }
                         }
                     }
                     
@@ -119,12 +128,12 @@ struct ProductView: View {
                 
                 
                     // ✅ 6. Description
-                VStack(alignment:.leading){
+                VStack(alignment:.leading,spacing:8){
                     ForEach(product.descriptions.indices, id: \.self) { i in
                         let isBold = product.boldTexts?.contains(i) ?? false
                         
                         Text(product.descriptions[i])
-                            .font(isBold ? .smallHeadline : .bodyText)
+                            .font(isBold ? .smallHeadline : .smallBodyText)
                             .foregroundColor(.black)
                             .multilineTextAlignment(.leading)
                             .padding(.horizontal, 24)
@@ -207,6 +216,22 @@ struct ProductPrice: Codable, Hashable {
     let subtitle: String?
     let discounted: String
     let original: String?
+    let imageTarget: String?    // ✅ optional new property
+    
+        // Optional: custom init to keep backward compatibility
+    init(
+        name: String,
+        subtitle: String? = nil,
+        discounted: String,
+        original: String? = nil,
+        imageTarget: String? = nil
+    ) {
+        self.name = name
+        self.subtitle = subtitle
+        self.discounted = discounted
+        self.original = original
+        self.imageTarget = imageTarget
+    }
 }
 
 struct ProductModel: Codable, Hashable {

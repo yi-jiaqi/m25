@@ -176,7 +176,7 @@ struct News: View {
                                 maxHeight: Font.lineHeight(for: .xXSmallHeadline) * 3
                             )
                     }
-                    Text(content.lowercased())
+                    Text(content)
                         .font(.xSmallBodyText)
                         .foregroundColor(Color(hex: "1D1D1D"))
                         .frame(maxWidth: .infinity, alignment: .center)

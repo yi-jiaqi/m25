@@ -221,8 +221,12 @@
             "For indoor use",
         ],
         "prices": [
-            { "name": "WITHOUT FRAME", "subtitle": "Full Price", "discounted": "$79", "original": "$99", },
-            { "name": "WITH FRAME", "subtitle": "Full Price", "discounted": "$199", "original": "$249", },
+            { "name": "WITHOUT FRAME", "subtitle": "Full Price", "discounted": "$79", "original": "$99",
+                "imageTarget": "poster_classical_unframed1",},
+            { "name": "WITH FRAME - WHITE", "subtitle": "Full Price", "discounted": "$199", "original": "$249",
+                "imageTarget": "poster_classical_framed1",},
+            { "name": "WITH FRAME - BLACK", "subtitle": "Full Price", "discounted": "$199", "original": "$249",
+                    "imageTarget": "poster_classical_framed1",},
         ]
     },
     

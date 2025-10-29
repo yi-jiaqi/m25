@@ -59,7 +59,6 @@ struct Headline: View {
                 Text(heading)
                     .font(.largeHeadline)
                     .foregroundColor(Color(red: 0.11, green: 0.11, blue: 0.11))
-                    .frame(width: 454, height: 55)
 
                 
         case .shop:

@@ -43,16 +43,16 @@ struct ReadingView: View {
 
     // MARK: - Reading Pages
 
-//TODO: Finalize layout
+    //TODO: Finalize layout
 struct ReadingPage1: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 24) {
                 Headline(type: .reading,heading: "MANIFESTO")
-//                Text("You are not your timeline.")
-//                    .font(.headline)
-//                    .foregroundColor(.black)
-//                    .multilineTextAlignment(.center)
+                    //                Text("You are not your timeline.")
+                    //                    .font(.headline)
+                    //                    .foregroundColor(.black)
+                    //                    .multilineTextAlignment(.center)
                 Text("""
 Social media was supposed to keep us in touch with our friends but has instead turned us all into unwitting monkeys filling out the world's longest consumer survey. 
 
@@ -76,7 +76,7 @@ minutiae is your automated self-portrait
                 
                 Spacer()
             }
-            .padding(.horizontal, 80)
+            .padding(.horizontal, 20)
             .frame(maxWidth: 512)
             .frame(maxWidth: .infinity, alignment: .leading)
         }
@@ -87,12 +87,12 @@ struct ReadingPage2: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 24) {
-
+                
                 Headline(type: .reading,heading: "RULES")
-//                Text("Each day, one minute. No filters.")
-//                    .font(.headline)
-//                    .foregroundColor(.black)
-//                    .multilineTextAlignment(.center)
+                    //                Text("Each day, one minute. No filters.")
+                    //                    .font(.headline)
+                    //                    .foregroundColor(.black)
+                    //                    .multilineTextAlignment(.center)
                 Text("""
 1. Once a day, at a random moment, all minutiae participants around the world receive a simultaneous alert.\n
 ﻿﻿﻿2. You have exactly one minute (an extra four minutes when you subscribe or pre-order the 360 Edition One Year Book) to respond to the notification and open your minutiae app.\n
@@ -108,21 +108,21 @@ struct ReadingPage2: View {
                 
                 Spacer()
             }
-            .padding(.horizontal, 80)
+            .padding(.horizontal, 20)
             .frame(maxWidth: 512)
             .frame(maxWidth: .infinity, alignment: .leading)
         }
     }
 }
-//TODO: Finalize layout
+    //TODO: Finalize layout
 
 struct ReadingPage3: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 24) {
-
+                
                 Headline(type: .reading,heading: "THE ARTISTS")
- 
+                
                 Text("""
 We created minutiae as an experiment: part artwork, part performance, part collective diary.\n
 It grew from a shared fascination with the “in-between” — the unnoticed fragments that make up most of our lives.\n
@@ -162,27 +162,28 @@ He is currently a Ph.D. candidate studying cognitive neuroscience at the Univers
                 
                 Spacer()
             }
-            .padding(.horizontal, 80)
+            .padding(.horizontal, 20)
             .frame(maxWidth: 512)
             .frame(maxWidth: .infinity, alignment: .leading)
         }
     }
 }
 
-//TODO: Finalize layout
+    //TODO: Finalize layout
 
 struct ReadingPage4: View {
-    var body: some View {
+    var body: some View {GeometryReader { geometry in
         ScrollView {
+            
+            Headline(type: .reading,heading: "F.A.Q").padding(.bottom,20)
             VStack(alignment: .leading,spacing: 24) {
-
-                Headline(type: .reading,heading: "F.A.Q")
-
+                
+                
                 Text("I’m not receiving any notifications. Is this a bug?")
                     .font(.bodyText.weight(.bold))
                     .foregroundColor(.black)
                     .multilineTextAlignment(.leading)
-
+                
                 Text("""
 All participants receive notifications at the exact same minute, no matter where they are in the world.
 
@@ -193,24 +194,24 @@ However, over the full 1440-day cycle, every participant will capture the same t
                 .font(.bodyText)
                 .foregroundColor(.black)
                 .multilineTextAlignment(.leading)
-
+                
                 Text("I only get alerts at night, so I can’t use the app.")
                     .font(.bodyText.weight(.bold))
                     .foregroundColor(.black)
                     .multilineTextAlignment(.leading)
-
+                
                 Text("""
 During the 1440-day cycle, notifications are spread across every minute of the day. This means about 30% of your notifications will happen at night, no matter where in the world you are.
 """)
                 .font(.bodyText)
                 .foregroundColor(.black)
                 .multilineTextAlignment(.leading)
-
+                
                 Text("Why can’t notifications be adjusted to my time zone?")
                     .font(.bodyText.weight(.bold))
                     .foregroundColor(.black)
                     .multilineTextAlignment(.leading)
-
+                
                 Text("""
 Good question! The main reason is that the minutiae cycle spans years, and during that time, you might move or travel between time zones.
 
@@ -219,12 +220,12 @@ Additionally, having time-zone-specific notifications would isolate participants
                 .font(.bodyText)
                 .foregroundColor(.black)
                 .multilineTextAlignment(.leading)
-
+                
                 Text("How can I avoid missing notifications?")
                     .font(.bodyText.weight(.bold))
                     .foregroundColor(.black)
                     .multilineTextAlignment(.leading)
-
+                
                 Text("""
 To make sure you see every notification, enable Time Sensitive Notifications for minutiae:
 
@@ -234,12 +235,12 @@ To make sure you see every notification, enable Time Sensitive Notifications for
                 .font(.bodyText)
                 .foregroundColor(.black)
                 .multilineTextAlignment(.leading)
-
+                
                 Text("My settings are correct, so why am I still missing notifications?")
                     .font(.bodyText.weight(.bold))
                     .foregroundColor(.black)
                     .multilineTextAlignment(.leading)
-
+                
                 Text("""
 Notifications may be delivered silently in the following situations:
 
@@ -250,24 +251,24 @@ Notifications may be delivered silently in the following situations:
                 .font(.bodyText)
                 .foregroundColor(.black)
                 .multilineTextAlignment(.leading)
-
+                
                 Text("What can I do to always receive notifications?")
                     .font(.bodyText.weight(.bold))
                     .foregroundColor(.black)
                     .multilineTextAlignment(.leading)
-
+                
                 Text("""
 If you want to ensure notifications always come through, disable Do Not Disturb mode in the app.
 """)
                 .font(.bodyText)
                 .foregroundColor(.black)
                 .multilineTextAlignment(.leading)
-
+                
                 Text("How do I see photos from other participants?")
                     .font(.bodyText.weight(.bold))
                     .foregroundColor(.black)
                     .multilineTextAlignment(.leading)
-
+                
                 Text("""
 When you capture your daily moment, you're automatically paired with another participant who captured their moment at the exact same time somewhere else in the world.
 
@@ -277,12 +278,12 @@ To view their photo:
                 .font(.bodyText)
                 .foregroundColor(.black)
                 .multilineTextAlignment(.leading)
-
+                
                 Text("What do the numbers on the grid mean?")
                     .font(.bodyText.weight(.bold))
                     .foregroundColor(.black)
                     .multilineTextAlignment(.leading)
-
+                
                 Text("""
 The grid represents the 1440 minutes in a day, which is the total number of moments you’ll capture over the 1440-day cycle of minutiae. Here’s how it works:
 
@@ -297,12 +298,12 @@ Once every square is filled, you’ve completed your minutiae journey—a unique
                 .font(.bodyText)
                 .foregroundColor(.black)
                 .multilineTextAlignment(.leading)
-
+                
                 Text("If I order a book, will it include missed moments?")
                     .font(.bodyText.weight(.bold))
                     .foregroundColor(.black)
                     .multilineTextAlignment(.leading)
-
+                
                 Text("""
 It depends on the edition you choose:
 
@@ -314,12 +315,12 @@ Ultimately, it’s up to you how engaged you want to be. But many participants f
                 .font(.bodyText)
                 .foregroundColor(.black)
                 .multilineTextAlignment(.leading)
-
+                
                 Text("Final Thoughts")
                     .font(.bodyText.weight(.bold))
                     .foregroundColor(.black)
                     .multilineTextAlignment(.leading)
-
+                
                 Text("""
 minutiae is an art project, not a startup. Our goal is to help you create a personal, honest, and long-term self-portrait.
 We understand that the project can feel frustrating in a world driven by instant gratification. But minutiae is designed to encourage patience and reflection. Many participants, after completing their first cycle, immediately start a second.
@@ -334,7 +335,7 @@ Remember: minutiae is a marathon—not a sprint.
                     .font(.bodyText.weight(.bold))
                     .foregroundColor(.black)
                     .multilineTextAlignment(.leading)
-
+                
                 Text("""
 Feel free to email us at support@minutiae-app.org.
 """)
@@ -344,15 +345,18 @@ Feel free to email us at support@minutiae-app.org.
                 
                 Spacer()
             }
-            .padding(.horizontal, 80)
-            .frame(maxWidth: 512)
+            .padding(.horizontal, 20)
+            .frame(
+                maxWidth: min(420, geometry.size.width)
+            )
             .frame(maxWidth: .infinity, alignment: .leading)
-        }
+        }.frame(width: geometry.size.width)
+    }
     }
 }
 
 
-//TODO: USE PAYWALL FROM MINUTAE PROJECT
+    //TODO: USE PAYWALL FROM MINUTAE PROJECT
 
 struct ReadingPage5: View {
     @State private var isMonthlySelected = false
@@ -441,7 +445,7 @@ No soup for us...
                         linkURL: nil,
                         isSelected: .constant(true)
                     )
-                    // This will lead to the paywall
+                        // This will lead to the paywall
                 }
                 
                     // MARK: - Add One Year Book Section
@@ -479,12 +483,12 @@ No soup for us...
                             .frame(maxWidth: 300)
                             .cornerRadius(10)
                             .padding(.top, 8)
-
+                        
                     }
                     .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
                     .frame(height: 330)
                     .indexViewStyle(.page(backgroundDisplayMode: .always))
-
+                    
                     
                     Text("""
 Includes all the benefits above.
@@ -567,13 +571,13 @@ Appear as a benefactor in the Credits section.
                 
                 Spacer(minLength: 40)
             }
-            .padding(.horizontal, 80)
+            .padding(.horizontal, 20)
             .frame(maxWidth: 512)
             .frame(maxWidth: .infinity, alignment: .leading)
         }
     }
 }
- 
+
 
 #Preview {
     ReadingView(initialPage: 3)
