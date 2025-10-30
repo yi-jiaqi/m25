@@ -17,6 +17,7 @@ struct SelectableButton: View {
     let type: ButtonType
     let texts: [String] // 1–4 items for multi-text, or 1 item for single text
     let linkURL: URL?   // Only used for external link
+    var onSelect: (() -> Void)? = nil
     @Binding var isSelected: Bool
     
     var body: some View {
@@ -40,12 +41,18 @@ struct SelectableButton: View {
         )
         .cornerRadius(10)
         .padding(.horizontal)
-        .contentShape(Rectangle()) // better tap hit area
-//        .onTapGesture {
-//            if type == .externalLink, let url = linkURL {
-//                UIApplication.shared.open(url)
-//            }
-//        }
+        .contentShape(Rectangle())
+        .onTapGesture {
+            switch type {
+            case .externalLink:
+                if let url = linkURL {
+                    UIApplication.shared.open(url)
+                }
+            default:
+                isSelected.toggle()
+                onSelect?() // ✅ triggers parent logic like image jump
+            }
+        }
     }
 }
 

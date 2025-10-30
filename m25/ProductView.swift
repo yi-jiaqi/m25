@@ -14,6 +14,7 @@ struct ProductView: View {
     
     @Environment(\.dismiss) private var dismiss
     @State private var selectedRecord: Set<Int> = [] // ✅ multiple selection
+    @State private var selectedExtraChoiceIndex: Int? = nil
     @State private var selectedPriceIndex = 0
     @State private var showReading = false
     @State private var currentImageIndex = 0
@@ -64,21 +65,23 @@ struct ProductView: View {
                             type: .multipleText,
                             texts: [price.name, price.subtitle, mainPrice, subPrice].compactMap { $0 },
                             linkURL: nil,
+                            onSelect:{
+                                selectedPriceIndex = i
+                                if let target = price.imageTarget,
+                                   let targetIndex = product.images.firstIndex(of: target) {
+                                        // scroll or jump carousel to target
+                                    withAnimation {
+                                        currentImageIndex = targetIndex
+                                    }
+                                }
+                                selectedExtraChoiceIndex = nil
+                            },
                             isSelected: Binding(
                                 get: { selectedPriceIndex == i },
                                 set: { newValue in if newValue { selectedPriceIndex = i } }
                             )
+
                         )
-                        .onTapGesture {
-                            selectedPriceIndex = i
-                            if let target = price.imageTarget,
-                               let targetIndex = product.images.firstIndex(of: target) {
-                                    // scroll or jump carousel to target
-                                withAnimation {
-                                    currentImageIndex = targetIndex
-                                }
-                            }
-                        }
                             // If this price has a specialAction and extraChoices
                             // Show extra choices ONLY when this price is the one currently selected
                         if selectedPriceIndex == i,
@@ -96,25 +99,25 @@ struct ProductView: View {
                                         type: .multipleText,
                                         texts: [choice.name, choice.original].compactMap { $0 },
                                         linkURL: nil,
+                                        onSelect:{
+                                            if let target = choice.imageTarget,
+                                               let targetIndex = product.images.firstIndex(of: target) {
+                                                withAnimation {
+                                                    currentImageIndex = targetIndex
+                                                }
+                                            }
+                                        },
                                         isSelected: Binding(
-                                            get: { selectedRecord.contains(j) },
+                                            get: { selectedExtraChoiceIndex == j },
                                             set: { newValue in
                                                 if newValue {
-                                                    selectedRecord.insert(j)
+                                                    selectedExtraChoiceIndex = j
                                                 } else {
-                                                    selectedRecord.remove(j)
+                                                    selectedExtraChoiceIndex = nil
                                                 }
                                             }
                                         )
                                     )
-                                    .onTapGesture {
-                                        if let target = choice.imageTarget,
-                                           let targetIndex = product.images.firstIndex(of: target) {
-                                            withAnimation {
-                                                currentImageIndex = targetIndex
-                                            }
-                                        }
-                                    }
                                 }
                             }
                             .padding(.vertical, 8)
