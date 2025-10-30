@@ -580,5 +580,5 @@ Appear as a benefactor in the Credits section.
 
 
 #Preview {
-    ReadingView(initialPage: 3)
+    ReadingView(initialPage: 3).environmentObject(AppDataManager())
 }

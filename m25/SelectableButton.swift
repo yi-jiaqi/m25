@@ -160,5 +160,5 @@ struct ButtonDemoView: View {
 }
 
 #Preview{
-    ButtonDemoView()
+    ButtonDemoView().environmentObject(AppDataManager())
 }

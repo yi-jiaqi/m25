@@ -106,6 +106,6 @@ struct Headline: View {
 #Preview {
     VStack(spacing: 40) {
         Headline(type: .menu,heading:"News")
-    }
+    }.environmentObject(AppDataManager())
 }
 

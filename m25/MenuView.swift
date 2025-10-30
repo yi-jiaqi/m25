@@ -93,5 +93,5 @@ struct MenuView: View {
     }
 }
 #Preview {
-    MenuView()
+    MenuView().environmentObject(AppDataManager())
 }

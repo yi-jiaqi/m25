@@ -70,5 +70,5 @@ struct LittleShopView: View {
 }
 
 #Preview {
-    LittleShopView()
+    LittleShopView().environmentObject(AppDataManager())
 }

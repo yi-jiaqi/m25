@@ -52,7 +52,7 @@ struct GridView: View {
 }
 
 #Preview {
-    GridView()
+    GridView().environmentObject(AppDataManager())
 }
 
 struct GridPageView: View {

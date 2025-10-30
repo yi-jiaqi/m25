@@ -80,5 +80,5 @@ struct ProgressView: View {
 }
 
 #Preview {
-    ProgressView()
+    ProgressView().environmentObject(AppDataManager())
 }

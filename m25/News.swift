@@ -251,5 +251,5 @@ struct News: View {
         }
         .padding(.vertical, 30)
         .background(Color(hex: "F1F1F1"))
-    }
+    }.environmentObject(AppDataManager())
 }

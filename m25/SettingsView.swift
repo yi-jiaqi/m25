@@ -109,5 +109,5 @@ struct ToggleRow: View {
 
 
 #Preview {
-    SettingsView()
+    SettingsView().environmentObject(AppDataManager())
 }

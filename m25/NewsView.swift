@@ -29,5 +29,5 @@ struct NewsView: View {
 }
 
 #Preview {
-    NewsView()
+    NewsView().environmentObject(AppDataManager())
 }

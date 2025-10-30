@@ -21,8 +21,8 @@ struct ProductView: View {
     
     var body: some View {
         ScrollView {
+            ButtonsBar(type: .reading, onClose: { dismiss() })
             VStack(spacing: 20) {
-                ButtonsBar(type: .reading, onClose: { dismiss() })
                 Headline(type: .reading, heading: product.title)
                 
                     // --- Image carousel safely wrapped
@@ -328,7 +328,7 @@ struct ProductModel: Codable, Hashable {
     }
 }
 #Preview {
-    ProductView(product: sampleProduct)
+    ProductView(product: sampleProduct).environmentObject(AppDataManager())
 }
 
 
