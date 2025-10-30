@@ -52,11 +52,11 @@ struct CreditsView: View {
                     
                         // Supporting text
                     VStack(spacing: 4) {
-                        Text("Columbia University Libraries")
-                        Text("RARE BOOK & MANUSCRIPT LIBRARY")
+                        Text("Columbia University Rare Book & Manuscript Library")
+//                        Text("Rare Book & Manuscript Library")
                         Text("Konstnärsnämnden")
-                        Text("The Swedish Aers Grants Committee")
-                        Text("New INC")
+                        Text("The Swedish Art Grants Committee")
+                        Text("NEW INC")
                     }
                     .font(.smallBodyText)
                     .multilineTextAlignment(.center)
