@@ -79,6 +79,46 @@ struct ProductView: View {
                                 }
                             }
                         }
+                            // If this price has a specialAction and extraChoices
+                            // Show extra choices ONLY when this price is the one currently selected
+                        if selectedPriceIndex == i,
+                           let actionTitle = price.specialAction,
+                           let choices = product.extraChoices {
+                            VStack(spacing: 10) {
+                                Text(actionTitle)
+                                    .font(.smallHeadline)
+                                    .foregroundColor(.black)
+                                    .multilineTextAlignment(.center)
+                                
+                                ForEach(choices.indices, id: \.self) { j in
+                                    let choice = choices[j]
+                                    SelectableButton(
+                                        type: .multipleText,
+                                        texts: [choice.name, choice.original].compactMap { $0 },
+                                        linkURL: nil,
+                                        isSelected: Binding(
+                                            get: { selectedRecord.contains(j) },
+                                            set: { newValue in
+                                                if newValue {
+                                                    selectedRecord.insert(j)
+                                                } else {
+                                                    selectedRecord.remove(j)
+                                                }
+                                            }
+                                        )
+                                    )
+                                    .onTapGesture {
+                                        if let target = choice.imageTarget,
+                                           let targetIndex = product.images.firstIndex(of: target) {
+                                            withAnimation {
+                                                currentImageIndex = targetIndex
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            .padding(.vertical, 8)
+                        }
                     }
                     
                         // ✅ Not a member yet (ReadingView initialPage: 4)
@@ -90,6 +130,8 @@ struct ProductView: View {
                 }
                 .padding(.horizontal, 16)
                 .padding(.vertical)
+                
+                
                 
                 
                     // 5. Available records
@@ -145,10 +187,15 @@ struct ProductView: View {
                     if selectedRecord.isEmpty {
                         return " " // Keeps layout stable
                     } else {
-                        let priceString = currentPriceValue(for: product, index: selectedPriceIndex, isMember: isMember)
-                        let numericPrice = priceString.replacingOccurrences(of: "$", with: "")
-                        let priceValue = Double(numericPrice) ?? 0
-                        let total = Double(selectedRecord.count) * priceValue
+                        let basePrice = currentPriceValue(for: product, index: selectedPriceIndex, isMember: isMember)
+                        let baseValue = Double(basePrice.replacingOccurrences(of: "$", with: "")) ?? 0
+                        
+                            // If extra choices exist, add their values
+                        let extraTotal = product.extraChoices?
+                            .compactMap { Double($0.original.replacingOccurrences(of: "$", with: "")) }
+                            .reduce(0, +) ?? 0
+                        
+                        let total = Double(selectedRecord.count) * (baseValue + extraTotal)
                         return "Your total is: $\(String(format: "%.2f", total))"
                     }
                 }()
@@ -216,23 +263,32 @@ struct ProductPrice: Codable, Hashable {
     let subtitle: String?
     let discounted: String
     let original: String?
-    let imageTarget: String?    // ✅ optional new property
+    let imageTarget: String?
+    let specialAction: String?   // ✅ NEW
     
-        // Optional: custom init to keep backward compatibility
     init(
         name: String,
         subtitle: String? = nil,
         discounted: String,
         original: String? = nil,
-        imageTarget: String? = nil
+        imageTarget: String? = nil,
+        specialAction: String? = nil
     ) {
         self.name = name
         self.subtitle = subtitle
         self.discounted = discounted
         self.original = original
         self.imageTarget = imageTarget
+        self.specialAction = specialAction
     }
 }
+
+struct ExtraChoice: Codable, Hashable {
+    let name: String
+    let original: String
+    let imageTarget: String?
+}
+
 
 struct ProductModel: Codable, Hashable {
     let title: String
@@ -243,6 +299,7 @@ struct ProductModel: Codable, Hashable {
     let descriptions: [String]
     let boldTexts: [Int]?     // remains optional
     let prices: [ProductPrice]
+    let extraChoices: [ExtraChoice]?
     
         // ✅ custom memberwise initializer with default for boldTexts
     init(
@@ -253,7 +310,8 @@ struct ProductModel: Codable, Hashable {
         availableRecords: [Int]? = nil,
         descriptions: [String],
         boldTexts: [Int]? = nil,
-        prices: [ProductPrice]
+        prices: [ProductPrice],
+        extraChoices: [ExtraChoice]? = nil
     ) {
         self.title = title
         self.code = code
@@ -263,6 +321,7 @@ struct ProductModel: Codable, Hashable {
         self.descriptions = descriptions
         self.boldTexts = boldTexts
         self.prices = prices
+        self.extraChoices = extraChoices
     }
 }
 #Preview {
