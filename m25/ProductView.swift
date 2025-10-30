@@ -26,23 +26,52 @@ struct ProductView: View {
                 Headline(type: .reading, heading: product.title)
                 
                     // --- Image carousel safely wrapped
-                GeometryReader { geo in
-                    let safeWidth = min(geo.size.width, UIScreen.main.bounds.width)
-                    
-                    TabView(selection: $currentImageIndex) {
-                        ForEach(product.images.indices, id: \.self) { i in
-                            let imgName = product.images[i]
-                            ZoomableImageView(imageName: imgName)
-                                .frame(width: safeWidth * 0.9, height: safeWidth * 0.9)
-                                .tag(i)
-                        }
+//                GeometryReader { geo in
+//                    let safeWidth = min(geo.size.width, UIScreen.main.bounds.width)
+//                    let uiImage = UIImage(named: product.images[currentImageIndex])
+//                    let aspectRatio = (uiImage?.size.height ?? 1) / (uiImage?.size.width ?? 1)
+//                    let heightFactor: CGFloat = aspectRatio < 0.8 ? 0.6 : 0.9  // landscape → shorter, portrait → taller
+//                    TabView(selection: $currentImageIndex) {
+//                        ForEach(product.images.indices, id: \.self) { i in
+//                            let imgName = product.images[i]
+//                            if let uiImage = UIImage(named: imgName) {
+//                                let ratio = uiImage.size.height / uiImage.size.width
+//                                ZoomableImageView(imageName: imgName)
+//                                    .frame(width: safeWidth * 0.9, height: safeWidth * 0.9 * ratio)
+//                                    .clipped()
+//                                    .tag(i)
+//                            } else {
+//                                ZoomableImageView(imageName: imgName)
+//                                    .frame(width: safeWidth * 0.9, height: safeWidth * 0.9)
+//                                    .tag(i)
+//                            }
+//                        }
+//                    }
+//                    .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
+//                    .frame(width: safeWidth, height: safeWidth * heightFactor)
+//                    .indexViewStyle(.page(backgroundDisplayMode: .always))
+//                    .frame(maxWidth: .infinity)
+//                }
+//                .frame(height: UIScreen.main.bounds.width * 0.9)
+                
+                let uiImage = UIImage(named: product.images[currentImageIndex])
+                let aspectRatio = (uiImage?.size.height ?? 1) / (uiImage?.size.width ?? 1)
+                let heightFactor: CGFloat = aspectRatio < 0.8 ? 0.6 : 0.9
+                let carouselHeight = UIScreen.main.bounds.width * heightFactor
+                
+                TabView(selection: $currentImageIndex) {
+                    ForEach(product.images.indices, id: \.self) { i in
+                        let imgName = product.images[i]
+                        ZoomableImageView(imageName: imgName)
+                            .frame(width: UIScreen.main.bounds.width,
+                                   height: carouselHeight)
+                            .clipped()
+                            .tag(i)
                     }
-                    .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
-                    .frame(width: safeWidth, height: safeWidth)
-                    .indexViewStyle(.page(backgroundDisplayMode: .always))
-                    .frame(maxWidth: .infinity)
                 }
-                .frame(height: UIScreen.main.bounds.width * 0.9)
+                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
+                .frame(height: carouselHeight)
+                .indexViewStyle(.page(backgroundDisplayMode: .always))
 
                 
                 

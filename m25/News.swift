@@ -21,6 +21,21 @@ struct News: View {
     var title: String
     var content: String
     var image: Image? = nil
+    var imageName: String? = nil //if need to detect aspect ratio (in .thumbnail, in ShopeView)
+    
+    init(
+        type: NewsType,
+        title: String,
+        content: String,
+        image: Image? = nil,
+        imageName: String? = nil
+    ) {
+        self.type = type
+        self.title = title
+        self.content = content
+        self.image = image
+        self.imageName = imageName
+    }
     
     private func lineHeight(for font: Font) -> CGFloat {
         switch font {
@@ -131,7 +146,7 @@ struct News: View {
                     Text(title.uppercased())
                         .font(.xSmallHeadline)
                         .foregroundColor(Color(hex: "1D1D1D"))
-                        .multilineTextAlignment(.center) 
+                        .multilineTextAlignment(.center)
                         .frame(maxWidth: .infinity, alignment: .center)                .fixedSize(horizontal: false, vertical: true)
                         .multilineTextAlignment(.leading)
                         .lineLimit(5)
@@ -145,37 +160,75 @@ struct News: View {
                 }
                     // MARK: - Thumb Image - for showing item in Shop(ShopView)
             case .thumbImage:
-                VStack(alignment: .center, spacing: 6) {
-                    
-                    
+                VStack(alignment: .center, spacing: 4) {
+                        //                    if let image = image {
+                        //                        GeometryReader { geometry in
+                        //                            let cardWidth = geometry.size.width
+                        //                                // Try to read actual image dimensions from asset
+                        //                            if let imageName = imageName {
+                        //                                if let uiImage = UIImage(named: "\(imageName)") {
+                        //                                    let aspectRatio = uiImage.size.height / uiImage.size.width
+                        //                                        // Landscape → shorter; Portrait → taller
+                        //                                    image
+                        //                                        .resizable()
+                        //                                        .scaledToFit()
+                        //                                        .frame(width: cardWidth,
+                        //                                               height: cardWidth * (aspectRatio < 0.8 ? 0.7 : 1.0))
+                        //                                        .clipped()
+                        //                                        .cornerRadius(12)
+                        //                                        .frame(maxWidth: .infinity, alignment: .center)
+                        //                                        .frame(maxHeight: .infinity, alignment: .center)
+                        //                                } else {
+                        //                                        // Fallback if aspect ratio can't be detected
+                        //                                    image
+                        //                                        .resizable()
+                        //                                        .scaledToFit()
+                        //                                        .frame(width: cardWidth, height: cardWidth)
+                        //                                        .clipped()
+                        //                                        .cornerRadius(12)
+                        //                                        .frame(maxWidth: .infinity, alignment: .center)
+                        //                                }
+                        //                            }
+                        //                        }
+                        //                        .aspectRatio(1, contentMode: .fit)
+                        //                    }
                     if let image = image {
-                        GeometryReader { geometry in
-                            let cardWidth = (geometry.size.width - 6) / 1  // 16 = horizontal padding between two cards
+                        if let imageName = imageName,
+                           let uiImage = UIImage(named: imageName) {
+                            let aspectRatio = uiImage.size.height / uiImage.size.width
+                            let heightFactor: CGFloat = aspectRatio < 0.8 ? 0.7 : 1.0
+                            let widthOffestWhenLandscape: CGFloat = aspectRatio < 0.8 ? 6.0 : 0.0
                             
-                            image
-                                .resizable()
-                                .scaledToFit() // ✅ keeps aspect ratio (fit)
-                                .frame(width: cardWidth, height: cardWidth) // ✅ square frame
-                                .clipped()
-                                .cornerRadius(12)
-                                .frame(maxWidth: .infinity, alignment: .center)
-                                .frame(maxHeight: .infinity, alignment: .center)
+                            GeometryReader { geometry in
+                                let cardWidth = geometry.size.width
+                                image
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: cardWidth+widthOffestWhenLandscape,
+                                           height: (cardWidth+widthOffestWhenLandscape) * heightFactor)
+                                    .clipped()
+                                    .cornerRadius(12)
+                                    .frame(maxWidth: .infinity, alignment: .center)
+                            }.aspectRatio(1/heightFactor, contentMode: .fit)
                         }
-                        .aspectRatio(1, contentMode: .fit)
                     }
+                    
+                        // Title
                     HStack(alignment: .top) {
                         Text(title.uppercased())
                             .font(.xXSmallHeadline)
                             .foregroundColor(Color(hex: "1D1D1D"))
                             .frame(maxWidth: .infinity, alignment: .center)
                             .multilineTextAlignment(.center)
-                            .lineLimit(3) // ✅ max 3 lines
+                            .lineLimit(3)
                             .fixedSize(horizontal: false, vertical: true)
                             .frame(
                                 minHeight: Font.lineHeight(for: .xXSmallHeadline) * 2,
                                 maxHeight: Font.lineHeight(for: .xXSmallHeadline) * 3
                             )
                     }
+                    
+                        // Content
                     Text(content)
                         .font(.xSmallBodyText)
                         .foregroundColor(Color(hex: "1D1D1D"))
@@ -184,7 +237,9 @@ struct News: View {
                 .frame(maxWidth: .infinity, alignment: .center)
             }
         }
-        .padding(EdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 12))
+        .padding(type == .thumbImage
+                 ? EdgeInsets(top: 12, leading: 6, bottom: 12, trailing: 6)
+                 : EdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 12))
         .frame(maxWidth: .infinity)
         .background(Color(hex: "C7C7C7"))
         .cornerRadius(18)
@@ -206,11 +261,11 @@ struct News: View {
                  title: "Little Image",
                  content: "When there’s a small image, put it on the right side.",
                  image: Image("minutiae_clock_square"))
-
+            
             
                 // MARK: 🧩 Demo: Grid layout using thumbImage
             VStack(alignment: .leading, spacing: 6) {
-                // Two-column grid
+                    // Two-column grid
                 let columns = [
                     GridItem(.flexible(), spacing: 6),
                     GridItem(.flexible(), spacing: 6)

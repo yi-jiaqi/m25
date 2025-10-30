@@ -54,10 +54,13 @@ struct SectionView: View {
                 ForEach(products, id: \.self) { product in
                     NavigationLink(destination: ProductView(product: product)) {
                         VStack(alignment: .leading, spacing: 0) {
-                            News(type: .thumbImage,
-                                 title: product.title,
-                                 content: product.demonstratedPrice,
-                                 image: Image(product.images.first ?? "minutiae_poster_notification"))
+                            News(
+                                type: .thumbImage,
+                                title: product.title,
+                                content: product.demonstratedPrice,
+                                image: Image(product.images.first ?? "minutiae_poster_notification"),
+                                imageName: product.images.first ?? "minutiae_poster_notification"
+                            )
                         }
                         .frame(maxWidth: .infinity, alignment: .top)
                     }
