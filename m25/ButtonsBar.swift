@@ -122,5 +122,5 @@ struct ButtonsBar: View {
         ButtonsBar(type: .grid)
         ButtonsBar(type: .reading)
     }
-    .background(Color.white)
+    .background(Color.white).environmentObject(AppDataManager())
 }

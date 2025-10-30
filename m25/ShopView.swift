@@ -33,7 +33,7 @@ struct ShopView: View {
 
 
 #Preview {
-    ShopView()
+    ShopView().environmentObject(AppDataManager())
 }
 
 struct SectionView: View {

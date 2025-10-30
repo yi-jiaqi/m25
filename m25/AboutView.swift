@@ -11,7 +11,7 @@ import SwiftUI
 struct AboutView: View {
     @State private var showReading = false
     @State private var showDoNotDisturb = false
-    @State private var selectedPage = 0
+    @State private var selectedPage = -1
     
     var body: some View {
         VStack(spacing: 20) { // Major group gap = 20
@@ -39,8 +39,11 @@ struct AboutView: View {
                     }
                     .font(.smallHeadline)
                     .foregroundColor(.white)
-                    .onChange(of: selectedPage) { _ in
-                        showReading = true
+                    .onChange(of: selectedPage) {
+                            // small delay to prevent the “button unresponsive” issue
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                            showReading = true
+                        }
                     }
                     
                     VStack(spacing: 40) {
@@ -68,5 +71,5 @@ struct AboutView: View {
 }
 
 #Preview {
-    AboutView()
+    AboutView().environmentObject(AppDataManager())
 }

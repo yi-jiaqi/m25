@@ -105,7 +105,7 @@ struct DoNotDisturbView: View {
 }
 
 #Preview {
-    DoNotDisturbView()
+    DoNotDisturbView().environmentObject(AppDataManager())
 }
 
 

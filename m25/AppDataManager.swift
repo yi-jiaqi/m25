@@ -11,11 +11,25 @@ import Foundation
 class AppDataManager: ObservableObject {
     static let shared = AppDataManager()
     
-    @Published var userState: UserState?
-
+#if DEBUG
+        // ✅ Allow previews to create temporary instances safely
+    init(previewMode: Bool = false) {
+        if !previewMode {
+            loadUserData()
+        }
+    }
+#else
     private init() {
         loadUserData()
     }
+#endif
+    
+    
+    @Published var userState: UserState?
+
+//    private init() {
+//        loadUserData()
+//    }
 
     func loadUserData() {
         guard let url = Bundle.main.url(forResource: "testingUser", withExtension: "json"),

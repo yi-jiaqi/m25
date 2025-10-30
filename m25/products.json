@@ -59,7 +59,13 @@
         "title": "360 Edition - One Year",
         "code": 111,
         "demonstratedPrice": "From $109",
-        "images": ["360-Edition---Record-I","360 Edition - Open book V2","360-Edition-front-with-Graphics","360 Edition - Premium Quality","360 Edition - Standard Quality","360-Edition-in-environment"],
+        "images": [
+            "360 Edition - Standard Quality",
+            "360-Edition---Record-I",
+            "360 Edition - Open book V2",
+            "360-Edition-front-with-Graphics",
+            "360 Edition - Premium Quality",
+            "360-Edition-in-environment"],
         "availableRecords": [1],
         "descriptions": [
             "The minutiae 360 Edition contains all your captured moments over a one-year period. The spine is stamped with the participant’s initials and the corresponding record number.",
