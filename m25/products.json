@@ -37,13 +37,13 @@
         "boldTexts": [0,1,2],
         "prices": [
             { "name": "WITHOUT FRAME", "subtitle": "Full Price", "discounted": "$79", "original": "$99",
-                "imageTarget": "Classic unframed Poster",},
+                "imageTarget": "Classic unframed Poster"},
             { "name": "WITH FRAME", "subtitle": "Full Price", "discounted": "$199", "original": "$249",
-                "imageTarget": "Classic White Frame","specialAction":"Frame Color:"},
+                "imageTarget": "Classic White Frame","specialAction":"Frame Color:"}
         ],
         "extraChoices":[
             {"name": "WHITE FRAME","original":"$0","imageTarget": "Classic White Frame Environment"},
-            {"name": "BLACK FRAME","original":"$0","imageTarget": "Classic Black Frame Environment"},
+            {"name": "BLACK FRAME","original":"$0","imageTarget": "Classic Black Frame Environment"}
         ]
     },
     
@@ -62,7 +62,7 @@
             "• 80# White - Coated: Ultra-smooth paper",
             "• Each page contains the date, location, and the local time of the moment captured",
             "• The number of pages depends on the total number of your captured moments.",
-            "• Taxes & Shipping are included in the price (excl SG, AUS) - Worldwide shipping",
+            "• Taxes & Shipping are included in the price (excl SG, AUS) - Worldwide shipping"
         ],
         "boldTexts": [0],
         "prices": [
@@ -91,7 +91,7 @@
             "• 80# White - Coated: Ultra-smooth paper",
             "• Each page contains the date, location, and the local time of the moment captured",
             "• The number of pages depends on the total number of your captured moments.",
-            "• Taxes & Shipping are included in the price (excl SG, AUS) - Worldwide shipping",
+            "• Taxes & Shipping are included in the price (excl SG, AUS) - Worldwide shipping"
         ],
         "boldTexts": [0],
         "prices": [
@@ -114,7 +114,7 @@
             "• 80# White - Coated: Ultra-smooth paper",
             "• Each page contains the date, location, and the local time of the moment captured",
             "• The number of pages depends on the total number of your captured moments.",
-            "• Taxes & Shipping are included in the price (excl SG, AUS) - Worldwide shipping",
+            "• Taxes & Shipping are included in the price (excl SG, AUS) - Worldwide shipping"
         ],
         "boldTexts": [0],
         "prices": [
@@ -137,7 +137,7 @@
             "• 80# White - Coated: Ultra-smooth paper",
             "• Each page contains the date, location, and the local time of the moment captured",
             "• The number of pages depends on the total number of your captured moments.",
-            "• Taxes & Shipping are included in the price (excl SG, AUS) - Worldwide shipping",
+            "• Taxes & Shipping are included in the price (excl SG, AUS) - Worldwide shipping"
         ],
         "boldTexts": [0],
         "prices": [
@@ -160,7 +160,7 @@
             "• 80# White - Coated: Ultra-smooth paper",
             "• Each page contains the date, location, and the local time of the moment captured",
             "• The number of pages depends on the total number of your captured moments.",
-            "• Taxes & Shipping are included in the price (excl SG, AUS) - Worldwide shipping",
+            "• Taxes & Shipping are included in the price (excl SG, AUS) - Worldwide shipping"
         ],
         "boldTexts": [0],
         "prices": [
@@ -182,7 +182,7 @@
             "• Size: 8.5 x 11 in (21x27 cm) ",
             "• Hardcover matte linen finish + dustwrapper",
             "• 80# White - Coated: Ultra-smooth paper",
-            "• Taxes & Shipping are included in the price (excl SG, AUS) - Worldwide shipping",
+            "• Taxes & Shipping are included in the price (excl SG, AUS) - Worldwide shipping"
         ],
         "boldTexts": [0],
         "prices": [
@@ -204,18 +204,18 @@
             "• Limited to 100 individual editions.",
             "• The pages are composed of high-opacity, ultra-smooth, bright white paper, providing an unparalleled reading experience.",
             "• The cover of each edition is exquisitely stamped with the participant’s initials, as well as the commencement and conclusion dates of the cycle.",
-            "• Optional: Have your name included as a Benefactor under the Credit section in the app. ",
+            "• Optional: Have your name included as a Benefactor under the Credit section in the app. "
         ],
         "boldTexts": [0],
         "prices": [
-            { "name": "MEMBER", "discounted": "$1440", }
+            { "name": "MEMBER", "discounted": "$1440" }
         ]
     },
     
     {
         "title": "Classic Poster",
         "code": 210,
-        "demonstratedPrice": "From $199",
+        "demonstratedPrice": "From $79",
         "images": ["Classic Black Frame","Classic Black Frame Environment","Classic unframed Poster","Classic White Frame","Classic White Frame Environment", "Classic Backside"],
         "availableRecords": [0],
         "descriptions": [
@@ -223,17 +223,19 @@
             "• Size 24 x 36 in (61 x 91 cm)",
             "• Giclée Enhanced Matte Paper Print",
             "• Plexiglass front",
-            "• Taxes & Shipping are included in the price",
+            "• Taxes & Shipping are included in the price"
         ],
         "prices": [
             { "name": "WITHOUT FRAME", "subtitle": "Full Price", "discounted": "$79", "original": "$99",
-                "imageTarget": "Classic unframed Poster",},
+                "imageTarget": "Classic unframed Poster"},
             { "name": "WITH FRAME", "subtitle": "Full Price", "discounted": "$199", "original": "$249",
-                "imageTarget": "Classic White Frame","specialAction":"Frame Color:"},
+
+                "imageTarget": "Classic Black Frame","specialAction":"Frame Color:"}
         ],
         "extraChoices":[
-            {"name": "WHITE FRAME","original":"$0","imageTarget": "Classic White Frame Environment"},
-            {"name": "BLACK FRAME","original":"$0","imageTarget": "Classic Black Frame Environment"},
+            {"name": "WHITE FRAME","original":"","imageTarget": "Classic White Frame"},
+            {"name": "BLACK FRAME","original":"","imageTarget": "Classic Black Frame"}
+
         ]
         
     },
@@ -242,7 +244,7 @@
     {
         "title": "Constellation Poster",
         "code": 240,
-        "demonstratedPrice": "From $179",
+        "demonstratedPrice": "From $79",
         "images": ["poster_const1", "poster_const2", "poster_const3", "poster_const4", "minutiae_poster_notification"],
         "availableRecords": [4],
         "descriptions": [
