@@ -167,7 +167,9 @@ struct ProductView: View {
                 
                 
                     // 5. Available records
-                if let records = product.availableRecords {
+                if let records = product.availableRecords,
+                   records.contains(where: { [1, 2, 3, 4].contains($0) }) {
+                    
                     let currentYear = currentYearIndex(for: appData.userState)
                     Headline(type: .reading, heading: "Available Records:")
                     
@@ -189,7 +191,7 @@ struct ProductView: View {
                                         .stroke(Color.black, lineWidth: 1)
                                 )
                                 .onTapGesture {
-                                    guard isAvailable else { return } // disable future years
+                                    guard isAvailable else { return }
                                     if isSelected {
                                         selectedRecord.remove(record)
                                     } else {
@@ -216,17 +218,29 @@ struct ProductView: View {
                 
                     // ✅ 7. Total summary
                 let totalText: String = {
+                        // Determine if valid availableRecords exist
+                    let hasValidRecords = product.availableRecords?.contains(where: { [1, 2, 3, 4].contains($0) }) ?? false
+                    
+                        // If no valid records → treat as 1 item
+                    if selectedRecord.isEmpty && hasValidRecords == false {
+                        let basePrice = currentPriceValue(for: product, index: selectedPriceIndex, isMember: isMember)
+                        let baseValue = Double(basePrice.replacingOccurrences(of: "$", with: "")) ?? 0
+                        let extraTotal = product.extraChoices?
+                            .compactMap { Double($0.original.replacingOccurrences(of: "$", with: "")) }
+                            .reduce(0, +) ?? 0
+                        let total = baseValue + extraTotal
+                        return "Your total is: $\(String(format: "%.2f", total))"
+                    }
+                    
+                        // Default case
                     if selectedRecord.isEmpty {
                         return " " // Keeps layout stable
                     } else {
                         let basePrice = currentPriceValue(for: product, index: selectedPriceIndex, isMember: isMember)
                         let baseValue = Double(basePrice.replacingOccurrences(of: "$", with: "")) ?? 0
-                        
-                            // If extra choices exist, add their values
                         let extraTotal = product.extraChoices?
                             .compactMap { Double($0.original.replacingOccurrences(of: "$", with: "")) }
                             .reduce(0, +) ?? 0
-                        
                         let total = Double(selectedRecord.count) * (baseValue + extraTotal)
                         return "Your total is: $\(String(format: "%.2f", total))"
                     }

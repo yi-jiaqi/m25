@@ -1,27 +1,49 @@
 [
     {
-        "title": "Sample Product",
-        "code": 0,
+        "title": "Sample Product(Only For Debug)",
+        "code": 320,
         "demonstratedPrice": "From $79",
-        "images": [
-            "minutiae_poster_notification",
-            "minutiae_poster_notification",
-            "minutiae_poster_notification"
-        ],
+        "images": ["Classic Black Frame","Classic Black Frame Environment","Classic unframed Poster","Classic White Frame","Classic White Frame Environment", "Classic Backside"],
+
         "availableRecords": [1, 2, 3, 4],
         "descriptions": [
-            "The minutiae 360 Edition contains all your captured moments over a one-year period.\n\nThe spine is stamped with the participant’s initials and the corresponding record number.",
-            "The book does not include missed moments and is sequenced in chronological order.",
-            "• Size: 8.5 x 11 in (21x27 cm) ",
-            "• Hardcover matte linen finish + dustwrapper",
-            "• 80# White - Coated: Ultra-smooth paper",
-            "• Each page contains the date, location, and the local time of the moment captured",
-            "• The number of pages depends on the total number of your captured moments.",
-            "• Taxes & Shipping are included in the price (excl SG, AUS) - Worldwide shipping",
+            "title: As the title in ShopView and ProductView, No longer than 2 lines(about 6 words) to keep same height. Extra are hidden in ShopView but shown in ProductView",
+            "code: the 3digit number for each Item, here's the rule:",
+            "• First digit is category: 1-Books; 2-Posters; 3-Others",
+            "• Second digit is the sub-category: in Books, 1 is 360 Edition; 2 is 1440 Edition; 3 is Limited; in Poster, 1 is classical series, 2 is constellation series.",
+            "• Third digit is backup and not used right now, by default 0.",
+            "demonstratedPrice is the From-Price shown Only in ShopView",
+            "images is an array of image's name, excluding extension like png/jpg, the image need to be in Assets.xcassets",
+            "availableRecords is usually [1,2,3,4], only needed for books of each year, others just use [0]",
+            "description is array of texts.",
+            "boldTexts is the array of the indexes(starts from 0) in description that needs to be bold (.smallHeadline) or normal (.smallBodyText) font presets are configured in Font+Extensions.swift",
+            "prices is an array of pricing options displayed as buttons in ProductView.",
+            "Each price object must include a 'name' (displayed on the button), a 'discounted' (current or member price), and may optionally include 'subtitle', 'original', 'imageTarget', or 'specialAction'.",
+            "• name: text shown on the price button (e.g., 'WITH FRAME', 'STANDARD').",
+            "• subtitle: smaller text displayed below the name (optional, e.g., 'Full Price').",
+            "• discounted: the discounted or member price (always shown as string, e.g., '$79').",
+            "• original: the original non-member price (optional, e.g., '$99'). If missing, only discounted will be shown.",
+            "• imageTarget: links to the image in 'images' array that the carousel jumps to when this option is selected.",
+            "• specialAction: defines an additional selectable layer below this price (optional, e.g., 'Frame Color:'). When present, the system looks for 'extraChoices'.",
+            "",
+            "extraChoices is an array of optional sub-options that appear only when the parent price (with specialAction) is selected.",
+            "Each extraChoice object includes 'name', 'original', and optional 'imageTarget'.",
+            "• name: displayed as an additional button label (e.g., 'WHITE FRAME', 'BLACK FRAME').",
+            "• original: the added cost as a string (e.g., '$0', '$20').",
+            "• imageTarget: links to the image that should be shown in the carousel when the option is tapped.",
+            "The total price will always be calculated as the selected price + any selected extraChoice values."
+
         ],
+        "boldTexts": [0,1,2],
         "prices": [
-            { "name": "UNFRAMED", "subtitle": "Full Price", "discounted": "$79", "original": "$99" },
-            { "name": "FRAMED", "subtitle": "Full Price", "discounted": "$139", "original": "$159" }
+            { "name": "WITHOUT FRAME", "subtitle": "Full Price", "discounted": "$79", "original": "$99",
+                "imageTarget": "Classic unframed Poster",},
+            { "name": "WITH FRAME", "subtitle": "Full Price", "discounted": "$199", "original": "$249",
+                "imageTarget": "Classic White Frame","specialAction":"Frame Color:"},
+        ],
+        "extraChoices":[
+            {"name": "WHITE FRAME","original":"$0","imageTarget": "Classic White Frame Environment"},
+            {"name": "BLACK FRAME","original":"$0","imageTarget": "Classic Black Frame Environment"},
         ]
     },
     
@@ -42,7 +64,7 @@
             "• The number of pages depends on the total number of your captured moments.",
             "• Taxes & Shipping are included in the price (excl SG, AUS) - Worldwide shipping",
         ],
-        "boldTexts": [1],
+        "boldTexts": [0],
         "prices": [
             { "name": "STANDARD", "subtitle": "Full Price", "discounted": "$109", "original": "$129" },
             { "name": "PREMIUM", "subtitle": "Full Price", "discounted": "$139", "original": "$159" }
@@ -50,7 +72,7 @@
     },
     
     {
-        "title": "360 Edition - One Year",
+        "title": "360 Edition - One Year - Record 1",
         "code": 111,
         "demonstratedPrice": "From $109",
         "images": [
@@ -60,7 +82,7 @@
             "360-Edition-front-with-Graphics",
             "360 Edition - Premium Quality",
             "360-Edition-in-environment"],
-        "availableRecords": [1],
+        "availableRecords": [0],
         "descriptions": [
             "The minutiae 360 Edition contains all your captured moments over a one-year period.\n\nThe spine is stamped with the participant’s initials and the corresponding record number.",
             "The book does not include missed moments and is sequenced in chronological order.",
@@ -71,7 +93,7 @@
             "• The number of pages depends on the total number of your captured moments.",
             "• Taxes & Shipping are included in the price (excl SG, AUS) - Worldwide shipping",
         ],
-        "boldTexts": [1],
+        "boldTexts": [0],
         "prices": [
             { "name": "STANDARD", "subtitle": "Full Price", "discounted": "$109", "original": "$129" },
             { "name": "PREMIUM", "subtitle": "Full Price", "discounted": "$139", "original": "$159" }
@@ -79,7 +101,7 @@
     },
     
     {
-        "title": "360 Edition - One Year",
+        "title": "360 Edition - One Year - Record 2",
         "code": 112,
         "demonstratedPrice": "From $109",
         "images": ["360-Edition--Record-II","360 Edition - Open book V2","360-Edition-front-with-Graphics","360 Edition - Premium Quality","360 Edition - Standard Quality","360-Edition-in-environment"],
@@ -94,7 +116,7 @@
             "• The number of pages depends on the total number of your captured moments.",
             "• Taxes & Shipping are included in the price (excl SG, AUS) - Worldwide shipping",
         ],
-        "boldTexts": [1],
+        "boldTexts": [0],
         "prices": [
             { "name": "STANDARD", "subtitle": "Full Price", "discounted": "$109", "original": "$129" },
             { "name": "PREMIUM", "subtitle": "Full Price", "discounted": "$139", "original": "$159" }
@@ -102,7 +124,7 @@
     },
     
     {
-        "title": "360 Edition - One Year",
+        "title": "360 Edition - One Year - Record 3",
         "code": 113,
         "demonstratedPrice": "From $109",
         "images": ["360-Edition--Record-III","360 Edition - Open book V2","360-Edition-front-with-Graphics","360 Edition - Premium Quality","360 Edition - Standard Quality","360-Edition-in-environment"],
@@ -117,7 +139,7 @@
             "• The number of pages depends on the total number of your captured moments.",
             "• Taxes & Shipping are included in the price (excl SG, AUS) - Worldwide shipping",
         ],
-        "boldTexts": [1],
+        "boldTexts": [0],
         "prices": [
             { "name": "STANDARD", "subtitle": "Full Price", "discounted": "$109", "original": "$129" },
             { "name": "PREMIUM", "subtitle": "Full Price", "discounted": "$139", "original": "$159" }
@@ -125,7 +147,7 @@
     },
     
     {
-        "title": "360 Edition - One Year",
+        "title": "360 Edition - One Year - Record 4",
         "code": 114,
         "demonstratedPrice": "From $109",
         "images": ["360-Edition--Record-IV","360 Edition - Open book V2","360-Edition-front-with-Graphics","360 Edition - Premium Quality","360 Edition - Standard Quality","360-Edition-in-environment"],
@@ -140,7 +162,7 @@
             "• The number of pages depends on the total number of your captured moments.",
             "• Taxes & Shipping are included in the price (excl SG, AUS) - Worldwide shipping",
         ],
-        "boldTexts": [1],
+        "boldTexts": [0],
         "prices": [
             { "name": "STANDARD", "subtitle": "Full Price", "discounted": "$109", "original": "$129" },
             { "name": "PREMIUM", "subtitle": "Full Price", "discounted": "$139", "original": "$159" }
@@ -152,7 +174,7 @@
         "code": 120,
         "demonstratedPrice": "From $249",
         "images": ["book_1440_edition1","book_1440_edition2","book_1440_edition3"],
-        "availableRecords": [1],
+        "availableRecords": [0],
         "descriptions": [
             "The minutiae 1440 Edition contains all your captured minutiae moments over a four-year period.\n\nThe spine is stamped with the participant’s initials and the corresponding record and volume number.",
             "The book includes missed moments and is sequenced by UTC time (each page represents one minute)",
@@ -162,7 +184,7 @@
             "• 80# White - Coated: Ultra-smooth paper",
             "• Taxes & Shipping are included in the price (excl SG, AUS) - Worldwide shipping",
         ],
-        "boldTexts": [1],
+        "boldTexts": [0],
         "prices": [
             { "name": "STANDARD", "subtitle": "Full Price", "discounted": "$249", "original": "$299" },
             { "name": "PREMIUM", "subtitle": "Full Price", "discounted": "$399", "original": "$449" }
@@ -174,7 +196,7 @@
         "code": 130,
         "demonstratedPrice": "From $1440",
         "images": ["limited_edition1","limited_edition2","limited_edition3","limited_edition4"],
-        "availableRecords": [1],
+        "availableRecords": [0],
         "descriptions": [
             "The minutiae Limited Edition is a unique work of art — hand-bound in New York City by one of the world’s most accomplished bookbinders.\n\nEach volume is crafted using high-opacity, bright-white paper and bound in italian made indigo cloth, foil-stamped with your initials and the dates of your cycle.",
             "One of the Editions is held in the Columbia University Rare Books and Manuscript Library in New York City, bearing as a testament to its significance as an extraordinary amalgamation of age-old traditions and contemporary technology.",
@@ -195,7 +217,7 @@
         "code": 210,
         "demonstratedPrice": "From $199",
         "images": ["Classic Black Frame","Classic Black Frame Environment","Classic unframed Poster","Classic White Frame","Classic White Frame Environment", "Classic Backside"],
-        "availableRecords": [1],
+        "availableRecords": [0],
         "descriptions": [
             "The minutiae Classic Poster contains all your captured minutiae moments over a four-year period.",
             "• Size 24 x 36 in (61 x 91 cm)",
@@ -205,13 +227,13 @@
         ],
         "prices": [
             { "name": "WITHOUT FRAME", "subtitle": "Full Price", "discounted": "$79", "original": "$99",
-                "imageTarget": "poster_classical_unframed1",},
+                "imageTarget": "Classic unframed Poster",},
             { "name": "WITH FRAME", "subtitle": "Full Price", "discounted": "$199", "original": "$249",
-                "imageTarget": "poster_classical_framed1","specialAction":"Frame Color:"},
+                "imageTarget": "Classic White Frame","specialAction":"Frame Color:"},
         ],
         "extraChoices":[
-            {"name": "WHITE FRAME","original":"$0","imageTarget": "poster_classical_framed1"},
-            {"name": "BLACK FRAME","original":"$0","imageTarget": "poster_classical_framed5"},
+            {"name": "WHITE FRAME","original":"$0","imageTarget": "Classic White Frame Environment"},
+            {"name": "BLACK FRAME","original":"$0","imageTarget": "Classic Black Frame Environment"},
         ]
         
     },

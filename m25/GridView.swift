@@ -262,7 +262,7 @@ struct GridViewModal: View {
     
     private var thisPoster: ProductModel? {
         let year = max(1, min(tabIndex, 4))
-        let code = 230 + year // → 231, 232, 233, 234
+        let code = 210
         return ProductManager.shared.product(code: code)
     }
     
