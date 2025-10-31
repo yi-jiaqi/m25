@@ -193,7 +193,7 @@
     {
         "title": "Classic Poster",
         "code": 210,
-        "demonstratedPrice": "From $199",
+        "demonstratedPrice": "From $79",
         "images": ["Classic Black Frame","Classic Black Frame Environment","Classic unframed Poster","Classic White Frame","Classic White Frame Environment", "Classic Backside"],
         "availableRecords": [1],
         "descriptions": [
@@ -205,13 +205,13 @@
         ],
         "prices": [
             { "name": "WITHOUT FRAME", "subtitle": "Full Price", "discounted": "$79", "original": "$99",
-                "imageTarget": "poster_classical_unframed1",},
+                "imageTarget": "Classic unframed Poster",},
             { "name": "WITH FRAME", "subtitle": "Full Price", "discounted": "$199", "original": "$249",
-                "imageTarget": "poster_classical_framed1","specialAction":"Frame Color:"},
+                "imageTarget": "Classic Black Frame","specialAction":"Frame Color:"},
         ],
         "extraChoices":[
-            {"name": "WHITE FRAME","original":"$0","imageTarget": "poster_classical_framed1"},
-            {"name": "BLACK FRAME","original":"$0","imageTarget": "poster_classical_framed5"},
+            {"name": "WHITE FRAME","original":"","imageTarget": "Classic White Frame"},
+            {"name": "BLACK FRAME","original":"","imageTarget": "Classic Black Frame"},
         ]
         
     },
@@ -220,7 +220,7 @@
     {
         "title": "Constellation Poster",
         "code": 240,
-        "demonstratedPrice": "From $179",
+        "demonstratedPrice": "From $79",
         "images": ["poster_const1", "poster_const2", "poster_const3", "poster_const4", "minutiae_poster_notification"],
         "availableRecords": [4],
         "descriptions": [

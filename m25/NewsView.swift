@@ -14,9 +14,9 @@ struct NewsView: View {
             
             Headline(type: .menu, heading: "News")
             ScrollView {
-                News(type: .noImage, title: "Demo", content: "Quick demo on how the project works.")
-                News(type: .littleImage, title: "Do not Disturb", content: "Set a time...", image: Image("minutiae_clock_square"))
-                News(type: .bigImage, title: "NEW POSTERS AVAILABLE!", content: "We’ve just launched...", image: Image("minutiae_poster_notification")).onTapGesture {
+                News(type: .noImage, title: "Demo", content: "Quick demo on how the app works.")
+                News(type: .littleImage, title: "Do not Disturb", content: "Set a time for when you don’t want to receive your minutiae notifications.", image: Image("minutiae_clock_square"))
+                News(type: .bigImage, title: "NEW POSTERS AVAILABLE!", content: "", image: Image("minutiae_poster_notification")).onTapGesture {
                     showShop = true
                 }
             }
