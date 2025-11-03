@@ -66,8 +66,8 @@
         ],
         "boldTexts": [0],
         "prices": [
-            { "name": "STANDARD", "subtitle": "Full Price", "discounted": "$109", "original": "$129" },
-            { "name": "PREMIUM", "subtitle": "Full Price", "discounted": "$139", "original": "$159" }
+            { "name": "STANDARD", "subtitle": "Full Price", "discounted": "$109", "original": "$129","imageTarget":  "360 Edition - Standard Quality"},
+            { "name": "PREMIUM", "subtitle": "Full Price", "discounted": "$139", "original": "$159","imageTarget":  "360 Edition - Premium Quality"}
         ]
     },
     
@@ -95,8 +95,8 @@
         ],
         "boldTexts": [0],
         "prices": [
-            { "name": "STANDARD", "subtitle": "Full Price", "discounted": "$109", "original": "$129" },
-            { "name": "PREMIUM", "subtitle": "Full Price", "discounted": "$139", "original": "$159" }
+            { "name": "STANDARD", "subtitle": "Full Price", "discounted": "$109", "original": "$129","imageTarget":  "360 Edition - Standard Quality" },
+            { "name": "PREMIUM", "subtitle": "Full Price", "discounted": "$139", "original": "$159","imageTarget":  "360 Edition - Premium Quality" }
         ]
     },
     
@@ -118,8 +118,8 @@
         ],
         "boldTexts": [0],
         "prices": [
-            { "name": "STANDARD", "subtitle": "Full Price", "discounted": "$109", "original": "$129" },
-            { "name": "PREMIUM", "subtitle": "Full Price", "discounted": "$139", "original": "$159" }
+            { "name": "STANDARD", "subtitle": "Full Price", "discounted": "$109", "original": "$129","imageTarget":  "360 Edition - Standard Quality" },
+            { "name": "PREMIUM", "subtitle": "Full Price", "discounted": "$139", "original": "$159","imageTarget":  "360 Edition - Premium Quality" }
         ]
     },
     
@@ -141,8 +141,8 @@
         ],
         "boldTexts": [0],
         "prices": [
-            { "name": "STANDARD", "subtitle": "Full Price", "discounted": "$109", "original": "$129" },
-            { "name": "PREMIUM", "subtitle": "Full Price", "discounted": "$139", "original": "$159" }
+            { "name": "STANDARD", "subtitle": "Full Price", "discounted": "$109", "original": "$129","imageTarget":  "360 Edition - Standard Quality" },
+            { "name": "PREMIUM", "subtitle": "Full Price", "discounted": "$139", "original": "$159","imageTarget":  "360 Edition - Premium Quality" }
         ]
     },
     
@@ -164,8 +164,8 @@
         ],
         "boldTexts": [0],
         "prices": [
-            { "name": "STANDARD", "subtitle": "Full Price", "discounted": "$109", "original": "$129" },
-            { "name": "PREMIUM", "subtitle": "Full Price", "discounted": "$139", "original": "$159" }
+            { "name": "STANDARD", "subtitle": "Full Price", "discounted": "$109", "original": "$129","imageTarget":  "360 Edition - Standard Quality" },
+            { "name": "PREMIUM", "subtitle": "Full Price", "discounted": "$139", "original": "$159","imageTarget":  "360 Edition - Premium Quality" }
         ]
     },
     

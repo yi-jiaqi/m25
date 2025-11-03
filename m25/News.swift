@@ -109,13 +109,14 @@ struct News: View {
                         .fixedSize(horizontal: false, vertical: true)
                         .multilineTextAlignment(.leading)
                         .lineLimit(2)
-                    
-                    Text(content)
-                        .font(.smallBodyText)
-                        .foregroundColor(Color(hex: "1D1D1D"))
-                        .fixedSize(horizontal: false, vertical: true)
-                        .multilineTextAlignment(.leading)
-                        .lineLimit(5)
+                    if !content.isEmpty {
+                        Text(content)
+                            .font(.smallBodyText)
+                            .foregroundColor(Color(hex: "1D1D1D"))
+                            .fixedSize(horizontal: false, vertical: true)
+                            .multilineTextAlignment(.leading)
+                            .lineLimit(5)
+                    }
                     
                     
                     if let image = image {
@@ -147,16 +148,23 @@ struct News: View {
                         .font(.xSmallHeadline)
                         .foregroundColor(Color(hex: "1D1D1D"))
                         .multilineTextAlignment(.center)
-                        .frame(maxWidth: .infinity, alignment: .center)                .fixedSize(horizontal: false, vertical: true)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .fixedSize(horizontal: false, vertical: true)
                         .multilineTextAlignment(.leading)
-                        .lineLimit(5)
-                    Text(content)
-                        .font(.smallBodyText)
-                        .foregroundColor(Color(hex: "1D1D1D"))
-                        .multilineTextAlignment(.center)
-                        .frame(maxWidth: .infinity, alignment: .center)                .fixedSize(horizontal: false, vertical: true)
-                        .multilineTextAlignment(.leading)
-                        .lineLimit(5)
+                        .lineLimit(1)
+                    
+                    
+                        Text(content)
+                            .font(.smallBodyText)
+                            .foregroundColor(Color(hex: "1D1D1D"))
+                            .multilineTextAlignment(.center)
+                            .frame(maxWidth: .infinity, alignment: .center)
+                            .fixedSize(horizontal: false, vertical: false)
+                            .multilineTextAlignment(.leading)
+                            .lineLimit(5)
+                    
+                    
+
                 }
                     // MARK: - Thumb Image - for showing item in Shop(ShopView)
             case .thumbImage:
@@ -252,7 +260,7 @@ struct News: View {
         VStack {
             News(type: .noImage, title: "Demo", content: "Quick demo on how the project works.")
             News(type: .littleImage, title: "Do not Disturb", content: "Set a time...", image: Image("minutiae_clock_square"))
-            News(type: .bigImage, title: "NEW POSTERS AVAILABLE!", content: "We’ve just launched...", image: Image("minutiae_poster_notification"))
+            News(type: .bigImage, title: "NEW POSTERS AVAILABLE!", content: "", image: Image("minutiae_poster_notification"))
         }
         .padding(.horizontal,30)
         

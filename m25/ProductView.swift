@@ -20,8 +20,8 @@ struct ProductView: View {
     @State private var currentImageIndex = 0
     
     var body: some View {
+        ButtonsBar(type: .reading, onClose: { dismiss() }).padding(.bottom,10)
         ScrollView {
-            ButtonsBar(type: .reading, onClose: { dismiss() })
             VStack(spacing: 20) {
                 Headline(type: .reading, heading: product.title)
                 

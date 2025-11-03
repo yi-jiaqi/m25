@@ -39,7 +39,7 @@ struct Headline: View {
   
                     Divider()
                         .background(Color.white.opacity(0.7))
-                        .frame(height: 2)
+                        .frame(height: 4)
                     Text(heading)
                         .font(.headline)
                         .foregroundColor(.white)
@@ -48,7 +48,7 @@ struct Headline: View {
          
                     Divider()
                         .background(Color.white.opacity(0.7))
-                        .frame(height: 2)
+                        .frame(height: 4)
                 }
                 .padding(0)
                 .background(Color.menu_color)
