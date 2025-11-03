@@ -20,39 +20,44 @@ struct ProductView: View {
     @State private var currentImageIndex = 0
     
     var body: some View {
+        ZStack {
+            Color(hex: "E6E6E6").ignoresSafeArea() // global background
+            
+            VStack(spacing: 0) {
         ButtonsBar(type: .reading, onClose: { dismiss() }).padding(.bottom,10)
+
         ScrollView {
             VStack(spacing: 20) {
                 Headline(type: .reading, heading: product.title)
                 
                     // --- Image carousel safely wrapped
-//                GeometryReader { geo in
-//                    let safeWidth = min(geo.size.width, UIScreen.main.bounds.width)
-//                    let uiImage = UIImage(named: product.images[currentImageIndex])
-//                    let aspectRatio = (uiImage?.size.height ?? 1) / (uiImage?.size.width ?? 1)
-//                    let heightFactor: CGFloat = aspectRatio < 0.8 ? 0.6 : 0.9  // landscape → shorter, portrait → taller
-//                    TabView(selection: $currentImageIndex) {
-//                        ForEach(product.images.indices, id: \.self) { i in
-//                            let imgName = product.images[i]
-//                            if let uiImage = UIImage(named: imgName) {
-//                                let ratio = uiImage.size.height / uiImage.size.width
-//                                ZoomableImageView(imageName: imgName)
-//                                    .frame(width: safeWidth * 0.9, height: safeWidth * 0.9 * ratio)
-//                                    .clipped()
-//                                    .tag(i)
-//                            } else {
-//                                ZoomableImageView(imageName: imgName)
-//                                    .frame(width: safeWidth * 0.9, height: safeWidth * 0.9)
-//                                    .tag(i)
-//                            }
-//                        }
-//                    }
-//                    .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
-//                    .frame(width: safeWidth, height: safeWidth * heightFactor)
-//                    .indexViewStyle(.page(backgroundDisplayMode: .always))
-//                    .frame(maxWidth: .infinity)
-//                }
-//                .frame(height: UIScreen.main.bounds.width * 0.9)
+                    //                GeometryReader { geo in
+                    //                    let safeWidth = min(geo.size.width, UIScreen.main.bounds.width)
+                    //                    let uiImage = UIImage(named: product.images[currentImageIndex])
+                    //                    let aspectRatio = (uiImage?.size.height ?? 1) / (uiImage?.size.width ?? 1)
+                    //                    let heightFactor: CGFloat = aspectRatio < 0.8 ? 0.6 : 0.9  // landscape → shorter, portrait → taller
+                    //                    TabView(selection: $currentImageIndex) {
+                    //                        ForEach(product.images.indices, id: \.self) { i in
+                    //                            let imgName = product.images[i]
+                    //                            if let uiImage = UIImage(named: imgName) {
+                    //                                let ratio = uiImage.size.height / uiImage.size.width
+                    //                                ZoomableImageView(imageName: imgName)
+                    //                                    .frame(width: safeWidth * 0.9, height: safeWidth * 0.9 * ratio)
+                    //                                    .clipped()
+                    //                                    .tag(i)
+                    //                            } else {
+                    //                                ZoomableImageView(imageName: imgName)
+                    //                                    .frame(width: safeWidth * 0.9, height: safeWidth * 0.9)
+                    //                                    .tag(i)
+                    //                            }
+                    //                        }
+                    //                    }
+                    //                    .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
+                    //                    .frame(width: safeWidth, height: safeWidth * heightFactor)
+                    //                    .indexViewStyle(.page(backgroundDisplayMode: .always))
+                    //                    .frame(maxWidth: .infinity)
+                    //                }
+                    //                .frame(height: UIScreen.main.bounds.width * 0.9)
                 
                 let uiImage = UIImage(named: product.images[currentImageIndex])
                 let aspectRatio = (uiImage?.size.height ?? 1) / (uiImage?.size.width ?? 1)
@@ -72,7 +77,7 @@ struct ProductView: View {
                 .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
                 .frame(height: carouselHeight)
                 .indexViewStyle(.page(backgroundDisplayMode: .always))
-
+                
                 
                 
                     // 4. Pricing buttons
@@ -109,7 +114,7 @@ struct ProductView: View {
                                 get: { selectedPriceIndex == i },
                                 set: { newValue in if newValue { selectedPriceIndex = i } }
                             )
-
+                            
                         )
                             // If this price has a specialAction and extraChoices
                             // Show extra choices ONLY when this price is the one currently selected
@@ -270,6 +275,7 @@ struct ProductView: View {
         .fullScreenCover(isPresented: $showReading) {
             ReadingView(initialPage: 4)
         }
+    }}
     }
     
         // MARK: - Helpers

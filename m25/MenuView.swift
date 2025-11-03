@@ -33,16 +33,7 @@ struct MenuView: View {
                         }
                     )
                     .padding(.bottom,30)
-                    
-//                    Rectangle()
-//                        .foregroundColor(.clear)
-//                        .frame(width: 115, height: 115)
-//                        .background(
-//                            Image("logo")
-//                                .resizable()
-//                                .scaledToFit()
-//                                .opacity(0.5)
-//                        )
+
                 }
                 .background(Color(hex: "1D1D1D"))
                 .padding(.bottom,30)
